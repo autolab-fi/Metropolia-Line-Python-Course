@@ -1,6 +1,6 @@
 {
-    "fullCourseName":"Metropolia pilot course on Micropython",
-    "shortCourseName":"Course on mobile robotics based on ESP32 robot on Micropython deployed @ Metropolia", 
+    "fullCourseName":"Metropolia pilot course on mobile robotics on MicroPython",
+    "shortCourseName":"Course on mobile robotics based on ESP32 robot on MicroPython deployed @ Metropolia", 
     "shortDescription":"Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors, read sensors, navigate along the track.",
     "fullDescription":"Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors and LEDs, read sensors and navigate along the track.",
     "imageSmall":"https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-640x360.png?raw=true",
