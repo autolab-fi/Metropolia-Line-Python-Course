@@ -64,7 +64,7 @@ def headlights(robot, image, td: dict):
     image = robot.draw_info(image)
 
     if robot:
-        lower_white = np.array([225, 225, 225])
+        lower_white = np.array([200, 200, 200])
         upper_white = np.array([255, 255, 255])
 
         # ✅ Use safe position retrieval
