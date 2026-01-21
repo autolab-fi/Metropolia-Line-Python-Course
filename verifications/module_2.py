@@ -106,7 +106,7 @@ def headlights(robot, image, td: dict):
             image[crop_y:crop_y + crop_height, crop_x:crop_x + crop_width] = contour_image
 
     # ✅ Headlight detection logic
-    if percentage_white > 0.8:
+    if percentage_white > 1.5:
         td["data"]["headlight_frames"] += 1
         text = "Headlights ON"
         cv2.copyTo(td["data"]["turn-on"], td["data"]["turn-on-mask"],
