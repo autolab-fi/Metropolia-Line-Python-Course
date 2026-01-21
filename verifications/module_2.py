@@ -25,6 +25,23 @@ def get_target_points(task):
     return target_points.get(task, [])
 
 
+def get_headlight_mask(image):
+    """Create a mask for bright headlight pixels in BGR image."""
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+    # Bright white (low saturation, high value)
+    lower_white = np.array([0, 0, 210])
+    upper_white = np.array([180, 50, 255])
+    white_mask = cv2.inRange(hsv_image, lower_white, upper_white)
+
+    # Bright blue/cyan (headlight glow on the new polygon)
+    lower_blue = np.array([85, 80, 160])
+    upper_blue = np.array([140, 255, 255])
+    blue_mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+
+    return cv2.bitwise_or(white_mask, blue_mask)
+
+
 def headlights(robot, image, td: dict):
     """Test for lesson 6: Headlights."""
 
@@ -64,9 +81,6 @@ def headlights(robot, image, td: dict):
     image = robot.draw_info(image)
 
     if robot:
-        lower_white = np.array([225, 225, 225])
-        upper_white = np.array([255, 255, 255])
-
         # ✅ Use safe position retrieval
         robot_position = robot.get_info().get("position_px")
         if robot_position is not None:
@@ -75,8 +89,8 @@ def headlights(robot, image, td: dict):
 
             croped_image = image[crop_y:crop_y + crop_height, crop_x:crop_x + crop_width]
 
-            # Create mask for detecting white pixels
-            mask = cv2.inRange(croped_image, lower_white, upper_white)
+            # Create mask for detecting headlight pixels
+            mask = get_headlight_mask(croped_image)
 
             # Calculate white pixel percentage
             total_pixels = croped_image.shape[0] * croped_image.shape[1]
@@ -92,7 +106,7 @@ def headlights(robot, image, td: dict):
             image[crop_y:crop_y + crop_height, crop_x:crop_x + crop_width] = contour_image
 
     # ✅ Headlight detection logic
-    if percentage_white > 2:
+    if percentage_white > 0.8:
         td["data"]["headlight_frames"] += 1
         text = "Headlights ON"
         cv2.copyTo(td["data"]["turn-on"], td["data"]["turn-on-mask"],
@@ -172,9 +186,6 @@ def alarm(robot, image, td: dict):
     current_state = False  # Default to OFF
 
     if robot:
-        lower_white = np.array([225, 225, 225])
-        upper_white = np.array([255, 255, 255])
-
         robot_info = robot.get_info()
         robot_position = robot_info.get("position_px")
 
@@ -191,8 +202,8 @@ def alarm(robot, image, td: dict):
 
             cropped_image = image[crop_y:crop_y + crop_height, crop_x:crop_x + crop_width]
 
-            # Create mask for detecting white pixels
-            mask = cv2.inRange(cropped_image, lower_white, upper_white)
+            # Create mask for detecting headlight pixels
+            mask = get_headlight_mask(cropped_image)
 
             # Calculate white pixel percentage
             total_pixels = cropped_image.shape[0] * cropped_image.shape[1]
@@ -206,7 +217,7 @@ def alarm(robot, image, td: dict):
             image[crop_y:crop_y + crop_height, crop_x:crop_x + crop_width] = contour_image
 
             # Use the same threshold as headlights function
-            current_state = percentage_white > 2
+            current_state = percentage_white > 0.8
 
             # Add to buffer for smoothing (use last 3 frames)
             td["data"]["state_buffer"].append(current_state)
