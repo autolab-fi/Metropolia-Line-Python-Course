@@ -206,7 +206,7 @@ def alarm(robot, image, td: dict):
             image[crop_y:crop_y + crop_height, crop_x:crop_x + crop_width] = contour_image
 
             # Use the same threshold as headlights function
-            current_state = percentage_white > 2
+            current_state = percentage_white > 0.2
 
             # Add to buffer for smoothing (use last 3 frames)
             td["data"]["state_buffer"].append(current_state)
