@@ -9,7 +9,7 @@ target_points = {
     'mission_time_report': [(30, 50), (0, -200)],
     'sensor_log_summary': [(30, 50), (0, -200)],
     'list_operations_check': [(30, 50), (0, -200)],
-    'introduction_to_variables_and_conditional_statements': [(25, 45), (0, 200)],
+    'introduction_to_variables_and_conditional_statements': [(23, 45), (0, 200)],
     'loops_and_conditional_logic': [(65, 50), (30, 0)],
     'array_and_processing_data': [(30, 50), (30, 0)],
 }
