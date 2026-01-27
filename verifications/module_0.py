@@ -36,7 +36,7 @@ def get_target_points(task):
     return target_points[task]
 
 
-def test_drive(robot, image, td: dict):
+def test_drive(robot, image, td: dict, user_code=None):
     """Test for lesson 1: Test drive"""
 
     # init result dictionary
@@ -94,7 +94,7 @@ def test_drive(robot, image, td: dict):
     return image, td, text, result
 
 
-def license_to_drive(robot, image, td: dict):
+def license_to_drive(robot, image, td: dict, user_code=None):
     """Test for lesson 2: License to drive"""
     # init test data dictionary
     if not td:
@@ -104,7 +104,7 @@ def license_to_drive(robot, image, td: dict):
             "prev_robot_center": None
         }
 
-    return test_drive(robot, image, td)
+    return test_drive(robot, image, td, user_code=user_code)
 
 
 def restore_trajectory(image, prev_point, point, color, width):
@@ -123,7 +123,7 @@ def draw_trajectory(image, points, color, width, restore):
         prev_point = point
 
 
-def sandbox(robot, image, td: dict):
+def sandbox(robot, image, td: dict, user_code=None):
     """Drawing trajectory at lesson Drawing"""
 
     # init result dictionary
