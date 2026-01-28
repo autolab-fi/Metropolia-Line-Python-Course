@@ -59,7 +59,7 @@ def line_sensor_intro(robot, image, td, user_code=None):
     cv2.putText(image, f"Values: {td['data']['values']}", (20, 30),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1)
 
-    if len(td["data"]["values"]) == 2 or td["end_time"] - time.time() < 1:
+    if td["end_time"] - time.time() < 1:
         if len(td["data"]["values"]) == 2:
             first, second = td["data"]["values"]
             if first > 80 and second > 100:
