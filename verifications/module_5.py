@@ -36,7 +36,7 @@ def line_sensor_intro(robot, image, td, user_code=None):
     if not td:
         td = {
             "start_time": time.time(),
-            "end_time": time.time() + 10,
+            "end_time": time.time() + 20,
             "data": {
                 "values": []
             }
