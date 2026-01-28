@@ -579,7 +579,7 @@ def loops_and_conditional_logic(robot, image, td, user_code=None):
     if time.time() > td["end_time"] and not td["data"]["verification_complete"]:
         td["data"]["verification_complete"] = True
         sensors_above = len(td["data"]["sensors_above_threshold"])
-        if sensors_above >= 2:
+        if sensors_above >= 1:
             text = "Verification complete!"
         else:
             result.update({
