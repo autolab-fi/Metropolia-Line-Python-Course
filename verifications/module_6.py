@@ -5,13 +5,13 @@ import re
 import ast
 
 target_points = {
-    'hello_mqtt_variables': [(30, 50), (0, -200)],
-    'mission_time_report': [(30, 50), (0, -200)],
-    'sensor_log_summary': [(30, 50), (0, -200)],
-    'list_operations_check': [(30, 50), (0, -200)],
-    'introduction_to_variables_and_conditional_statements': [(23, 45), (0, 200)],
-    'loops_and_conditional_logic': [(23, 45), (0, 200)],
-    'array_and_processing_data': [(30, 50), (30, 0)],
+    'hello_mqtt_variables': [(27, 19), (90, 0)],
+    'mission_time_report': [(27, 19), (90, 0)],
+    'sensor_log_summary': [(27, 19), (90, 0)],
+    'list_operations_check': [(27, 19), (90, 0)],
+    'introduction_to_variables_and_conditional_statements': [(27, 19), (90, 0)],
+    'loops_and_conditional_logic': [(27, 19), (90, 0)],
+    'array_and_processing_data': [(27, 19), (90, 0)],
 }
 
 block_library_functions = {
