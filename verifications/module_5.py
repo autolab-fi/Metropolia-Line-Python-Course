@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 target_points = {
-    'line_sensor_intro': [(26, 24), (0, 100)],
+    'line_sensor_intro': [(26, 24), (0, 0)],
 
 }
 
