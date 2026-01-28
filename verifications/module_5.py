@@ -62,7 +62,7 @@ def line_sensor_intro(robot, image, td, user_code=None):
     if len(td["data"]["values"]) == 2 or td["end_time"] - time.time() < 1:
         if len(td["data"]["values"]) == 2:
             first, second = td["data"]["values"]
-            if first > 80 and second < 100:
+            if first > 80 and second > 100:
                 result["success"] = True
                 result["description"] = "Conditions met."
                 result["score"] = 100
