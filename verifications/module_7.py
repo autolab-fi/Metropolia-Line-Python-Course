@@ -6,8 +6,8 @@ import numpy as np
 
 target_points = {
     'basic_line_follower': [(27, 19), (90, 0)],
-    'pi': [(100, 25), (30, 0)],
-    'pid': [(100, 25), (30, 0)],
+    'pi': [(27, 19), (90, 0)],
+    'pid': [(27, 19), (90, 0)],
 }
 
 block_library_functions = {
