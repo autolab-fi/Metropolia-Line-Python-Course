@@ -46,7 +46,7 @@ def overlay_marker(image, marker, mask, center_x, center_y):
 
 def basic_line_follower(robot, image, td: dict, user_code=None):
     """Place checkpoints only in cells 1 and 2 (first row, first two cells)"""
-    cell_indices = [0,1,3,4,5,6,7,8,9,10,11]  # Cells 1, 2
+    cell_indices = [7, 8, 9, 10, 11]  # Cells 1, 2
     return checkpoint_verification_grid(
         robot,
         image,
