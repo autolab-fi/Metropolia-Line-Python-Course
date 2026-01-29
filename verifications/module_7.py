@@ -153,7 +153,7 @@ def checkpoint_verification_grid(
             }
         }
         
-        # Load checkpoint image (cone) if needed
+        # Load checkpoint images (cone and flag) if needed
         try:
             basepath = os.path.abspath(os.path.dirname(__file__))
             filepath = os.path.join(basepath, "auto_tests", "traffic-sign.jpg")
@@ -178,25 +178,30 @@ def checkpoint_verification_grid(
                     else:
                         flag_mask = cv2.inRange(flag, np.array([0, 0, 0]), np.array([0, 0, 0]))
                         flag_mask = cv2.bitwise_not(flag_mask)
-                    td["data"]["flag"] = cv2.resize(flag, (60, 60))
-                    td["data"]["flag-mask"] = cv2.resize(flag_mask, (60, 60))
+                    td["data"]["flag"] = cv2.resize(flag, (90, 90))
+                    td["data"]["flag-mask"] = cv2.resize(flag_mask, (90, 90))
         except Exception as e:
             print(f"Error loading checkpoint image: {e}")
 
     checkpoint_positions = td["data"]["checkpoints"]
+    marker = td["data"].get("flag", td["data"].get("cone"))
+    marker_mask = td["data"].get("flag-mask", td["data"].get("cone-mask"))
+    marker_size = marker.shape[0] if marker is not None else 60
+    marker_half = marker_size // 2
+
     # Place checkpoint markers (cones) on all uncompleted checkpoints
     for i, (y, x) in enumerate(checkpoint_positions):
         if not td["data"]["reached_checkpoints"][i]:
-            y_start = max(0, y - 30)
-            y_end = min(image.shape[0], y + 30)
-            x_start = max(0, x - 30)
-            x_end = min(image.shape[1], x + 30)
+            y_start = max(0, y - marker_half)
+            y_end = min(image.shape[0], y + marker_half)
+            x_start = max(0, x - marker_half)
+            x_end = min(image.shape[1], x + marker_half)
             roi_img = image[y_start:y_end, x_start:x_end]
             if roi_img.shape[0] > 0 and roi_img.shape[1] > 0:
-                if roi_img.shape != (60, 60, 3):
-                    resized_cone = cv2.resize(td["data"]["cone"], (roi_img.shape[1], roi_img.shape[0]))
-                    resized_mask = cv2.resize(td["data"]["cone-mask"], (roi_img.shape[1], roi_img.shape[0]))
-                    cv2.copyTo(resized_cone, resized_mask, roi_img)
+                if marker is not None and marker_mask is not None:
+                    resized_marker = cv2.resize(marker, (roi_img.shape[1], roi_img.shape[0]))
+                    resized_mask = cv2.resize(marker_mask, (roi_img.shape[1], roi_img.shape[0]))
+                    cv2.copyTo(resized_marker, resized_mask, roi_img)
                 else:
                     cv2.copyTo(td["data"]["cone"], td["data"]["cone-mask"], roi_img)
 
@@ -206,23 +211,23 @@ def checkpoint_verification_grid(
         for i, (y, x) in enumerate(checkpoint_positions):
             if not td["data"]["reached_checkpoints"][i] and np.linalg.norm([robot_x - x, robot_y - y]) < 100:
                 td["data"]["reached_checkpoints"][i] = True
-                y_start = max(0, y - 30)
-                y_end = min(image.shape[0], y + 30)
-                x_start = max(0, x - 30)
-                x_end = min(image.shape[1], x + 30)
-                roi_img = image[y_start:y_end, x_start:x_end]
-                if (
-                    roi_img.shape[0] > 0
-                    and roi_img.shape[1] > 0
-                    and "flag" in td["data"]
-                    and "flag-mask" in td["data"]
-                ):
-                    resized_flag = cv2.resize(td["data"]["flag"], (roi_img.shape[1], roi_img.shape[0]))
-                    resized_mask = cv2.resize(td["data"]["flag-mask"], (roi_img.shape[1], roi_img.shape[0]))
-                    cv2.copyTo(resized_flag, resized_mask, roi_img)
-                else:
-                    cv2.circle(image, (x, y), 30, (255, 255, 255), -1)
                 text = f"Checkpoint {i+1}/{len(checkpoint_positions)} reached!"
+
+        # Keep markers visible after reaching checkpoints
+        for i, (y, x) in enumerate(checkpoint_positions):
+            if td["data"]["reached_checkpoints"][i]:
+                y_start = max(0, y - marker_half)
+                y_end = min(image.shape[0], y + marker_half)
+                x_start = max(0, x - marker_half)
+                x_end = min(image.shape[1], x + marker_half)
+                roi_img = image[y_start:y_end, x_start:x_end]
+                if roi_img.shape[0] > 0 and roi_img.shape[1] > 0:
+                    if marker is not None and marker_mask is not None:
+                        resized_marker = cv2.resize(marker, (roi_img.shape[1], roi_img.shape[0]))
+                        resized_mask = cv2.resize(marker_mask, (roi_img.shape[1], roi_img.shape[0]))
+                        cv2.copyTo(resized_marker, resized_mask, roi_img)
+                    else:
+                        cv2.circle(image, (x, y), 30, (255, 255, 255), -1)
         
         # Check if all checkpoints are completed
         if all(td["data"]["reached_checkpoints"]) and not td["data"]["task_completed"]:
