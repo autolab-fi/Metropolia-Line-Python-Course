@@ -34,7 +34,7 @@ def basic_line_follower(robot, image, td: dict, user_code=None):
         image,
         td,
         cell_indices,
-        20,
+        60,
         "basic_line_follower",
         user_code=user_code,
     )
@@ -166,6 +166,20 @@ def checkpoint_verification_grid(
             mask = cv2.bitwise_not(cv2.inRange(cone, np.array([0, 240, 0]), np.array([35, 255, 35])))
             td["data"]["cone"] = cone
             td["data"]["cone-mask"] = mask
+
+            flag_path = os.path.join(basepath, "images", "flag2.png")
+            if os.path.exists(flag_path):
+                flag = cv2.imread(flag_path, cv2.IMREAD_UNCHANGED)
+                if flag is not None:
+                    if flag.shape[2] == 4:
+                        alpha = flag[:, :, 3]
+                        flag = flag[:, :, :3]
+                        flag_mask = alpha
+                    else:
+                        flag_mask = cv2.inRange(flag, np.array([0, 0, 0]), np.array([0, 0, 0]))
+                        flag_mask = cv2.bitwise_not(flag_mask)
+                    td["data"]["flag"] = cv2.resize(flag, (60, 60))
+                    td["data"]["flag-mask"] = cv2.resize(flag_mask, (60, 60))
         except Exception as e:
             print(f"Error loading checkpoint image: {e}")
 
@@ -196,7 +210,18 @@ def checkpoint_verification_grid(
                 y_end = min(image.shape[0], y + 30)
                 x_start = max(0, x - 30)
                 x_end = min(image.shape[1], x + 30)
-                cv2.circle(image, (x, y), 30, (255, 255, 255), -1)
+                roi_img = image[y_start:y_end, x_start:x_end]
+                if (
+                    roi_img.shape[0] > 0
+                    and roi_img.shape[1] > 0
+                    and "flag" in td["data"]
+                    and "flag-mask" in td["data"]
+                ):
+                    resized_flag = cv2.resize(td["data"]["flag"], (roi_img.shape[1], roi_img.shape[0]))
+                    resized_mask = cv2.resize(td["data"]["flag-mask"], (roi_img.shape[1], roi_img.shape[0]))
+                    cv2.copyTo(resized_flag, resized_mask, roi_img)
+                else:
+                    cv2.circle(image, (x, y), 30, (255, 255, 255), -1)
                 text = f"Checkpoint {i+1}/{len(checkpoint_positions)} reached!"
         
         # Check if all checkpoints are completed
