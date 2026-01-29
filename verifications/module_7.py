@@ -26,6 +26,24 @@ def get_target_points(task):
     """Retrieve target points for a given task."""
     return target_points.get(task, [])
 
+
+def overlay_marker(image, marker, mask, center_x, center_y):
+    marker_h, marker_w = marker.shape[:2]
+    half_h = marker_h // 2
+    half_w = marker_w // 2
+    y_start = max(0, center_y - half_h)
+    y_end = min(image.shape[0], center_y + half_h)
+    x_start = max(0, center_x - half_w)
+    x_end = min(image.shape[1], center_x + half_w)
+    roi_img = image[y_start:y_end, x_start:x_end]
+    if roi_img.shape[0] > 0 and roi_img.shape[1] > 0:
+        if roi_img.shape[:2] != (marker_h, marker_w):
+            resized_marker = cv2.resize(marker, (roi_img.shape[1], roi_img.shape[0]))
+            resized_mask = cv2.resize(mask, (roi_img.shape[1], roi_img.shape[0]))
+            cv2.copyTo(resized_marker, resized_mask, roi_img)
+        else:
+            cv2.copyTo(marker, mask, roi_img)
+
 def basic_line_follower(robot, image, td: dict, user_code=None):
     """Place checkpoints only in cells 1 and 2 (first row, first two cells)"""
     cell_indices = [0,1,3,4,5,6,7,8,9,10,11]  # Cells 1, 2
@@ -171,6 +189,7 @@ def checkpoint_verification_grid(
             if os.path.exists(flag_path):
                 flag = cv2.imread(flag_path, cv2.IMREAD_UNCHANGED)
                 if flag is not None:
+                    flag_size = 90
                     if flag.shape[2] == 4:
                         alpha = flag[:, :, 3]
                         flag = flag[:, :, :3]
@@ -178,8 +197,8 @@ def checkpoint_verification_grid(
                     else:
                         flag_mask = cv2.inRange(flag, np.array([0, 0, 0]), np.array([0, 0, 0]))
                         flag_mask = cv2.bitwise_not(flag_mask)
-                    td["data"]["flag"] = cv2.resize(flag, (60, 60))
-                    td["data"]["flag-mask"] = cv2.resize(flag_mask, (60, 60))
+                    td["data"]["flag"] = cv2.resize(flag, (flag_size, flag_size))
+                    td["data"]["flag-mask"] = cv2.resize(flag_mask, (flag_size, flag_size))
         except Exception as e:
             print(f"Error loading checkpoint image: {e}")
 
@@ -187,18 +206,10 @@ def checkpoint_verification_grid(
     # Place checkpoint markers (cones) on all uncompleted checkpoints
     for i, (y, x) in enumerate(checkpoint_positions):
         if not td["data"]["reached_checkpoints"][i]:
-            y_start = max(0, y - 30)
-            y_end = min(image.shape[0], y + 30)
-            x_start = max(0, x - 30)
-            x_end = min(image.shape[1], x + 30)
-            roi_img = image[y_start:y_end, x_start:x_end]
-            if roi_img.shape[0] > 0 and roi_img.shape[1] > 0:
-                if roi_img.shape != (60, 60, 3):
-                    resized_cone = cv2.resize(td["data"]["cone"], (roi_img.shape[1], roi_img.shape[0]))
-                    resized_mask = cv2.resize(td["data"]["cone-mask"], (roi_img.shape[1], roi_img.shape[0]))
-                    cv2.copyTo(resized_cone, resized_mask, roi_img)
-                else:
-                    cv2.copyTo(td["data"]["cone"], td["data"]["cone-mask"], roi_img)
+            if "flag" in td["data"] and "flag-mask" in td["data"]:
+                overlay_marker(image, td["data"]["flag"], td["data"]["flag-mask"], x, y)
+            else:
+                overlay_marker(image, td["data"]["cone"], td["data"]["cone-mask"], x, y)
 
     # Check if robot passes through checkpoints
     if robot and robot.position_px:
@@ -206,20 +217,8 @@ def checkpoint_verification_grid(
         for i, (y, x) in enumerate(checkpoint_positions):
             if not td["data"]["reached_checkpoints"][i] and np.linalg.norm([robot_x - x, robot_y - y]) < 100:
                 td["data"]["reached_checkpoints"][i] = True
-                y_start = max(0, y - 30)
-                y_end = min(image.shape[0], y + 30)
-                x_start = max(0, x - 30)
-                x_end = min(image.shape[1], x + 30)
-                roi_img = image[y_start:y_end, x_start:x_end]
-                if (
-                    roi_img.shape[0] > 0
-                    and roi_img.shape[1] > 0
-                    and "flag" in td["data"]
-                    and "flag-mask" in td["data"]
-                ):
-                    resized_flag = cv2.resize(td["data"]["flag"], (roi_img.shape[1], roi_img.shape[0]))
-                    resized_mask = cv2.resize(td["data"]["flag-mask"], (roi_img.shape[1], roi_img.shape[0]))
-                    cv2.copyTo(resized_flag, resized_mask, roi_img)
+                if "flag" in td["data"] and "flag-mask" in td["data"]:
+                    overlay_marker(image, td["data"]["flag"], td["data"]["flag-mask"], x, y)
                 else:
                     cv2.circle(image, (x, y), 30, (255, 255, 255), -1)
                 text = f"Checkpoint {i+1}/{len(checkpoint_positions)} reached!"
