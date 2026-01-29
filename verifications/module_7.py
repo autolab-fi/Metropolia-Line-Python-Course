@@ -27,21 +27,22 @@ def get_target_points(task):
     return target_points.get(task, [])
 
 def basic_line_follower(robot, image, td: dict, user_code=None):
-    """Place checkpoints at fixed coordinates using flag markers."""
-    checkpoint_positions = [
-        (20, 97),
-        (34, 105),
-        (78, 73),
-        (52, 24),
+    """Place checkpoints on the detected line near desired coordinates."""
+    desired_points_xy = [
+        (97, 20),
+        (105, 34),
+        (73, 78),
+        (24, 52),
     ]
     return checkpoint_verification_positions(
         robot,
         image,
         td,
-        checkpoint_positions,
+        desired_points_xy,
         60,
         "basic_line_follower",
         user_code=user_code,
+        snap_to_line=True,
     )
 
 
@@ -267,6 +268,7 @@ def checkpoint_verification_positions(
     verification_time,
     task_name,
     user_code=None,
+    snap_to_line=False,
 ):
     """Verify checkpoints at fixed coordinates, drawing flag markers."""
     result = {
@@ -282,6 +284,10 @@ def checkpoint_verification_positions(
     image = robot.draw_info(image)
 
     if not td or "checkpoints" not in td.get("data", {}):
+        if snap_to_line:
+            checkpoint_positions = _snap_checkpoints_to_line(image, checkpoint_positions)
+        else:
+            checkpoint_positions = [(y, x) for x, y in checkpoint_positions]
         td = {
             "start_time": time.time(),
             "end_time": time.time() + verification_time,
@@ -365,3 +371,31 @@ def checkpoint_verification_positions(
             result["description"] = f"The robot only passed {completed}/{total} checkpoints in the allotted time."
 
     return image, td, text, result
+
+
+def _snap_checkpoints_to_line(image, desired_points_xy):
+    """Snap checkpoint positions to the nearest detected line pixels."""
+    if image is None:
+        return [(y, x) for x, y in desired_points_xy]
+
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    binary = cv2.adaptiveThreshold(
+        gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10
+    )
+    kernel = np.ones((7, 7), np.uint8)
+    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
+    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    min_area = 800
+    filtered = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
+    if not filtered:
+        return [(y, x) for x, y in desired_points_xy]
+
+    points = np.vstack([cnt.reshape(-1, 2) for cnt in filtered])
+    snapped_positions = []
+    for x, y in desired_points_xy:
+        diffs = points - np.array([x, y])
+        dist_sq = np.einsum("ij,ij->i", diffs, diffs)
+        closest_idx = int(np.argmin(dist_sq))
+        closest_x, closest_y = points[closest_idx]
+        snapped_positions.append((int(closest_y), int(closest_x)))
+    return snapped_positions
