@@ -109,7 +109,7 @@ def checkpoint_verification_grid(
 
     # Only place checkpoints once
     if not td or "checkpoints" not in td.get("data", {}):
-        roi = image[top:bottom, left:right].copy()
+        roi = image[top:bottom, left:right]
         roi_h, roi_w = roi.shape[:2]
         
         # 3x4 grid: 3 rows, 4 columns
