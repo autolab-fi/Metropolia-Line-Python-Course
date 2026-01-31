@@ -90,8 +90,8 @@ def checkpoint_verification_grid(
     # --- CROP SETTINGS: Adjust these values to select your paper area ---
     top = 120
     bottom = 800
-    left = 150
-    right = 1100
+    left = 250
+    right = 1400
     debug_contours = True
     # ---------------------------------------------------------------
 
