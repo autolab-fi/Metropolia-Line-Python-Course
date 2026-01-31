@@ -6,7 +6,7 @@ import numpy as np
 
 target_points = {
     'basic_line_follower': [(27, 19), (90, 0)],
-    'pi': [(63, 78), (175, 0)],
+    'pi': [(63, 78), (180, 0)],
     'pid': [(27, 19), (90, 0)],
 }
 
