@@ -1,4 +1,4 @@
-# **Lesson 1: Relay controller**
+# **Lesson 7.1: Relay controller**
 
 ### Objective
 
