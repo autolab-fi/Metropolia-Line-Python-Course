@@ -2,7 +2,7 @@
 
 ### Objective
 
-Understand how different types of controllers work — Relay, Proportional (P), and Proportional-Integral (PI). Learn how each improves performance for a line-following robot.
+Understand how Relay controller works. Learn how each improves performance for a line-following robot.
 
 ### 1. **Relay Controller**
 
