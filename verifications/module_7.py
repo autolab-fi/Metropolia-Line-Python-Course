@@ -10,6 +10,11 @@ target_points = {
     'pid': [(27, 19), (90, 0)],
 }
 
+static_checkpoints = {
+    "basic_line_follower": [(20, 97), (34, 105), (78, 73), (52, 24)],
+    "pi": [(20, 97), (34, 105), (78, 73), (52, 24)],
+}
+
 block_library_functions = {
     'basic_line_follower': False,
     'pi': False,
@@ -107,59 +112,68 @@ def checkpoint_verification_grid(
 
     image = robot.draw_info(image)
 
+    should_init_checkpoints = not td or "checkpoints" not in td.get("data", {})
+    checkpoint_positions = []
+    use_static_checkpoints = task_name in static_checkpoints
+
+    if should_init_checkpoints:
+        if use_static_checkpoints:
+            checkpoint_positions = [
+                (y, x) for y, x in static_checkpoints[task_name]
+            ]
+        else:
+            roi = image[top:bottom, left:right]
+            roi_h, roi_w = roi.shape[:2]
+
+            # 3x4 grid: 3 rows, 4 columns
+            num_rows = 3
+            num_cols = 4
+            cell_h = roi_h // num_rows
+            cell_w = roi_w // num_cols
+
+            # Process only the specified cells
+            for cell_index in cell_indices:
+                row = cell_index // num_cols
+                col = cell_index % num_cols
+
+                y1 = row * cell_h
+                y2 = (row + 1) * cell_h if row < num_rows - 1 else roi_h
+                x1 = col * cell_w
+                x2 = (col + 1) * cell_w if col < num_cols - 1 else roi_w
+
+                cell = roi[y1:y2, x1:x2]
+                gray = cv2.cvtColor(cell, cv2.COLOR_BGR2GRAY)
+                binary = cv2.adaptiveThreshold(
+                    gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10
+                )
+                kernel = np.ones((7, 7), np.uint8)
+                binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
+                contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                min_area = 800
+                filtered = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
+                if debug_contours:
+                    debug_color = (0, 255, 255)
+                    cv2.drawContours(cell, contours, -1, debug_color, 1)
+                    cv2.drawContours(cell, filtered, -1, (0, 0, 255), 2)
+
+                if filtered:
+                    # Calculate cell center
+                    cell_center = (cell_w // 2, cell_h // 2)
+                    min_dist = float('inf')
+                    closest_pt = None
+                    for cnt in filtered:
+                        for pt in cnt.reshape(-1, 2):
+                            dist = (pt[0] - cell_center[0])**2 + (pt[1] - cell_center[1])**2
+                            if dist < min_dist:
+                                min_dist = dist
+                                closest_pt = pt
+                    if closest_pt is not None:
+                        checkpoint_y = top + y1 + closest_pt[1]
+                        checkpoint_x = left + x1 + closest_pt[0]
+                        checkpoint_positions.append((checkpoint_y, checkpoint_x))
+
     # Only place checkpoints once
-    if not td or "checkpoints" not in td.get("data", {}):
-        roi = image[top:bottom, left:right]
-        roi_h, roi_w = roi.shape[:2]
-        
-        # 3x4 grid: 3 rows, 4 columns
-        num_rows = 3
-        num_cols = 4
-        cell_h = roi_h // num_rows
-        cell_w = roi_w // num_cols
-
-        checkpoint_positions = []
-        
-        # Process only the specified cells
-        for cell_index in cell_indices:
-            row = cell_index // num_cols
-            col = cell_index % num_cols
-            
-            y1 = row * cell_h
-            y2 = (row + 1) * cell_h if row < num_rows - 1 else roi_h
-            x1 = col * cell_w
-            x2 = (col + 1) * cell_w if col < num_cols - 1 else roi_w
-
-            cell = roi[y1:y2, x1:x2]
-            gray = cv2.cvtColor(cell, cv2.COLOR_BGR2GRAY)
-            binary = cv2.adaptiveThreshold(
-                gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY_INV, 15, 10
-            )
-            kernel = np.ones((7, 7), np.uint8)
-            binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
-            contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            min_area = 800
-            filtered = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
-            if debug_contours:
-                debug_color = (0, 255, 255)
-                cv2.drawContours(cell, contours, -1, debug_color, 1)
-                cv2.drawContours(cell, filtered, -1, (0, 0, 255), 2)
-
-            if filtered:
-                # Calculate cell center
-                cell_center = (cell_w // 2, cell_h // 2)
-                min_dist = float('inf')
-                closest_pt = None
-                for cnt in filtered:
-                    for pt in cnt.reshape(-1, 2):
-                        dist = (pt[0] - cell_center[0])**2 + (pt[1] - cell_center[1])**2
-                        if dist < min_dist:
-                            min_dist = dist
-                            closest_pt = pt
-                if closest_pt is not None:
-                    checkpoint_y = top + y1 + closest_pt[1]
-                    checkpoint_x = left + x1 + closest_pt[0]
-                    checkpoint_positions.append((checkpoint_y, checkpoint_x))
+    if should_init_checkpoints:
         
         # Initialize test data
         td = {
