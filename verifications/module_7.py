@@ -92,6 +92,7 @@ def checkpoint_verification_grid(
     bottom = 800
     left = 50
     right = 800
+    debug_contours = True
     # ---------------------------------------------------------------
 
     result = {
@@ -139,6 +140,10 @@ def checkpoint_verification_grid(
             contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             min_area = 800
             filtered = [cnt for cnt in contours if cv2.contourArea(cnt) > min_area]
+            if debug_contours:
+                debug_color = (0, 255, 255)
+                cv2.drawContours(cell, contours, -1, debug_color, 1)
+                cv2.drawContours(cell, filtered, -1, (0, 0, 255), 2)
 
             if filtered:
                 # Calculate cell center
