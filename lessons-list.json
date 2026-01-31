@@ -158,14 +158,6 @@
         "template": "# Write code here"
       },
       {
-        "str_id": "array_and_processing_data",
-        "name": "Arrays and Processing Data with Loops",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/Arrays%20and%20Processing%20Data%20with%20Loops.md",
-        "sn": 15,
-        "description": "Understand how to use arrays to store and analyze sensor data with systematic data collection.",
-        "template": "# Write code here"
-      },
-      {
         "str_id": "hello_mqtt_variables",
         "name": "MQTT Greeting of Variables",
         "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/MQTT%20Greeting%20of%20Variables.md",
@@ -208,7 +200,7 @@
       {
         "str_id": "basic_line_follower",
         "name": "Relay Controller",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_7/relay_controller.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_7/relay_controller.md",
         "sn": 20,
         "description": "Learn how a relay controller switches motor direction based on line position for simple line following.",
         "template": "# Write code here"
@@ -216,17 +208,9 @@
       {
         "str_id": "pi",
         "name": "P Controller",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_7/p_controller.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_7/p_controller.md",
         "sn": 21,
         "description": "Use a proportional controller to adjust motor speed based on line error for smoother tracking.",
-        "template": "# Write code here"
-      },
-      {
-        "str_id": "pid",
-        "name": "PID Controller",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_7/PID.md",
-        "sn": 22,
-        "description": "Implement a complete PID controller combining proportional, integral, and derivative terms for optimal line following.",
         "template": "# Write code here"
       }
     ]
