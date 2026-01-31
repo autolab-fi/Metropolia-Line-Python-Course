@@ -1,105 +1,143 @@
-### 2. **Proportional (P) Controller**
+# **Lesson 2: P Controller with `track_line()`**
 
-The P controller improves on relay by making the output proportional to how far off the robot is from the center of the line.
+### Objective
+
+Learn how to use the Octoliner’s ready-made `track_line()` method to build a **P controller** for smooth line following. You’ll understand what data the method returns, how to interpret it, and how to turn that into motor commands.
+
+---
+
+## 1. What is a P Controller?
+
+A **Proportional (P) controller** adjusts the motor speeds based on how far the robot is from the center of the line.
 
 **Formula:**
 
 ```
-u(t) = Kp × error
+output = Kp × error
 ```
 
-Where:
+- `Kp` is the proportional gain (a tuning constant).
+- `error` tells how far the robot is from the center of the line.
 
-- `u(t)` is the control output,
-- `Kp` is the proportional gain (a tuning constant),
-- `error` is the difference between the current position and the desired position (usually 3.5 for 8 sensors).
-
-The farther the robot is from the line center, the stronger the correction. This makes the movement smoother and more precise.
-
-![P](https://github.com/pranavk-2003/line-robot-curriculum/blob/assignments/images/module_8/p.png?raw=True)
-
-**Limitations:**
-
-- Can't completely eliminate steady-state error.
-- High gain may cause overshoot or oscillation.
+If the robot is far from center, the correction is large. If it’s close, the correction is small. This makes the motion smooth and responsive.
 
 ---
 
-### 3. **Proportional-Integral (PI) Controller**
+## 2. `track_line()` — The Ready-Made Line Position Method
 
-The PI controller fixes the steady-state error left behind by the P controller.
+The Octoliner library provides a helper method called **`track_line()`**. It processes all 8 sensors for you and returns the position of the line **as a single number**.
 
-It adds an integral term, which keeps track of accumulated past errors. If the robot is slightly off for a long time, the integral slowly increases to push it back to the center.
+### ✅ What does `track_line()` return?
 
-**Formula:**
+- A **floating-point value between `-1` and `1`**
+  - `-1` → line is far to the **left**
+  - `0` → line is **centered**
+  - `1` → line is far to the **right**
+- **`None`** if the line is **lost** (no sensors detect it)
+
+This makes it perfect for a P controller: we can directly use the returned value as the error.
+
+---
+
+## 3. Using the Error to Control Motors
+
+We use the line position as the error, then calculate a correction value:
 
 ```
-u(t) = Kp × error + Ki × sum_of_errors
+correction = Kp × error
 ```
 
-Where:
+Then adjust motor speeds:
 
-- `Kp` is the proportional gain,
-- `Ki` is the integral gain,
-- `sum_of_errors` is the running total of all previous errors.
+- **Left motor** speeds up if line is on the right.
+- **Right motor** speeds up if line is on the left.
 
-## ![Pi](https://github.com/pranavk-2003/line-robot-curriculum/blob/assignments/images/module_8/pi.png?raw=True)
+---
 
-## Assignment – Implement a PI Controller
-
-### Step 1: Calculate Weighted Sum and Total Value
+## 4. Code Example: P Controller with `track_line()`
 
 ```python
-weighted_sum = 0
-total_value = 0
+import machine
+from time import sleep
+from octoliner import Octoliner
+from lineRobot import Robot
 
-for i in range(8):
-    if sensorvalues[i] > MY_BLACK_THRESHOLD:
-        weighted_sum += i * sensorvalues[i]
-        total_value += sensorvalues[i]
-```
+# I2C and Octoliner
+i2c = machine.I2C(
+    scl=machine.Pin(22),
+    sda=machine.Pin(21),
+    freq=100000
+)
 
-### Step 2: Calculate Position and Error
+octoliner = Octoliner()
+octoliner.begin(i2c)
+octoliner.set_sensitivity(248)
 
-```python
-error = 0
-if total_value > 0:
-    position = weighted_sum / total_value
-    error = position - 3.5  # 3.5 is the center of an 8-sensor array
-```
+# Robot
+robot = Robot()
 
-### Step 3: Compute Control Output (PI logic)
+# Motor enable pins
+pin5 = machine.Pin(5, machine.Pin.OUT)
+pin15 = machine.Pin(15, machine.Pin.OUT)
+pin5.value(1)
+pin15.value(1)
 
-```python
-integral += error
-integral = max(min(integral, 30), -30)  # limit the integral to avoid windup
+# P controller constant
+Kp = 30
 
-output = (Kp * error) + (Ki * integral)
-```
+# Base speed
+base_speed = 20
 
-### Step 4: Set Motor Speeds
+while True:
+    # Line position from -1 to 1
+    error = octoliner.track_line()
+    print(error)
 
-```python
-left_speed = fwdspeed - 1.5 * output
-right_speed = fwdspeed + 1.5 * output
+    # If line is lost, stop or slow down
+    if error is None:
+        robot.run_motors_speed(0, 0)
+        sleep(0.05)
+        continue
 
-robot.run_motors_speed(left_speed, right_speed)
+    # P regulator
+    correction = Kp * error
+
+    left_speed = int(base_speed + correction)
+    right_speed = int(base_speed - correction)
+
+    robot.run_motors_speed(left_speed, right_speed)
+    sleep(0.01)
 ```
 
 ---
 
-### Summary
+## 5. Tuning Tips
 
-| Controller | Formula                             | Strength                              | Weakness                       |
-| ---------- | ----------------------------------- | ------------------------------------- | ------------------------------ |
-| Relay      | full left/right based on error sign | Simple and fast                       | Rough, unstable, zigzag motion |
-| P          | u = Kp × error                      | Smooth control                        | Small steady-state error       |
-| PI         | u = Kp × error + Ki × ∑error        | Smooth and accurate, eliminates error | Slower response, needs tuning  |
+- **Increase `Kp`** → stronger correction, faster reaction, but risk of oscillation.
+- **Decrease `Kp`** → smoother motion, but slower response.
+- **Adjust `base_speed`** to control overall speed.
 
 ---
 
-### Conclusion
+## Assignment 7.2 – P Controller with `track_line()`
 
-In this lesson, we explored three control strategies for keeping a line-following robot centered: Relay, P, and PI. The relay controller is simple but leads to unstable movement. The P controller improves this by making adjustments based on how far off the robot is, but still can't fully correct long-term drift. The PI controller solves this by remembering past errors and slowly pushing the robot back on track.
+### ✅ Task
 
-Each method builds on the last, making the robot smarter and more stable. As we go forward, we’ll explore the PID controller, which adds one final component — the derivative — to further improve control and reduce overshoot.
+1. Use the **ready-made `track_line()` function** to read the line position.
+2. Build a **P controller** with `Kp` and a `base_speed`.
+3. Handle the case where the line is lost (`None`).
+4. Tune `Kp` so the robot follows the line smoothly without oscillating.
+
+### ✅ Checkpoint Goal
+
+Your robot should follow the line smoothly and complete the checkpoint without zigzagging or losing the line.
+
+---
+
+## Summary
+
+- `track_line()` gives you an easy-to-use **error value** between `-1` and `1`.
+- A P controller turns that error into motor corrections.
+- This method is simpler and cleaner than reading each sensor manually.
+
+Next, we’ll extend this idea to PI and PID controllers for even better stability.
