@@ -1,4 +1,4 @@
-# **Lesson 1: Relay, P, and PI Controllers**
+# **Lesson 1: Relay controller**
 
 ### Objective
 
