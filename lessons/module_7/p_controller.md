@@ -1,4 +1,4 @@
-# **Lesson 2: P Controller with `track_line()`**
+# **Lesson 7.2: P-controller**
 
 ### Objective
 
