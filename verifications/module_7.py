@@ -4,13 +4,13 @@ import time
 import os
 import numpy as np
 
-STATIC_CHECKPOINTS = [(97, 20), (105, 34), (73, 78), (24, 52)]
-
 target_points = {
-    "basic_line_follower": STATIC_CHECKPOINTS,
-    "pi": STATIC_CHECKPOINTS,
+    "basic_line_follower": [(27, 19), (90, 0)],
+    "pi": [(27, 19), (90, 0)],
     "pid": [(27, 19), (90, 0)],
 }
+
+FLAG_CHECKPOINTS = [(97, 20), (105, 34), (73, 78), (24, 52)]
 
 block_library_functions = {
     'basic_line_follower': False,
@@ -56,7 +56,7 @@ def basic_line_follower(robot, image, td: dict, user_code=None):
         cell_indices,
         60,
         "basic_line_follower",
-        static_points=STATIC_CHECKPOINTS,
+        static_points=FLAG_CHECKPOINTS,
         user_code=user_code,
     )
 
@@ -71,7 +71,7 @@ def pi(robot, image, td: dict, user_code=None):
         cell_indices,
         30,
         "pi",
-        static_points=STATIC_CHECKPOINTS,
+        static_points=FLAG_CHECKPOINTS,
         user_code=user_code,
     )
 
