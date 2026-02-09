@@ -8,7 +8,7 @@
       {
         "str_id": "sandbox",
         "name": "Sandbox",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_1/sandbox.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_1/sandbox.md",
         "sn": 0,
         "description": "Introduction to the platform, listing all peripherals, describing what we will be working with, and outlining any restrictions on libraries and tag words.",
         "template": "from lineRobot import Robot\n\n\nrobot = Robot()\nprint(\"Turning left\")\nrobot.turn_left_angle(45)\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)\nprint(\"Turning right\")\nrobot.turn_right()\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)\nprint(\"Turning right\")\nrobot.turn_right()\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)\nprint(\"Turning right\")\nrobot.turn_right()\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)"
@@ -16,14 +16,14 @@
       {
         "str_id": "test_drive",
         "name": "Test drive",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_0/test_drive.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_0/test_drive.md",
         "sn": 1,
         "description": "Some introductory words on moving the robot forward using a library.",
         "template": "# Paste code here"
       },
       {
         "str_id": "license_to_drive",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_0/license_to_drive.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_0/license_to_drive.md",
         "sn": 2,
         "name": "License to drive",
         "description": "Writing a simple program independently, similar to the previous lesson.",
@@ -39,7 +39,7 @@
     "lessons": [
       {
         "str_id": "short_distance_race",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_1/short_distance_race.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_1/short_distance_race.md",
         "sn": 3,
         "name": "Short distance race",
         "description": "Using library functions to move a specific distance, both forward and backward.",
@@ -55,7 +55,7 @@
       },
       {
         "str_id": "long_distance_race",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_1/long_distance_race.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_1/long_distance_race.md",
         "sn": 5,
         "name": "Fruit Ninja",
         "description": "Writing a program with a sequence of commands to move along a trajectory depicted in the diagram.",
@@ -71,7 +71,7 @@
     "lessons": [
       {
         "str_id": "headlights",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_2/headlights.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_2/headlights.md",
         "sn": 6,
         "name": "Headlights",
         "description": "Understanding how LEDs work. Task: Turning on LEDs.",
@@ -79,7 +79,7 @@
       },
       {
         "str_id": "alarm",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_2/alarm.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/lMetropolia-Line-Python-Course/main/lessons/module_2/alarm.md",
         "sn": 7,
         "name": "Robot's alarm",
         "description": "More about the digitalWrite() and pinMode() functions. Task: Blinking LEDs.",
@@ -95,7 +95,7 @@
     "lessons": [
       {
         "str_id": "differential_drive",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_3/differential_drive.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_3/differential_drive.md",
         "sn": 8,
         "name": "Differential drive",
         "description": "An introduction to the robot's kinematics. Task: Experiment with functions for moving the robot forward.",
@@ -103,7 +103,7 @@
       },
       {
         "str_id": "move_function",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_3/move_function.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_3/move_function.md",
         "sn": 9,
         "name": "Movement Function",
         "description": "Writing functions in Arduino. Task: Write a function to rotate the robot.",
@@ -111,7 +111,7 @@
       },
       {
         "str_id": "electric_motor",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_3/electric_motor.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_3/electric_motor.md",
         "sn": 10,
         "name": "Electric Motor",
         "description": "Basic principles of DC motors. Task: Move to a specific point on the map using only functions for controlling motors.",
@@ -128,7 +128,7 @@
       {
         "str_id": "line_sensor_intro",
         "name": "Line Sensor and Black Line Detection",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_5/line_senosor_intro.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_5/line_senosor_intro.md",
         "sn": 12,
         "description": "This lesson focuses on understanding how an Octoliner sensor detects black lines using IR sensors and implementing black line detection.",
         "template": "# Write code here"
@@ -144,7 +144,7 @@
       {
         "str_id": "introduction_to_variables_and_conditional_statements",
         "name": "Introduction to Variables and Conditional Statements",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/Introduction%20to%20Variables%20and%20Conditional%20Statements.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_6/Introduction%20to%20Variables%20and%20Conditional%20Statements.md",
         "sn": 13,
         "description": "Learn how to declare and use variables in programming, and apply conditional logic using if, else if, and else statements.",
         "template": "# Write code here"
@@ -152,7 +152,7 @@
       {
         "str_id": "loops_and_conditional_logic",
         "name": "Loops and Conditional Logic",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/Loops%20and%20Conditional%20Logic.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_6/Loops%20and%20Conditional%20Logic.md",
         "sn": 14,
         "description": "Learn how to repeat actions using for and while loops combined with conditional statements.",
         "template": "# Write code here"
@@ -160,7 +160,7 @@
       {
         "str_id": "hello_mqtt_variables",
         "name": "MQTT Greeting of Variables",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/MQTT%20Greeting%20of%20Variables.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_6/MQTT%20Greeting%20of%20Variables.md",
         "sn": 16,
         "description": "Declare variables of different types and broadcast them in a single MQTT status line.",
         "template": "# Write code here"
@@ -168,7 +168,7 @@
       {
         "str_id": "mission_time_report",
         "name": "Telemetry: Calculating Time",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/Telemetry%20Calculating%20Time.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_6/Telemetry%20Calculating%20Time.md",
         "sn": 17,
         "description": "Compute mission travel time from distance and speed and format it as telemetry.",
         "template": "# Write code here"
@@ -176,7 +176,7 @@
       {
         "str_id": "sensor_log_summary",
         "name": "Sensor Log: List and Aggregates",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/Sensor%20Log%20List%20and%20Aggregates.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_6/Sensor%20Log%20List%20and%20Aggregates.md",
         "sn": 18,
         "description": "Summarise a list of sensor readings by reporting the count, values, and average.",
         "template": "# Write code here"
@@ -184,7 +184,7 @@
       {
         "str_id": "list_operations_check",
         "name": "Working with Lists: Adding, Removing, and Measuring",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_6/Working%20with%20Lists%20Adding%20Removing%20and%20Measuring.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_6/Working%20with%20Lists%20Adding%20Removing%20and%20Measuring.md",
         "sn": 19,
         "description": "Manipulate a mixed-type list and report its contents and length via MQTT.",
         "template": "# Write code here"
@@ -224,7 +224,7 @@
       {
         "str_id": "telemetry_heartbeat_health",
         "name": "Telemetry Heartbeat with Status Levels",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_8/Telemetry%20Heartbeat%20with%20Status%20Levels.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_8/Telemetry%20Heartbeat%20with%20Status%20Levels.md",
         "sn": 23,
         "description": "Derive a health flag from readiness, speed, and battery data and include it in the STATUS heartbeat.",
         "template": "# Write code here"
@@ -232,7 +232,7 @@
       {
         "str_id": "line_sensor_leds",
         "name": "Line Sensor Reactive LEDs",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_8/Line%20Sensor%20Reactive%20LEDs.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_8/Line%20Sensor%20Reactive%20LEDs.md",
         "sn": 24,
         "description": "Mirror Octoliner readings to the LEDs using lists and dictionaries, then report the snapshot over MQTT.",
         "template": "# Write code here"
@@ -248,7 +248,7 @@
       {
         "str_id": "fog_of_war_survey",
         "name": "Fog of War Survey",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_9/Fog%20of%20War%20Survey.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_9/Fog%20of%20War%20Survey.md",
         "sn": 25,
         "description": "Use a snake-pattern sweep to uncover a provided foggy map and stop once coverage passes 90%.",
         "template": "# Write code here"
@@ -256,7 +256,7 @@
       {
         "str_id": "docking",
         "name": "Docking",
-        "url": "https://raw.githubusercontent.com/autolab-fi/lineRobot-micropython-course/main/lessons/module_9/Docking.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_9/Docking.md",
         "sn": 26,
         "description": "Implement an auto-docking procedure to navigate the robot to a charging station ",
         "template": "# Write code here"
