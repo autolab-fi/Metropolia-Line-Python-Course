@@ -6,9 +6,9 @@ import numpy as np
 # Adjust points if the simulator expects a specific spawn zone
 # Format: "task": [(x, y), (angle, speed)]
 target_points = {
-    "fog_of_war_survey": [(30,30), (30, 0)],
-    "miniral_scanner_sweep" : [(30,50), (30, 0)],
-    "docking": [(50,61), (0, 0)]
+    "fog_of_war_survey": [(30, 30), (30, 0)],
+    "miniral_scanner_sweep" : [(30, 50), (30, 0)],
+    "docking": [(40, 27), (30, 0)]
 }
 
 # Library call restrictions to discourage bypassing the assignment
