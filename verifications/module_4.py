@@ -512,7 +512,7 @@ def color_classification(robot, image, td, user_code=None):
         has_rgb           = ".rgb()" in active_code
         has_move          = "move_forward_distance(10)" in active_code
         has_detect_call   = "detect_color_name(r, g, b)" in active_code
-        has_scan_print    = "Scan complete:" in active_code
+        has_scan_print    = "Scan -" in active_code
         code_valid = (
             has_i2c and has_tcs3472 and has_detect_func and has_normalization
             and has_range6 and has_rgb and has_move
@@ -528,7 +528,7 @@ def color_classification(robot, image, td, user_code=None):
         if not has_rgb:           missing.append(".rgb() call")
         if not has_move:          missing.append("move_forward_distance(10)")
         if not has_detect_call:   missing.append("detect_color_name(r, g, b) call in loop")
-        if not has_scan_print:    missing.append('print format "Scan complete:..."')
+        if not has_scan_print:    missing.append('print format "Scan Scan -..."')
 
         td = {
             "start_time": time.time(),
@@ -547,7 +547,7 @@ def color_classification(robot, image, td, user_code=None):
 
     msg = robot.get_msg()
     if msg is not None:
-        match = re.search(r'Scan complete: (\w+) \(Raw: R:(\d+) G:(\d+) B:(\d+)\)', msg)
+        match = re.search(r'Scan - (\w+) \(Raw: R:(\d+) G:(\d+) B:(\d+)\)', msg)
         if match:
             color_name = match.group(1)
             r, g, b    = int(match.group(2)), int(match.group(3)), int(match.group(4))

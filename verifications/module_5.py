@@ -272,7 +272,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 700' in active_code
+        has_max_check       = 'max(' in active_code and '< 500' in active_code
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         has_left_threshold  = '< -0.3' in active_code or '<-0.3' in active_code
@@ -288,7 +288,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < 500 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_left_threshold:  missing.append('left threshold (< -0.3)')
@@ -503,7 +503,7 @@ def proportional_control(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 700' in active_code
+        has_max_check       = 'max(' in active_code and '< 500' in active_code
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         
@@ -526,7 +526,7 @@ def proportional_control(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < 500 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_base_speed:      missing.append('base_speed variable')
@@ -702,13 +702,13 @@ def tuning_and_kick(robot, image, td, user_code=None):
     """
 
     # ===== CONFIGURATION =====
-    TASK_DURATION = 90  # Longer duration to allow multiple kicks
+    TASK_DURATION = 30
     
     # Movement tracking
     MIN_MOVEMENT_DISTANCE = 10.0  # cm - anti-cheat minimum
     
     # Kick tracking
-    MIN_KICKS_EXPECTED = 2  # Should see at least 2 kicks in 90 seconds
+    MIN_KICKS_EXPECTED = 2  # Should see at least 2 kicks during the check window
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -718,6 +718,54 @@ def tuning_and_kick(robot, image, td, user_code=None):
         "score": 100
     }
     text = "Waiting for messages..."
+
+    def apply_verdict(result, td, ended_early=False):
+        distance_moved = td["data"]["max_distance_moved"]
+        kick_count = td["data"]["kick_count"]
+        robot_moved = distance_moved >= MIN_MOVEMENT_DISTANCE
+        has_kicks = kick_count >= MIN_KICKS_EXPECTED
+        early_reason = td["data"].get("early_finish_reason")
+
+        if robot_moved and has_kicks:
+            result["success"] = True
+            result["score"] = 100
+            result["description"] = f"Perfect! P-controller with kicks working. Distance: {distance_moved:.1f}cm, Kicks: {kick_count} | Score: 100"
+            return f"Mission complete! Distance: {distance_moved:.1f}cm, Kicks: {kick_count}"
+
+        if robot_moved and kick_count >= 1:
+            result["success"] = False
+            result["score"] = 80
+            if ended_early and early_reason:
+                result["description"] = f"Good! Robot moved {distance_moved:.1f}cm with {kick_count} kick(s), expected {MIN_KICKS_EXPECTED}+ before early stop ({early_reason}) | Score: 80"
+                return f"Good work, but attempt ended early after {kick_count} kick(s): {early_reason}"
+            result["description"] = f"Good! Robot moved {distance_moved:.1f}cm with {kick_count} kick(s), expected {MIN_KICKS_EXPECTED}+ | Score: 80"
+            return f"Good work, but expected more kicks over {TASK_DURATION}s."
+
+        if robot_moved:
+            result["success"] = False
+            result["score"] = 60
+            if ended_early and early_reason:
+                result["description"] = f"Robot moved {distance_moved:.1f}cm but no KICK messages detected before early stop ({early_reason}). Check timer logic. | Score: 60"
+                return f"P-controller works but attempt ended early before a kick: {early_reason}"
+            result["description"] = f"Robot moved {distance_moved:.1f}cm but no KICK messages detected. Check timer logic. | Score: 60"
+            return "P-controller works but kick timer not triggering."
+
+        if kick_count > 0:
+            result["success"] = False
+            result["score"] = 40
+            if ended_early and early_reason:
+                result["description"] = f"{kick_count} kicks detected but robot barely moved ({distance_moved:.1f}cm) before early stop ({early_reason}) | Score: 40"
+                return f"Kick timer works but robot not moving properly before early stop: {early_reason}"
+            result["description"] = f"{kick_count} kicks detected but robot barely moved ({distance_moved:.1f}cm) | Score: 40"
+            return "Kick timer works but robot not moving properly."
+
+        result["success"] = False
+        result["score"] = 0
+        if ended_early and early_reason:
+            result["description"] = f"Task incomplete. Kicks: {kick_count}, Distance: {distance_moved:.1f}cm. Attempt ended early: {early_reason} | Score: 0"
+            return f"Task incomplete. Attempt ended early: {early_reason}"
+        result["description"] = f"Task incomplete. Kicks: {kick_count}, Distance: {distance_moved:.1f}cm | Score: 0"
+        return "Task incomplete. Check code execution."
 
     image = robot.draw_info(image)
 
@@ -731,7 +779,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 700' in active_code
+        has_max_check       = 'max(' in active_code and '< 500' in active_code
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         
@@ -752,7 +800,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
         
         code_valid = (
             has_while_true and has_analog_read and has_track_line
-            and has_max_check and has_robot_stop and has_break
+            and has_robot_stop and has_break
             and has_base_speed and has_kp and has_p_calc
             and has_left_speed and has_right_speed and has_add_subtract
             and has_last_kick_time and has_elapsed_time and has_time_check
@@ -763,7 +811,6 @@ def tuning_and_kick(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_base_speed:      missing.append('base_speed variable')
@@ -781,7 +828,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
         # ── td state init ─────────────────────────────────────────────────────
         td = {
             "start_time": time.time(),
-            "end_time":   time.time() + 90,
+            "end_time":   time.time() + 30,
             "data": {
                 "code_valid":               code_valid,
                 "missing":                  missing,
@@ -795,6 +842,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
                 "last_message":             None,
                 "kick_count":               0,
                 "kick_messages":            [],
+                "early_finish_reason":      None,
             }
         }
 
@@ -823,6 +871,8 @@ def tuning_and_kick(robot, image, td, user_code=None):
         if "KICK" in msg:
             td["data"]["kick_count"] += 1
             td["data"]["kick_messages"].append(msg)
+        if "Problem" in msg:
+            td["data"]["early_finish_reason"] = "Problem"
 
     # ── live status text ──────────────────────────────────────────────────────
     if not td["data"].get("completed_verdict"):
@@ -835,8 +885,10 @@ def tuning_and_kick(robot, image, td, user_code=None):
         if distance > 0:
             text = f"Last message: {td['data']['last_message']} | Distance: {distance:.1f}cm, Kicks: {kick_count}"
 
+    ended_early = td["data"].get("early_finish_reason") is not None
+
     # ── timeout / final verdict (fires exactly once) ──────────────────────────
-    if td["end_time"] - time.time() < 1 and not td["data"].get("completed_verdict"):
+    if (td["end_time"] - time.time() < 1 or ended_early) and not td["data"].get("completed_verdict"):
         td["data"]["completed_verdict"] = True
         
         if not td["data"]["code_valid"]:
@@ -846,46 +898,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
             text = "Code validation failed."
         
         else:
-            # Evaluate mission performance
-            distance_moved = td["data"]["max_distance_moved"]
-            kick_count = td["data"]["kick_count"]
-            robot_moved = distance_moved >= MIN_MOVEMENT_DISTANCE
-            has_kicks = kick_count >= MIN_KICKS_EXPECTED
-            
-            # Success criteria
-            if robot_moved and has_kicks:
-                result["success"]     = True
-                result["score"]       = 100
-                result["description"] = f"Perfect! P-controller with kicks working. Distance: {distance_moved:.1f}cm, Kicks: {kick_count} | Score: 100"
-                text = f"Mission complete! Distance: {distance_moved:.1f}cm, Kicks: {kick_count}"
-            
-            elif robot_moved and kick_count >= 1:
-                # Robot moved and at least one kick detected
-                result["success"]     = False
-                result["score"]       = 80
-                result["description"] = f"Good! Robot moved {distance_moved:.1f}cm with {kick_count} kick(s), expected {MIN_KICKS_EXPECTED}+ | Score: 80"
-                text = f"Good work, but expected more kicks over {TASK_DURATION}s."
-            
-            elif robot_moved:
-                # Robot moved but no kicks detected
-                result["success"]     = False
-                result["score"]       = 60
-                result["description"] = f"Robot moved {distance_moved:.1f}cm but no KICK messages detected. Check timer logic. | Score: 60"
-                text = f"P-controller works but kick timer not triggering."
-            
-            elif kick_count > 0:
-                # Kicks detected but robot didn't move much
-                result["success"]     = False
-                result["score"]       = 40
-                result["description"] = f"{kick_count} kicks detected but robot barely moved ({distance_moved:.1f}cm) | Score: 40"
-                text = "Kick timer works but robot not moving properly."
-            
-            else:
-                # Nothing happened
-                result["success"]     = False
-                result["score"]       = 0
-                result["description"] = f"Task incomplete. Kicks: {kick_count}, Distance: {distance_moved:.1f}cm | Score: 0"
-                text = "Task incomplete. Check code execution."
+            text = apply_verdict(result, td, ended_early=ended_early)
 
     return image, td, text, result
 
@@ -931,7 +944,7 @@ def adaptive_speed(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 700' in active_code
+        has_max_check       = 'max(' in active_code and '< 500' in active_code
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         
@@ -966,7 +979,7 @@ def adaptive_speed(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < 500 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_kp:              missing.append('kp variable')

@@ -301,5 +301,45 @@
                 "template": "from lineRobot import Robot\n\n\nrobot = Robot()\nprint(\"Turning left\")\nrobot.turn_left_angle(45)\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)\nprint(\"Turning right\")\nrobot.turn_right()\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)\nprint(\"Turning right\")\nrobot.turn_right()\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)\nprint(\"Turning right\")\nrobot.turn_right()\nprint(\"Moving forward\")\nrobot.move_forward_distance(20)"
             }
         ]
+    },
+    {
+        "name": "Final Exam",
+        "description": "Final assessment covering navigation, loops, sensor handling, and debugging.",
+        "sn": 7,
+        "str_id": "module_11",
+        "lessons": [
+            {
+                "str_id": "navigation",
+                "name": "Task 1 Navigation",
+                "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_11/task_1.md",
+                "sn": 35,
+                "description": "Navigate a fixed route using distance commands, precise turns, variables, and comments.",
+                "template": "from lineRobot import Robot\n\nrobot = Robot()\n\n# Distances and angles\nforward_1 = \nturn_1 = \nforward_2 = \nturn_2 = \nforward_3 = \nturn_3 = \nforward_4 = \n\n# Move to point 1\n\n# Move to point 2\n\n# Move to point 3\n\n# Move to point 4\n"
+            },
+            {
+                "str_id": "perimeter",
+                "name": "Task 2 Perimeter",
+                "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_11/task_2.md",
+                "sn": 36,
+                "description": "Use a for loop to drive a square perimeter efficiently.",
+                "template": "from lineRobot import Robot\n\nrobot = Robot()\n\nside = 30\nturn_angle = 90\n\nfor _ in range():\n    \n"
+            },
+            {
+                "str_id": "visual_telemetry",
+                "name": "Task 3 Visual Telemetry",
+                "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_11/task_3.md",
+                "sn": 37,
+                "description": "Detect the line, stop safely, and blink the onboard LED three times.",
+                "template": "from lineRobot import Robot\nfrom octoliner import Octoliner\nimport machine\nimport time\n\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(240)\nled = machine.Pin(15, machine.Pin.OUT)\n\nwhile True:\n    \n"
+            },
+            {
+                "str_id": "adaptive_racing",
+                "name": "Task 4 Adaptive Racing",
+                "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_11/task_4.md",
+                "sn": 38,
+                "description": "Fix the broken adaptive speed controller and prepare it for the final race.",
+                "template": "import time\nfrom lineRobot import Robot\nfrom octoliner import Octoliner\nimport machine\n\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\n\noctoliner.set_sensitivity(240)\n\nkp = 20\nmax_speed = 35\nbraking_force = 3\n\nwhile True\n    sensor_array = octoliner.analog_read_all()\n    position = sensor_array\n    dynamic_speed = max_speed - braking_force * abs(position)\n    P = kp * position\n    left_speed = int(dynamic_speed + P)\n    right_speed = int(dynamic_speed - P)\n    robot.run_motors_speed(left_speed, right_speed)\n    time.sleep(0.1)\n"
+            }
+        ]
     }
 ]

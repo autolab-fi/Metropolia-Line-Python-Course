@@ -18,14 +18,14 @@ Your rover is now fully capable of navigating and reporting its physical status.
 
 Today, we are activating the rover's spectrometer: the **TCS34725 Color Sensor**. This hardware will allow your robot to distinguish between different types of minerals based on their color signatures. 
 
-![Color_sensor](https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/module-4/color_sensor.jpg?raw=true)
+![Color_sensor](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-4/color_sensor.jpg?raw=true)
 
 ## Theory
 
 ### 1. How the Color Sensor Works (The RGB Model)
 To understand how the robot "sees" color, we need to understand the **RGB model**. RGB stands for **R**ed, **G**reen, and **B**lue. 
 
-![RGB](https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/module-4/rgb_explanation.jpg?raw=true)
+![RGB](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-4/rgb_explanation.jpg?raw=true)
 
 Instead of seeing "Yellow" or "Purple" like a human eye, the sensor measures the intensity of red, green, and blue light reflecting off the ground. By combining these three basic values, the computer can identify any color. 
 

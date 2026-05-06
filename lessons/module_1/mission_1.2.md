@@ -20,7 +20,7 @@ In this lesson, you will initiate the robot's movement. But before we push the b
 
 Behold the mighty rover who will assist you in learning:
 
-![Picture of the robot](https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/module-1/robot.jpg?raw=true)
+![Picture of the robot](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-1/robot.jpg?raw=true)
 
 
 ## Theory: The Digital Twin

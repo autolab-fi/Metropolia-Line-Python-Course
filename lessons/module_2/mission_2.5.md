@@ -25,7 +25,7 @@ There are two main types:
 1. **Absolute Encoders**: These tell you the exact position of rotation (like a compass showing North).
 2. **Incremental Encoders**: These count steps of rotation (like counting your footsteps).
 
-![Encoders](https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/module-2/encoders.gif?raw=true)
+![Encoders](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-2/encoders.gif?raw=true)
 
 Our platform is a differential drive robot based on the ESP32 microcontroller and MicroPython. It is specifically equipped with two DC motors with encoders – JGB37-520 178.
 
