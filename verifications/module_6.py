@@ -6,12 +6,14 @@ import numpy as np
 import ast
 
 target_points = {
+    'sandbox': [(50, 50), (30, 0)],                   # Start: x=50, y=50, direction=30°
     'art_of_debugging': [(50, 94), (30, 0)],           # Start: x=50, y=94, direction=30°
     'hardware_safety_net': [(60, 40), (0, 0)],         # Start: x=60, y=40, direction=0° (spins in place)
     'code_clinic': [(50, 30), (30, 0)],                # Start: x=50, y=30, direction=30°
 }
 
 block_library_functions = {
+    'sandbox': False,
     'art_of_debugging': False,
     'hardware_safety_net': False,
     'code_clinic': False,
@@ -26,6 +28,60 @@ def get_block_library_functions(task):
 def get_target_points(task):
     """Retrieve target points for a given task."""
     return target_points.get(task, [])
+
+
+# ============================================================================
+# Sandbox: free robot movement playground
+# ============================================================================
+def restore_sandbox_trajectory(image, prev_point, point, color, width):
+    """Restore trajectory segment if the robot was temporarily not recognized."""
+    cv2.line(image, prev_point, point, color, width)
+
+
+def draw_sandbox_trajectory(image, points, color, width, restore):
+    """Draw the robot trajectory for sandbox verification."""
+    prev_point = None
+    for point in points:
+        cv2.circle(image, point, width, color, -1)
+        if restore and prev_point is not None and math.sqrt(
+                (prev_point[0] - point[0]) ** 2 + (prev_point[1] - point[1]) ** 2) > 1:
+            restore_sandbox_trajectory(image, prev_point, point, color, int(width * 2))
+        prev_point = point
+
+
+def sandbox(robot, image, td: dict, user_code=None):
+    """Verification for the sandbox lesson: run code and draw the robot trajectory."""
+
+    result = {
+        "success": True,
+        "description": "You are amazing! The Robot has completed the assignment",
+        "score": 100
+    }
+
+    text = "Not recognized"
+    if not td:
+        td = {
+            "end_time": time.time() + 60,
+            "trajectory": []
+        }
+
+    image = robot.draw_info(image)
+    info = robot.get_info()
+    robot_position_px = info["position_px"]
+    robot_position = info["position"]
+
+    if robot_position is not None:
+        td["trajectory"].append(robot_position_px)
+        text = f"Robot position: x: {robot_position[0]:0.1f} y: {robot_position[1]:0.1f}"
+
+    if len(td["trajectory"]) > 0:
+        draw_sandbox_trajectory(image, td["trajectory"], (255, 0, 0), 3, True)
+
+    msg = robot.get_msg()
+    if msg is not None:
+        text = f"Message received: {msg}"
+
+    return image, td, text, result
 
 
 # ============================================================================
