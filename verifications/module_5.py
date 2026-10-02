@@ -5,6 +5,11 @@ import os
 import numpy as np
 import re
 
+def has_line_loss_failsafe(code):
+    """Match the lesson's threshold without depending on Python whitespace."""
+    return bool(re.search(r"\bmax\s*\([^)]*\)\s*<\s*700(?:\.0*)?\b", code))
+
+
 target_points = {
     'concept_of_error': [(22, 86),(0,-30)],           # Start: x=22, y=86, direction=-30
     'upgraded_relay_controller': [(40, 30), (30, 0)],   # Start: x=40, y=30
@@ -249,7 +254,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
     
     # Checkpoints (visual only, not required for scoring)
     CHECKPOINT_RADIUS = 10.0  # cm
-    CHECKPOINTS = [(105, 60), (60, 90), (80, 30)]  # Full lap challenge
+    CHECKPOINTS = [(105, 60), (60, 90), (80, 16)]  # Full lap challenge
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -272,7 +277,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 500' in active_code
+        has_max_check       = has_line_loss_failsafe(active_code)
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         has_left_threshold  = '< -0.3' in active_code or '<-0.3' in active_code
@@ -288,7 +293,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 500 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_left_threshold:  missing.append('left threshold (< -0.3)')
@@ -480,7 +485,7 @@ def proportional_control(robot, image, td, user_code=None):
     
     # Checkpoints (visual only, not required for scoring)
     CHECKPOINT_RADIUS = 10.0  # cm
-    CHECKPOINTS = [(105, 60), (60, 90), (80, 30)]  # Full lap challenge
+    CHECKPOINTS = [(105, 60), (60, 90), (80, 16)]  # Full lap challenge
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -503,7 +508,7 @@ def proportional_control(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 500' in active_code
+        has_max_check       = has_line_loss_failsafe(active_code)
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         
@@ -526,7 +531,7 @@ def proportional_control(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 500 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_base_speed:      missing.append('base_speed variable')
@@ -779,7 +784,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 500' in active_code
+        has_max_check       = has_line_loss_failsafe(active_code)
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         
@@ -921,7 +926,7 @@ def adaptive_speed(robot, image, td, user_code=None):
     
     # Checkpoints (visual only, not required for scoring)
     CHECKPOINT_RADIUS = 10.0  # cm
-    CHECKPOINTS = [(105, 60), (60, 90), (80, 30)]  # Full lap challenge
+    CHECKPOINTS = [(105, 60), (60, 90), (80, 16)]  # Full lap challenge
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -944,7 +949,7 @@ def adaptive_speed(robot, image, td, user_code=None):
         has_while_true      = 'while True' in active_code
         has_analog_read     = 'analog_read_all()' in active_code
         has_track_line      = 'track_line()' in active_code
-        has_max_check       = 'max(' in active_code and '< 500' in active_code
+        has_max_check       = has_line_loss_failsafe(active_code)
         has_robot_stop      = 'robot.stop()' in active_code
         has_break           = 'break' in active_code
         
@@ -979,7 +984,7 @@ def adaptive_speed(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 500 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_kp:              missing.append('kp variable')

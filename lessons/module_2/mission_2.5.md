@@ -54,7 +54,7 @@ print("The value of Pi is:", math.pi)
 ```
 
 ### 4. Distance and Rotation
-For a wheel with radius R, one full rotation covers a distance of L = 2 × π × R (the wheel's circumference). Our robot's wheels have a radius of **3.21 cm**, so one full rotation is approximately **20.2 cm**.
+For a wheel with radius R, one full rotation covers a distance of L = 2 × π × R (the wheel's circumference). Our robot's wheels have a radius of **3.4 cm**, so one full rotation is approximately **21.4 cm**.
 
 
 ## Assignment: The Calibration Challenge
@@ -71,7 +71,7 @@ Your task is to find the perfect "pulse" for your robot to make it drive almost 
 
 **Distance Formula:**
 ```python
-radius = 3.21  # Robot wheel radius in cm
+radius = 3.4  # Robot wheel radius in cm
 distance = (encoder_degrees / 360) * (2 * math.pi * radius)
 ```
 

@@ -583,19 +583,17 @@ def encoder_theory(robot, frame, td, user_code=None):
     Checks: math import, encoder resets, math.pi, printed encoder value 310-360°,
     printed distance in expected range, AND physical displacement matches.
 
-    UPDATED: New wheel radius = 3.21cm (changed from 3.4cm)
+    Metropolia device 14 uses a configured wheel radius of 3.4 cm.
     """
 
     # ===== CONFIGURATION =====
-    WHEEL_RADIUS = 3.21     # NEW: updated wheel radius in cm (was 3.4)
+    WHEEL_RADIUS = 3.4      # Metropolia device 14, confirmed 2026-10-02
     ENCODER_MIN = 310       # minimum acceptable encoder degrees
     ENCODER_MAX = 360       # maximum acceptable encoder degrees
 
-    # Recalculated based on new radius:
-    # Min: (310/360) * 2 * π * 3.21 = ~17.36 cm
-    # Max: (360/360) * 2 * π * 3.21 = ~20.17 cm
-    DISTANCE_MIN = 17.0     # NEW: (310/360) * 2 * π * 3.21 ≈ 17.36 cm (allow some tolerance)
-    DISTANCE_MAX = 20.5     # NEW: (360/360) * 2 * π * 3.21 ≈ 20.17 cm (allow some tolerance)
+    # Allow rounding around the configured radius and encoder interval.
+    DISTANCE_MIN = ENCODER_MIN / 360 * 2 * math.pi * WHEEL_RADIUS - 0.4
+    DISTANCE_MAX = ENCODER_MAX / 360 * 2 * math.pi * WHEEL_RADIUS + 0.4
 
     # Physical displacement bounds (slightly wider tolerance for measurement error)
     DISPLACEMENT_MIN = 16.5 # NEW: OpenCV physical measurement lower bound
@@ -775,13 +773,13 @@ def while_loops(robot, frame, td, user_code=None):
     - Wall hit determined by physical displacement (OpenCV)
     - Score determined by encoder-derived distance
 
-    UPDATED: New wheel radius = 3.21cm (changed from 3.4cm)
+    Metropolia device 14 uses a configured wheel radius of 3.4 cm.
     """
 
     TASK_DURATION      = 15
-    TARGET_DISTANCE_CM = 20.0
-    SUCCESS_MIN_CM     = 18.0
-    R                  = 3.21  # NEW: Updated wheel radius (was 3.4)
+    TARGET_DISTANCE_CM = 40.0
+    SUCCESS_MIN_CM     = 38.0
+    R                  = 3.4  # Metropolia device 14
     ENCODER_SANITY_CAP = 2000
     WALL_VISUAL_OFFSET = 150
     BANNED_FUNCTIONS   = ["move_forward", "move_backward", "move_forward_distance",
@@ -884,7 +882,7 @@ def while_loops(robot, frame, td, user_code=None):
                                      f"Encoder distance: {enc_dist:.1f}cm | "
                                      f"Final displacement (with drift): {peak_disp:.1f}cm | Score: 0")
             text = "WALL HIT!"
-        elif enc_dist < SUCCESS_MIN_CM:
+        elif enc_dist < SUCCESS_MIN_CM or peak_disp < SUCCESS_MIN_CM:
             result["success"] = False
             result["score"] = 50
             result["description"] = (f"Stopped too early — "

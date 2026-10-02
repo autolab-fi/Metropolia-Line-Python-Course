@@ -843,7 +843,7 @@ def logical_operators(robot, image, td, user_code=None):
     # ===== CONFIGURATION =====
     TASK_DURATION     = 90
     CHECKPOINT_RADIUS = 10.0   # cm
-    CHECKPOINTS       = [(60, 90), (105, 60), (80, 30)]
+    CHECKPOINTS       = [(60, 90), (105, 60), (80, 16)]
     # =========================
 
     result = {

@@ -23,8 +23,8 @@ Furthermore, Mission Control needs the rover to automatically stop when it reach
 ### 1. The `or` Operator (Fixing Blind Spots)
 The `or` operator checks if **at least one** condition is True. We will use it to group our 8 sensors into solid zones. If *any* sensor in a zone sees the line, the rover will react:
 * **Center Zone:** Sensor 3 `or` Sensor 4
-* **Left Zone:** Sensor 0 `or` Sensor 1 `or` Sensor 2
-* **Right Zone:** Sensor 5 `or` Sensor 6 `or` Sensor 7
+* **Left Zone:** Sensor 5 `or` Sensor 6 `or` Sensor 7
+* **Right Zone:** Sensor 0 `or` Sensor 1 `or` Sensor 2
 
 ```python
 # Example of the new Center Zone logic:

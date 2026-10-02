@@ -53,7 +53,7 @@ Your navigation computer is damaged, so you cannot use high-level functions like
 
 **Your Task:** Drive **39 cm** and stop safely before the wall. If you overshoot, you hit the wall at 40 cm.
 
-**Note:** The robot has a wheel radius of **3.21 cm**, so the distance traveled on one full rotation (360°) is approximately **20.2 cm**. Use this formula to calculate the target encoder degrees:
+**Note:** The robot has a wheel radius of **3.4 cm**, so the distance traveled on one full rotation (360°) is approximately **21.4 cm**. Use this formula to calculate the target encoder degrees:
 
 **Formula:**
 ```python
@@ -63,7 +63,7 @@ target = (Target_cm / (2 * math.pi * radius)) * 360
 
 
 **Requirements:**
-1.  **Math:** Calculate the `target` degrees for **39 cm** using **R = 3.21 cm** and reset the encoders.
+1.  **Math:** Calculate the `target` degrees for **39 cm** using **R = 3.4 cm** and reset the encoders.
 2.  **Manual Start:** Turn on both motors at **Low Speed (150)**.
     * *Why Low Speed?* With high speed we cannot check the data fast enough, so the robot will hit the wall.
 3.  **The Loop:** Create a `while` loop that runs as long as the encoder has not reached the target (check only the left encoder for simplification).
