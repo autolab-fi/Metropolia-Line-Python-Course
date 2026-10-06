@@ -8,6 +8,14 @@ next: color_classification
 
 # Mission 4.3 Color Sensor Basics
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Understand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the lunar surface across multiple zones.
 

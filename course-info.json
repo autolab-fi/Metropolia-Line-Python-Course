@@ -1,12 +1,13 @@
 {
-    "fullCourseName":"Metropolia pilot course on mobile robotics on MicroPython",
-    "shortCourseName":"Course on mobile robotics based on ESP32 robot on MicroPython deployed @ Metropolia", 
-    "shortDescription":"Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors, read sensors, navigate along the track.",
-    "fullDescription":"Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors and LEDs, read sensors and navigate along the track.",
-    "imageSmall":"https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-640x360.png?raw=true",
-    "imageBig":"https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-course-info.jpg?raw=true",
-    "workload":"64 hours",
-    "requirements":"No previous programming or robotics knowledge is required.",
+    "fullCourseName": "Metropolia pilot course on mobile robotics on MicroPython",
+    "shortCourseName": "Course on mobile robotics based on ESP32 robot on MicroPython deployed @ Metropolia",
+    "shortDescription": "Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors, read sensors, navigate along the track.",
+    "fullDescription": "Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors and LEDs, read sensors and navigate along the track.",
+    "imageSmall": "https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-640x360.png?raw=true",
+    "imageBig": "https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-course-info.jpg?raw=true",
+    "workload": "64 hours",
+    "requirements": "No previous programming or robotics knowledge is required.",
     "programmingLanguage": "python",
-    "simulationManifestUrl": "https://ondroid-simulator-dev.pages.dev/courses/metropolia-line/simulation-config.json"
+    "simulationManifestUrl": "https://ondroid-simulator-dev.pages.dev/courses/metropolia-line/simulation-config.json",
+    "tutorProfileManifestUrl": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/tutor/generated/profiles.json"
 }

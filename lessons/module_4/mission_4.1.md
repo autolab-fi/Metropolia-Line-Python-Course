@@ -8,6 +8,14 @@ next: telemetry_reporting
 
 # Mission 4.1 Python Lists (Waypoints)
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21815).
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Create Python lists, determine their size using `len()`, and use a `for` loop to execute a multi-step navigation route.
 

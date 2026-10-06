@@ -8,6 +8,21 @@ next: data_logging
 
 # Mission 4.5 Working with Multiple Sensors
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-06** (run 21892).
+
+Starting settings for this exercise: `sensitivity = 245`, `threshold = 700`, `speed = 30`, `turn_speed = 3`.
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
+These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
+
+For line-following over tape: Red r/sum > 0.55; Green g/sum > 0.325 AND r/sum < 0.45 AND g > 1.3*b; Blue b/sum > 0.245 AND r/sum < 0.45; otherwise Floor. Handle sum=0 separately. These are local measured starting thresholds, not universal calibration.
+The simulator uses measured sample colors, but does not fully reproduce sensor illumination and tape overlap. Use physical observations to validate color thresholds.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Combine the Octoliner and the Color Sensor in a single program. The rover must autonomously follow a black line while simultaneously scanning the ground, using an LED to signal anomalies without stopping.
 

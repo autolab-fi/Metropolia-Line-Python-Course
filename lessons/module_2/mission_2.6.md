@@ -8,6 +8,14 @@ next: intro_to_octoliner
 
 # Mission 2.6 While Loops
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Understand the fundamental logic of **While Loops** compared to For Loops, and use active sensor monitoring to stop a robot with precision.
 

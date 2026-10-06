@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "tasks": {
+    "test_drive": {
+      "reference": "solutions/module_1/test_drive.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21826,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "license_to_drive": {
+      "reference": "solutions/module_1/licence_to_drive.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21794,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "directional_movement": {
+      "reference": "solutions/module_1/directional_movement.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21824,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "python_variables_commands": {
+      "reference": "solutions/module_1/variables_commands.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21795,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "maneuvering": {
+      "reference": "solutions/module_1/maneuvering.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21825,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "sequential_navigation": {
+      "reference": "solutions/module_1/Sequential_navigation.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21822,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "electric_motors": {
+      "reference": "solutions/module_2/electric_motors.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "differential_drive": {
+      "reference": "solutions/module_2/differential_drive.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "defining_functions": {
+      "reference": "solutions/module_2/defining_functions.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "for_loops": {
+      "reference": "solutions/module_2/for_loops.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21823,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "encoder_theory": {
+      "reference": "solutions/module_2/encoder_theory_UPDATED.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "while_loops": {
+      "reference": "solutions/module_2/while_loops_UPDATED.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "intro_to_octoliner": {
+      "reference": "solutions/module_3/intro_to_octoliner.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21839,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 230
+      }
+    },
+    "conditional_logic": {
+      "reference": "solutions/module_3/conditional_logic.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21854,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 243,
+        "threshold": 800
+      }
+    },
+    "processing_sensor_data": {
+      "reference": "solutions/module_3/processing_sensor_data.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21840,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 243,
+        "threshold": 900,
+        "dist": 1
+      }
+    },
+    "arrays_and_elif": {
+      "reference": "solutions/module_3/arrays_and_elif.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21841,
+        "date": "2026-10-06",
+        "scope": "Sensor sampling and movement validated; left/right labels corrected afterwards to match sensor indices (1 right, 6 left)."
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 243,
+        "threshold": 800
+      }
+    },
+    "led_feedback": {
+      "reference": "solutions/module_3/led_feedback.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21842,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 243,
+        "threshold": 800
+      }
+    },
+    "simple_line_follower": {
+      "reference": "solutions/module_3/simple_line_follower.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21887,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left.",
+        "The physically validated reference uses 5-degree turn commands. Do not confuse that angle with a motor speed of 5."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "threshold": 700,
+        "speed": 15,
+        "turn_angle": 5
+      }
+    },
+    "python_lists": {
+      "reference": "solutions/module_4/python_lists.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21815,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "telemetry": {
+      "reference": "solutions/module_4/telemetry.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21816,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "color_sensor_basics": {
+      "reference": "solutions/module_4/color_sensor_basics.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "color_classification": {
+      "reference": "solutions/module_4/color_classification.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "pending",
+        "submissionId": null,
+        "date": null
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "multiple_sensors": {
+      "reference": "solutions/module_4/multiple_sensors.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21892,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left.",
+        "Old Green > 0.40 / Blue > 0.35 ratio cutoffs missed the patches during physical line following. Clean-patch simulator success does not validate these old cutoffs."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "threshold": 700,
+        "speed": 30,
+        "turn_speed": 3
+      },
+      "colorGuidance": "For line-following over tape: Red r/sum > 0.55; Green g/sum > 0.325 AND r/sum < 0.45 AND g > 1.3*b; Blue b/sum > 0.245 AND r/sum < 0.45; otherwise Floor. Handle sum=0 separately. These are local measured starting thresholds, not universal calibration."
+    },
+    "data_logging": {
+      "reference": "solutions/module_4/data_logging.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21893,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left.",
+        "Old Green > 0.40 / Blue > 0.35 ratio cutoffs missed the patches during physical line following. Clean-patch simulator success does not validate these old cutoffs."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "threshold": 700,
+        "speed": 30,
+        "turn_speed": 3,
+        "mission_duration": 30
+      },
+      "colorGuidance": "For line-following over tape: Red r/sum > 0.55; Green g/sum > 0.325 AND r/sum < 0.45 AND g > 1.3*b; Blue b/sum > 0.245 AND r/sum < 0.45; otherwise Floor. Handle sum=0 separately. These are local measured starting thresholds, not universal calibration."
+    },
+    "concept_of_error": {
+      "reference": "solutions/module_5/concept_of_error_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21844,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245
+      }
+    },
+    "upgraded_relay_controller": {
+      "reference": "solutions/module_5/upgraded_relay_controller_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21856,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245
+      }
+    },
+    "proportional_control": {
+      "reference": "solutions/module_5/proportional_control_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21872,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "base_speed": 30,
+        "kp": 20
+      }
+    },
+    "adaptive_speed": {
+      "reference": "solutions/module_5/adaptive_speed_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21883,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "max_speed": 40,
+        "kp": 25,
+        "braking_force": 20
+      }
+    },
+    "welcome": {
+      "reference": "solutions/module_1/welcome.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21807,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "sandbox": {
+      "reference": "solutions/module_10/sandbox.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21818,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "navigation": {
+      "reference": "solutions/module_11/navigation_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21819,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "perimeter": {
+      "reference": "solutions/module_11/perimeter_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21820,
+        "date": "2026-10-02"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+      ],
+      "parameters": {}
+    },
+    "visual_telemetry": {
+      "reference": "solutions/module_11/visual_telemetry_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21851,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245
+      }
+    },
+    "adaptive_racing": {
+      "reference": "solutions/module_11/adaptive_racing_reference.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21895,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "max_speed": 40,
+        "kp": 25,
+        "braking_force": 20
+      }
+    },
+    "logical_operators": {
+      "reference": "solutions/module_3/logical_operators.py",
+      "guidanceUpdated": "2026-10-06",
+      "physicalValidation": {
+        "status": "verified",
+        "submissionId": 21894,
+        "date": "2026-10-06"
+      },
+      "commonMistakes": [
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+      ],
+      "parameters": {
+        "sensitivity": 245,
+        "threshold": 700,
+        "speed": 30,
+        "turn_speed": 3
+      }
+    }
+  }
+}

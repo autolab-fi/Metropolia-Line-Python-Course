@@ -7,7 +7,7 @@ from octoliner import Octoliner
 import math
 
 robot = Robot()
-radius = 3.21  # Updated wheel radius in cm
+radius = 3.4
 Target_cm = 39
 
 # Calculate Target
@@ -19,11 +19,11 @@ robot.reset_left_encoder()
 robot.reset_right_encoder()
 
 # Run motors with low speed (values for each motor can be different)
-robot.run_motor_left(130)
-robot.run_motor_right(130)
+robot.run_motor_left(150)
+robot.run_motor_right(165)
 
 # The Active Loop
-while robot.encoder_degrees_left() < target:
+while  robot.encoder_degrees_left() < target:
     # Print the encoder data to see the progress
     print(robot.encoder_degrees_left())
 
@@ -34,10 +34,10 @@ while robot.encoder_degrees_left() < target:
 robot.stop_motor_left()
 robot.stop_motor_right()
 
-# Wait for full stop
+#Wait for full stop
 time.sleep(0.2)
 
-# Final encoder value after full stop
+#Final encoder value after full stop
 print(robot.encoder_degrees_left())
 
 print("Target reached! Target was", target)

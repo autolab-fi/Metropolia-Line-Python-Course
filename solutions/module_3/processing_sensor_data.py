@@ -11,10 +11,11 @@ robot = Robot()
 
 sensi = 243
 threshold = 900
-dist = 2
+dist = 1
 
-def detect_line(sensitivity, distance, threshold):
-    octoliner.set_sensitivity(sensitivity)
+octoliner.set_sensitivity(sensi)
+
+def detect_line(distance, threshold):
     for i in range(15):
         robot.move_forward_distance(distance)
         sensor_3 = octoliner.analog_read(3)
@@ -25,4 +26,4 @@ def detect_line(sensitivity, distance, threshold):
             print(f"Sensor 4: {sensor_4} Found geological layers!")
         time.sleep(0.1)
 
-detect_line(sensi, dist, threshold)
+detect_line(dist, threshold)

@@ -16,16 +16,16 @@ for i in range(5):
     sleep(0.3)
 
     sensor_data = octoliner.analog_read_all()
-    left_scout   = sensor_data[1]
+    right_scout   = sensor_data[1]
     center_scout = sensor_data[3]
-    right_scout  = sensor_data[6]
+    left_scout  = sensor_data[6]
 
     if center_scout > threshold:
         print("Vein: Center")
-    elif left_scout > threshold:
-        print("Vein: Left")
     elif right_scout > threshold:
         print("Vein: Right")
+    elif left_scout > threshold:
+        print("Vein: Left")
     else:
         print("No minerals")
 

@@ -3,7 +3,7 @@ import time
 import math
 
 robot = Robot()
-radius = 3.21  # Updated wheel radius in cm
+radius = 3.4
 
 # 1. Reset both encoders
 
@@ -12,8 +12,8 @@ robot.reset_right_encoder()
 
 # 2. Pulse: Start motors using manual PWM and wait - here you need to adjust parameters
 robot.run_motor_left(550)
-robot.run_motor_right(550)
-time.sleep(0.8)
+robot.run_motor_right(605)
+time.sleep(0.88)
 
 # 3. Stop motors manually to preserve encoder values
 robot.stop_motor_left()
@@ -28,3 +28,4 @@ distance = (left_deg / 360) * (2 * math.pi * radius)
 
 # 6. Print the distance result
 print("Distance in cm:", distance)
+print("Encoder degrees right:", robot.encoder_degrees_right())

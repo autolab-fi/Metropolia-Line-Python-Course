@@ -1,0 +1,20 @@
+from lineRobot import Robot
+
+
+robot = Robot()
+print("Turning left")
+robot.turn_left_angle(45)
+print("Moving forward")
+robot.move_forward_distance(20)
+print("Turning right")
+robot.turn_right()
+print("Moving forward")
+robot.move_forward_distance(20)
+print("Turning right")
+robot.turn_right()
+print("Moving forward")
+robot.move_forward_distance(20)
+print("Turning right")
+robot.turn_right()
+print("Moving forward")
+robot.move_forward_distance(20)

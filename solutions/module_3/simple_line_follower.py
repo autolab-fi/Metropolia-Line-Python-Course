@@ -11,7 +11,7 @@ robot = Robot()
 
 threshold = 700
 speed = 15
-turn_speed = 5
+turn_angle = 5
 
 while True:
     sensor_data  = octoliner.analog_read_all()
@@ -23,10 +23,10 @@ while True:
         robot.run_motors_speed(speed, speed)
         print("straight")
     elif left_scout > threshold:
-        robot.turn_left_angle(5)
+        robot.turn_left_angle(turn_angle)
         print("left")
     elif right_scout > threshold:
-        robot.turn_right_angle(5)
+        robot.turn_right_angle(turn_angle)
         print("right")
     else:
         robot.run_motors_speed(15, 15)

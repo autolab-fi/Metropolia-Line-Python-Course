@@ -8,6 +8,14 @@ next: maneuvering
 
 # Mission 1.5 Python Variables & Commands
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21795).
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 
 Learn to store data using variables, perform basic arithmetic, and use these variables to control the robot and report its status.

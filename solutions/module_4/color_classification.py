@@ -27,7 +27,7 @@ def detect_color_name(r, g, b):
 for step in range(6):
     r, g, b = color_sensor.rgb()
     detected_color = detect_color_name(r, g, b)
-    print(f"Scan complete: {detected_color} (Raw: R:{r} G:{g} B:{b})")
+    print(f"Scan - {detected_color} (Raw: R:{r} G:{g} B:{b})")
     robot.move_forward_distance(10)
     time.sleep(0.5)
 

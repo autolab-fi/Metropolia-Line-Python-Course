@@ -8,6 +8,14 @@ next: directional_movement
 
 # Mission 1.3 License to drive
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21794).
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 
 Understand the structure of a Python robotics program and write your own code to control the robot.

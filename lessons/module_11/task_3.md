@@ -6,6 +6,18 @@ previous: perimeter
 next: debugging
 ---
 # Task 3 Visual Telemetry
+
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-06** (run 21851).
+
+Starting settings for this exercise: `sensitivity = 245`.
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
+These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
+<!-- metropolia-guidance:end -->
+
 ## Objective
 Demonstrate your ability to combine `while True` loops, conditional logic, sensor reading, and GPIO hardware control.
 

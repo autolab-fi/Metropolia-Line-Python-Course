@@ -7,6 +7,14 @@ next: for_loops
 ---
 # Mission 2.3 Defining Functions
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn what a function is and how to create your own custom functions in MicroPython.
 

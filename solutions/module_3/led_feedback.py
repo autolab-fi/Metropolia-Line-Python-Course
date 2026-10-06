@@ -20,14 +20,14 @@ def blink_led():
         led.off()
         sleep(0.2)
 
-for i in range(15):
-    robot.move_forward_distance(2)
+for i in range(5):
+    robot.move_forward_distance(5)
     sleep(0.3)
 
     sensor_data = octoliner.analog_read_all()
-    left_scout   = sensor_data[1]
+    left_scout   = sensor_data[6]
     center_scout = sensor_data[3]
-    right_scout  = sensor_data[6]
+    right_scout  = sensor_data[1]
 
     if center_scout > threshold:
         print("Vein: Center")

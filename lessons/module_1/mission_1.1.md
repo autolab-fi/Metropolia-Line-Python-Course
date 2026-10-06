@@ -8,6 +8,14 @@ next: test_drive
 
 # Mission 1.1 Welcome to Artemis Support Program
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21807).
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 
 Join the Artemis Support Program, familiarize yourself with the Mission Control Interface, and establish a connection with the Lunar Terrain Vehicle (LTV).

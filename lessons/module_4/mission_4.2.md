@@ -8,6 +8,14 @@ next: color_sensor_basics
 
 # Mission 4.2 Telemetry 
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21816).
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn how to track real-world execution time, perform mathematical operations to calculate the robot's actual speed, and construct structured telemetry reports using Python f-strings.
 

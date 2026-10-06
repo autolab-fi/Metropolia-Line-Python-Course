@@ -8,6 +8,18 @@ next: logical_operators
 
 # Mission 3.6 Simple Line Follower
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-06** (run 21887).
+
+Starting settings for this exercise: `sensitivity = 245`, `threshold = 700`, `speed = 15`, `turn_angle = 5`.
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
+These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Combine your spatial logic (`elif`) with motor commands to build a Relay (Bang-Bang) controller, allowing the rover to autonomously follow a line.
 
@@ -37,10 +49,10 @@ To make the robot follow the track, we must think about *why* a specific sensor 
 Write an autonomous line-following algorithm using your scout sensors and `elif` logic. The rover must navigate a straight section of the track and pass through the checkpoints.
 
 **Requirements:**
-1. **Setup:** Define the variables: `threshold`, `speed`, `turn`.
+1. **Setup:** Define the variables: `threshold`, `speed`, `turn_angle`.
 2. **Continuous Loop:** The rover must drive continuously. Use an infinite `while True:` loop.
 3. **Read Data:** Inside the loop, read octoliner and extract your three scouts (index 1, 3/4, and 6) into variables.
-4. **Steering Logic (`if/elif/else`):** use different speed for motors OR turn movment *turn_left_angle()*.
+4. **Steering Logic (`if/elif/else`):** Start with `turn_left_angle(turn_angle)` / `turn_right_angle(turn_angle)` using `turn_angle = 5` degrees. Differential motor-speed steering is an alternative that needs its own tuning.
 5. **Stability:** Add a tiny delay at the end of the loop.
 
 *Hint*: in the loop, it's better to print sensor's data in order to understand what values should be set as a treshhold and sensitivity.

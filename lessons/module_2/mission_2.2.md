@@ -8,6 +8,14 @@ next: defining_functions
 
 # Mission 2.2 Differential Drive
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn about Differential Drive kinematics and examine the main challenges related to manual motor control using raw PWM values.
 

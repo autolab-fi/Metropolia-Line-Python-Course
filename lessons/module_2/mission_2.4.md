@@ -8,6 +8,14 @@ next: encoder_theory
 
 # Mission 2.4 For Loops
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21823).
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn how to use **for** loops to create complex movement patterns by using the loop counter variable.
 

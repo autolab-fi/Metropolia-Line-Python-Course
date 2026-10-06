@@ -6,6 +6,14 @@ previous: code_clinic
 next: perimeter
 ---
 # Task 1 Navigation
+
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-02** (run 21819).
+<!-- metropolia-guidance:end -->
+
 ## Objective
 Demonstrate your ability to navigate a custom route by sequentially combining distance movement and precise angle turns.
 

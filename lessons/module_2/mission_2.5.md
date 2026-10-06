@@ -8,6 +8,14 @@ next: while_loops
 
 # Mission 2.5 Encoder Theory
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn about encoders and their purpose in precise robot movement.
 

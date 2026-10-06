@@ -8,6 +8,14 @@ next: multiple_sensors
 
 # Mission 4.4 Color Classification
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn how to process raw sensor data, understand color normalization, and write a custom Python function to classify RGB values into human-readable colors.
 

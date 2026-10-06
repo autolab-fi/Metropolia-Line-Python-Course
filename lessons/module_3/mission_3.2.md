@@ -8,6 +8,18 @@ next: processing_sensor_data
 
 # Mission 3.2 Conditional Logic & Reactive Behavior
 
+<!-- metropolia-guidance:start -->
+## Metropolia setup notes
+
+**Guidance updated: 2026-10-06.**
+The reference run passed the physical checker on **2026-10-06** (run 21854).
+
+Starting settings for this exercise: `sensitivity = 243`, `threshold = 800`.
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
+These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
+<!-- metropolia-guidance:end -->
+
+
 ## Objective
 Learn how to use conditional statements (`if/else`) and the `break` command to create reactive behavior, allowing the rover to stop autonomously when a line is detected.
 
@@ -29,7 +41,7 @@ In Python, we use the `if` statement to check a condition. If the condition is `
 
 ```python
 # Assuming we have already read the sensor value
-if sensor_value > 200:
+if sensor_value > 800:
     print("Black line detected!")
 else:
     print("Floor is clear.")
@@ -58,7 +70,7 @@ Write a reactive program where the robot drives forward, searches for a dark lin
 3. Set the rover in motion forward at a low speed (e.g., 20%). *Hint: Moving too fast will cause the rover to skip over the line before the sensor can react!*
 4. Create a continuous monitoring cycle (`while True:` loop) that constantly reads the value of **Sensor 3** and print values. Add a small delay inside the loop to prevent processor overload.
 5. Implement conditional logic (`if` statement) inside your loop:
-    * The exact moment the sensor's value indicating the black line (e.g. > 200 - we'll discuss it in the next lesson), your program must cut power to the motors.
+    * The exact moment the sensor's value indicating the black line (e.g. > 800 - we'll discuss it in the next lesson), your program must cut power to the motors.
     * Immediately after stopping the motors, execute a `break` command to completely exit the monitoring loop.
 6. Print a success message (e.g., `"Target found. Rover stopped."`) to the terminal once the loop has been broken.
 
