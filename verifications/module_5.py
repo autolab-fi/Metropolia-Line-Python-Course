@@ -12,7 +12,7 @@ def has_line_loss_failsafe(code):
 
 target_points = {
     'concept_of_error': [(22, 86),(0,-30)],           # Start: x=22, y=86, direction=-30
-    'upgraded_relay_controller': [(40, 30), (30, 0)],   # Start: x=40, y=30
+    'upgraded_relay_controller': [(40, 18.5), (30, 0)], # Physical line acquisition measured 2026-10-06
     'proportional_control': [(40, 30),(30, 0)],        # Start: x=40, y=30
     'tuning_and_kick': [(40, 30),(30, 0)],             # Start: x=40, y=30
     'adaptive_speed': [(40, 30),(30, 0)],              # Start: x=40, y=30
@@ -242,7 +242,7 @@ def concept_of_error(robot, image, td, user_code=None):
 def upgraded_relay_controller(robot, image, td, user_code=None):
     """
     Verification for lesson: Upgraded Relay Controller — 5.2
-    Start: x=40, y=30
+    Start: x=40, y=18.5 (physical Octoliner alignment)
     Checkpoints: (105, 60), (60, 90), (80, 30) - visual feedback only
     """
 
