@@ -1,5 +1,5 @@
-# course-template
-Course template for web-platform [ondroid.org](https://ondroid.org)
+# Python Programming for Mobile Robotics @ Metropolia
+Course materials for [ondroid.org](https://ondroid.org)
 
 ## Description of Repository Structure
 

@@ -64,7 +64,7 @@ Your task is to find the perfect "pulse" for your robot to make it drive almost 
 2. **Calibration:** Experiment with the PWM value and the `time.sleep` duration to get the encoder readings for both wheels between **310 and 360 degrees**.
 3. **Stopping:** **Do not use `robot.stop()`**. Instead, use `robot.stop_motor_left()` and `robot.stop_motor_right()` to keep the encoder data visible.
 4. **Distance Calculation:** Use the math library to calculate how many centimeters the robot traveled based on the left wheel's degrees.
-5. **Output:** Print the final encoder degrees and the calculated distance to the console.
+5. **Output:** Wait briefly after stopping, then print the final values with labels `Encoder degrees left:`, `Encoder degrees right:` and `Distance in cm:`. Both wheels must meet the angle range.
 
 **Hint:** To calculate distance, remember that a full 360° turn equals the wheel's circumference (2 × π × radius). Your distance is just a fraction of that circumference based on the angle you measured.
 

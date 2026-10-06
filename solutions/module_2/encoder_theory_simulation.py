@@ -11,9 +11,9 @@ robot.reset_left_encoder()
 robot.reset_right_encoder()
 
 # 2. Pulse: Start motors using manual PWM and wait - here you need to adjust parameters
-robot.run_motor_left(200)
-robot.run_motor_right(200)
-time.sleep(3)
+robot.run_motor_left(550)
+robot.run_motor_right(605)
+time.sleep(0.88)
 
 # 3. Stop motors manually to preserve encoder values
 robot.stop_motor_left()

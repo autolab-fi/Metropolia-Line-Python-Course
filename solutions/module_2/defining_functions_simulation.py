@@ -4,7 +4,7 @@ import time
 robot = Robot()
 
 t_speed = 28
-t_time = 0.85
+t_time = 2.05
 t_offset = 10
 
 def turn_180(sp, t, off):

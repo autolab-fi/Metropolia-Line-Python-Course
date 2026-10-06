@@ -45,6 +45,8 @@ def detect_color_name(r, g, b):
 ```
 
 ## Assignment
+
+The rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move.
 Your task is to upgrade your Linear Scanner from the previous mission. You will create a custom Python function that uses math to convert raw RGB data into a specific color name ("Red", "Green", or "Floor"), and then apply it to your scanning loop.
 
 **⚠️ WARNING: The Illumination Trap!** The grey lunar floor under the lab lights might reflect more red light than you expect (sometimes over 40% of the total light). 

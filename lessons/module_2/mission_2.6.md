@@ -50,7 +50,7 @@ If the condition becomes `False` (distance less then 10 cm), the loop breaks imm
 **The Scenario:** You are in a testing tunnel. There is a wall exactly **40 cm** away.
 Your navigation computer is damaged, so you cannot use high-level functions like `move_forward()` (they reset encoders). You must fly "manual" using raw motor commands.
 
-**Your Task:** Drive **39 cm** and stop safely before the wall. If you overshoot, you hit the wall at 40 cm.
+**Your Task:** Drive **35 cm** and stop safely before the wall. Leave a 5 cm margin for coasting and differences between encoder estimates and camera measurements. The wall is at 40 cm.
 
 **Note:** The robot has a wheel radius of **3.4 cm**, so the distance traveled on one full rotation (360°) is approximately **21.4 cm**. Use this formula to calculate the target encoder degrees:
 
@@ -60,11 +60,11 @@ target = (Target_cm / (2 * math.pi * radius)) * 360
 ```
 
 **Requirements:**
-1.  **Math:** Calculate the `target` degrees for **39 cm** using **R = 3.4 cm** and reset the encoders.
+1.  **Math:** Calculate the `target` degrees for **35 cm** using **R = 3.4 cm** and reset the encoders.
 2.  **Manual Start:** Turn on both motors at **Low Speed (150)**.
     * *Why Low Speed?* With high speed we cannot check the data fast enough, so the robot will hit the wall.
 3.  **The Loop:** Create a `while` loop that runs as long as the encoder has not reached the target (check only the left encoder for simplification).
-    * Inside the loop, **print** the encoder value to monitor progress.
+    * Inside the loop, **print** the encoder value periodically (for example, every 45 degrees), rather than on every iteration. Print the final value after stopping as `Final encoder degrees: <value>`.
     * **Crucial:** Add `time.sleep(0.02)` inside the loop. This small delay prevents the processor from "choking" on data and keeps the readings stable.
 4.  **Manual Stop:** Immediately after the loop, turn off the motors using `stop_motor_left()` and `stop_motor_right()`.
 

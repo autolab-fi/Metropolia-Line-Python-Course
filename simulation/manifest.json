@@ -210,8 +210,8 @@
         },
         {
           "type": "final-position",
-          "xM": 0.5,
-          "yM": 0.8,
+          "xM": 1.15,
+          "yM": 0.54,
           "toleranceM": 0.1
         },
         {
@@ -502,12 +502,12 @@
         {
           "type": "encoder-range",
           "side": "left",
-          "minimumDeg": 650,
-          "maximumDeg": 665
+          "minimumDeg": 570,
+          "maximumDeg": 620
         },
         {
           "type": "travelled-distance-range",
-          "minimumCm": 36,
+          "minimumCm": 32,
           "maximumCm": 40
         },
         {
@@ -972,8 +972,8 @@
     "color_sensor_basics": {
       "mode": "simulation-and-lab",
       "initialPose": {
-        "xM": 1.28,
-        "yM": 0.1,
+        "xM": 1.25,
+        "yM": 0.16,
         "headingRad": 1.570796327
       },
       "checks": [
@@ -1016,8 +1016,8 @@
     "color_classification": {
       "mode": "simulation-and-lab",
       "initialPose": {
-        "xM": 1.28,
-        "yM": 0.1,
+        "xM": 1.25,
+        "yM": 0.16,
         "headingRad": 1.570796327
       },
       "checks": [

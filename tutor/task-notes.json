@@ -83,43 +83,49 @@
       "reference": "solutions/module_2/electric_motors.py",
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
-        "status": "pending",
-        "submissionId": null,
-        "date": null
+        "status": "verified",
+        "submissionId": 21911,
+        "date": "2026-10-06"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "Open hardware issue: the legacy physical checker derives its goal from image pixels (approximately 115.45, 46.18 cm), while the simulator goal is approximately (50, 20) cm. The current simulator reference is not a proven physical solution. Resolve the goal mismatch before advising motor tuning."
+        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
       ],
-      "parameters": {}
+      "parameters": {},
+      "simulationReference": "solutions/module_2/electric_motors_simulation.py",
+      "calibrationPolicy": "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
     },
     "differential_drive": {
       "reference": "solutions/module_2/differential_drive.py",
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
-        "status": "pending",
-        "submissionId": null,
-        "date": null
+        "status": "verified",
+        "submissionId": 21917,
+        "date": "2026-10-06"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "Hardware run 21799 ended about 10.9 degrees from the required heading, outside the 10-degree tolerance. Do not promise that the current motor settings will pass on hardware."
+        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
       ],
-      "parameters": {}
+      "parameters": {},
+      "simulationReference": "solutions/module_2/differential_drive_simulation.py",
+      "calibrationPolicy": "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
     },
     "defining_functions": {
       "reference": "solutions/module_2/defining_functions.py",
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
-        "status": "pending",
-        "submissionId": null,
-        "date": null
+        "status": "verified",
+        "submissionId": 21898,
+        "date": "2026-10-06"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "Timed motor commands behaved differently on hardware than in simulation in run 21800. The current turn duration is a simulation candidate, not a physically calibrated turn."
+        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
       ],
-      "parameters": {}
+      "parameters": {},
+      "simulationReference": "solutions/module_2/defining_functions_simulation.py",
+      "calibrationPolicy": "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
     },
     "for_loops": {
       "reference": "solutions/module_2/for_loops.py",
@@ -138,27 +144,28 @@
       "reference": "solutions/module_2/encoder_theory_UPDATED.py",
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
-        "status": "pending",
-        "submissionId": null,
-        "date": null
+        "status": "verified",
+        "submissionId": 21915,
+        "date": "2026-10-06"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "Hardware verification remains open after reset failure / turn overshoot in earlier runs 21802 and 21808. Do not call the current PWM and wheel-radius values physically validated."
+        "Tune the raw PWM and pulse duration on each robot; the instructor examples use separate hardware and simulator values. Stop the motors individually, let them settle, then print both encoders and calculate distance with radius 3.4 cm."
       ],
-      "parameters": {}
+      "parameters": {},
+      "simulationReference": "solutions/module_2/encoder_theory_simulation.py"
     },
     "while_loops": {
       "reference": "solutions/module_2/while_loops_UPDATED.py",
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
-        "status": "pending",
-        "submissionId": null,
-        "date": null
+        "status": "verified",
+        "submissionId": 21900,
+        "date": "2026-10-06"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "Earlier physical travel overshot (about 43.8 cm). The current physical checker uses a 40 cm target; old reports mentioning a 20 cm wall describe a previous checker version. A fresh hardware pass is still required."
+        "Use a 35 cm encoder target with the wall at 40 cm. Print periodically and print the final encoder value after the wheels settle; printing on every polling iteration can flood telemetry."
       ],
       "parameters": {}
     },

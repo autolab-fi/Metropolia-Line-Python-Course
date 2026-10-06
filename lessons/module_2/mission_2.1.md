@@ -57,9 +57,11 @@ However, you will not be able to use the built-in robot movement functions. The 
 2. Use `time.sleep()` to wait for the exact amount of time needed to reach the target.
 3. Use `stop()` to stop the motors once the robot is on the point.
 
-![finish_point](https://api.ondroid.org/media/courses/9/images/66d281d20f664211bd2a512777b8ffbc.png)
+The rover starts at **(30, 50) cm**, facing right. Stop within **10 cm** of the flag at **(115, 46) cm**. Coordinates are measured from the upper-left corner of the camera image: X increases rightward and Y downward. The same target is used in the simulator.
 
-*Hint: You will need to run the code multiple times, adjusting your `time.sleep()` value until the robot stops exactly on the target!*
+*Hint: Run the code multiple times, adjusting the left and right motor values and `time.sleep()` duration until the robot stops at the target.*
+
+This exercise uses timed movement without encoder feedback in your program. Tune the motor values and duration separately in the simulator and on the physical robot. Motor differences are part of this experiment, so settings that work in one environment may need adjustment in the other. Change one value at a time and compare the result.
 
 ## Conclusion
 Congratulations! In this lesson, you learned about the structure of a simple electric motor. Electric motors are a fascinating area in robotics, with a wide variety of types, each having its own application. Next, we will look at how having two separate motors allows us to steer the robot!

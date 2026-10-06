@@ -8,8 +8,8 @@ import numpy as np
 target_points = {
     'python_lists':        [(75, 30), (30, 0)],
     'telemetry':           [(75, 30), (30, 0)],
-    'color_sensor_basics': [(128, 98), (0, -30)],
-    'color_classification':[(128, 99), (0, -30)],
+    'color_sensor_basics': [(125, 84), (0, -30)],
+    'color_classification':[(125, 84), (0, -30)],
     'multiple_sensors':    [(45, 18.5), (30, 0)],
     'data_logging':        [(45, 18.5), (30, 0)],
 }
@@ -382,11 +382,11 @@ def telemetry(robot, image, td, user_code=None):
 def color_sensor_basics(robot, image, td, user_code=None):
     """
     Verification for lesson: Color Sensor Basics — 4.3
-    Start: x=128, y=98, direction x=0, y=-30
+    Start: x=125, y=84, direction x=0, y=-30
     """
 
     TASK_DURATION   = 20
-    MIN_VALID_SCANS = 5
+    MIN_VALID_SCANS = 6
 
     result = {
         "success": True,
@@ -396,6 +396,8 @@ def color_sensor_basics(robot, image, td, user_code=None):
     text = "Waiting for scan data..."
 
     image = robot.draw_info(image)
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     if td is None:
         lines        = user_code.split('\n') if user_code else []
@@ -430,20 +432,32 @@ def color_sensor_basics(robot, image, td, user_code=None):
                 "completed_verdict": False,
                 "valid_scans":       [],
                 "last_scan":         None,
+                "scan_buffer":       "",
+                "start_position":    None,
+                "end_position":      None,
             }
         }
 
     if not td["data"]["code_valid"]:
         text = f"Code missing: {', '.join(td['data']['missing'])}"
 
-    msg = robot.get_msg()
-    if msg is not None:
-        match = re.search(r'Scan - R:(\d+) G:(\d+) B:(\d+)', msg)
-        if match:
+    if robot.position is not None:
+        if td["data"]["start_position"] is None:
+            td["data"]["start_position"] = tuple(robot.position)
+        td["data"]["end_position"] = tuple(robot.position)
+    for _ in range(64):
+        msg = robot.get_msg()
+        if msg is None:
+            break
+        combined = td["data"]["scan_buffer"] + str(msg)
+        consumed = 0
+        for match in re.finditer(r'Scan - R:(\d+) G:(\d+) B:(\d+)', combined):
+            consumed = match.end()
             r, g, b = int(match.group(1)), int(match.group(2)), int(match.group(3))
             if 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
                 td["data"]["valid_scans"].append((r, g, b))
                 td["data"]["last_scan"] = (r, g, b)
+        td["data"]["scan_buffer"] = combined[consumed:][-512:]
 
     valid = len(td["data"]["valid_scans"])
     last  = td["data"].get("last_scan")
@@ -465,11 +479,19 @@ def color_sensor_basics(robot, image, td, user_code=None):
             result["score"]       = int((valid / MIN_VALID_SCANS) * 100)
             result["description"] = f"Only {valid}/{MIN_VALID_SCANS} valid scans received | Score: {result['score']}"
             text = f"Only {valid}/{MIN_VALID_SCANS} valid scans received."
+        elif (td["data"]["start_position"] is None or td["data"]["end_position"] is None
+              or not 50 <= robot.delta_points(td["data"]["start_position"], td["data"]["end_position"]) <= 70):
+            result = {"success": False, "score": 0,
+                      "description": "Complete six 10 cm moves while scanning (60 cm total). | Score: 0"}
+            text = "Scanning movement incomplete."
         else:
             result["success"]     = True
             result["score"]       = 100
             result["description"] = f"Color scan complete! {valid} valid zones reported | Score: 100"
             text = "Scan complete!"
+
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
 
     return image, td, text, result
 
@@ -481,11 +503,11 @@ def color_sensor_basics(robot, image, td, user_code=None):
 def color_classification(robot, image, td, user_code=None):
     """
     Verification for lesson: Color Classification — 4.4
-    Start: x=128, y=99, direction x=0, y=-30
+    Start: x=125, y=84, direction x=0, y=-30
     """
 
     TASK_DURATION   = 20
-    MIN_VALID_SCANS = 5
+    MIN_VALID_SCANS = 6
     VALID_COLORS    = {"Red", "Green", "Blue", "Floor", "Unknown"}
 
     result = {
@@ -496,6 +518,8 @@ def color_classification(robot, image, td, user_code=None):
     text = "Waiting for scan data..."
 
     image = robot.draw_info(image)
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     if td is None:
         lines        = user_code.split('\n') if user_code else []
@@ -539,22 +563,34 @@ def color_classification(robot, image, td, user_code=None):
                 "completed_verdict": False,
                 "valid_scans":       [],
                 "last_scan":         None,
+                "scan_buffer":       "",
+                "start_position":    None,
+                "end_position":      None,
             }
         }
 
     if not td["data"]["code_valid"]:
         text = f"Code missing: {', '.join(td['data']['missing'])}"
 
-    msg = robot.get_msg()
-    if msg is not None:
-        match = re.search(r'Scan - (\w+) \(Raw: R:(\d+) G:(\d+) B:(\d+)\)', msg)
-        if match:
+    if robot.position is not None:
+        if td["data"]["start_position"] is None:
+            td["data"]["start_position"] = tuple(robot.position)
+        td["data"]["end_position"] = tuple(robot.position)
+    for _ in range(64):
+        msg = robot.get_msg()
+        if msg is None:
+            break
+        combined = td["data"]["scan_buffer"] + str(msg)
+        consumed = 0
+        for match in re.finditer(r'Scan - (\w+) \(Raw: R:(\d+) G:(\d+) B:(\d+)\)', combined):
+            consumed = match.end()
             color_name = match.group(1)
             r, g, b    = int(match.group(2)), int(match.group(3)), int(match.group(4))
             if (color_name in VALID_COLORS
                     and 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255):
                 td["data"]["valid_scans"].append((color_name, r, g, b))
                 td["data"]["last_scan"] = (color_name, r, g, b)
+        td["data"]["scan_buffer"] = combined[consumed:][-512:]
 
     valid = len(td["data"]["valid_scans"])
     last  = td["data"].get("last_scan")
@@ -576,11 +612,19 @@ def color_classification(robot, image, td, user_code=None):
             result["score"]       = int((valid / MIN_VALID_SCANS) * 100)
             result["description"] = f"Only {valid}/{MIN_VALID_SCANS} valid scans received | Score: {result['score']}"
             text = f"Only {valid}/{MIN_VALID_SCANS} valid scans received."
+        elif (td["data"]["start_position"] is None or td["data"]["end_position"] is None
+              or not 50 <= robot.delta_points(td["data"]["start_position"], td["data"]["end_position"]) <= 70):
+            result = {"success": False, "score": 0,
+                      "description": "Complete six 10 cm moves while scanning (60 cm total). | Score: 0"}
+            text = "Scanning movement incomplete."
         else:
             result["success"]     = True
             result["score"]       = 100
             result["description"] = f"Smart scan complete! {valid} zones classified | Score: 100"
             text = "Smart scan complete!"
+
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
 
     return image, td, text, result
 

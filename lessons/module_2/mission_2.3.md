@@ -86,3 +86,4 @@ Write a program that makes the robot turn approximately **180 degrees** by creat
 
 ## Conclusion
 Congratulations! You are no longer just a driver; you are now extending the robot's core software. Custom functions are the building blocks of advanced programming. Next up, we will learn how to repeat these functions automatically!
+Tune your turn duration on the physical robot after practicing in the simulator. The two environments can require different values; your function and the 180-degree goal stay the same.

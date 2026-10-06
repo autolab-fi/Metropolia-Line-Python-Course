@@ -70,6 +70,13 @@ def build(check=False):
                 'source_sha256': {'lesson': digest(text), 'template': digest(lesson['template']),
                                   'reference': digest(reference), 'checker': digest(checker),
                                   'simulation': digest(json.dumps(sim[key], sort_keys=True))}}
+        if note.get('calibrationPolicy'):
+            rules['calibration_policy'] = note['calibrationPolicy']
+        if note.get('simulationReference'):
+            simulation_reference = (ROOT/note['simulationReference']).read_text()
+            ast.parse(simulation_reference)
+            refs['simulation_reference_url'] = RAW + note['simulationReference']
+            refs['source_sha256']['simulation_reference'] = digest(simulation_reference)
         profiles[key] = {
             'assignment_full_text': text, 'assignment_summary': summary,
             'reference_solution_text': reference,

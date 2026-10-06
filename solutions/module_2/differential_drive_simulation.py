@@ -3,8 +3,8 @@ import time
 
 robot = Robot()
 
-speed = 200
-sp_offset = 0
+speed = 400
+sp_offset = 40
 
 # TODO: Start the left motor with a raw PWM value
 

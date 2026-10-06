@@ -8,7 +8,7 @@ import math
 
 robot = Robot()
 radius = 3.4
-Target_cm = 39
+Target_cm = 35
 
 # Calculate Target
 target = (Target_cm / (2 * math.pi * radius)) * 360
@@ -23,9 +23,13 @@ robot.run_motor_left(150)
 robot.run_motor_right(165)
 
 # The Active Loop
+last_report = -45
 while  robot.encoder_degrees_left() < target:
     # Print the encoder data to see the progress
-    print(robot.encoder_degrees_left())
+    degrees = robot.encoder_degrees_left()
+    if degrees - last_report >= 45:
+        print("Encoder degrees:", degrees)
+        last_report = degrees
 
     # Small delay to let the processor send the print message
     time.sleep(0.02)
@@ -38,7 +42,7 @@ robot.stop_motor_right()
 time.sleep(0.2)
 
 #Final encoder value after full stop
-print(robot.encoder_degrees_left())
+print("Final encoder degrees:", robot.encoder_degrees_left())
 
-print("Target reached! Target was", target)
+print("Target reached!")
 print("Final value:", robot.encoder_degrees_left())
