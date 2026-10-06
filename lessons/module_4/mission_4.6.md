@@ -77,3 +77,5 @@ Incredible work! You have successfully transformed your rover from a simple line
 Think about what you just achieved: your robot can now drive independently, track its own mission time, filter out "noise" (like the lunar floor), memorize valuable data using Python lists, and transmit a formatted professional report. This is exactly how real space agencies gather data from other planets!
 
 Take a moment to celebrate this massive milestone. Next stop: Module 5, where we will learn about Proportional Mathematics (P-Controllers).
+
+Use the line-following settings and measured color conditions from Mission 4.5: sensitivity `245`, threshold `700`, speed `30`, turn speed `3`. The robot starts at `(45, 18.5)` cm, facing right along the track.

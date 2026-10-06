@@ -9,7 +9,7 @@ bus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))
 
 octoliner = Octoliner()
 octoliner.begin(bus)
-octoliner.set_sensitivity(240)
+octoliner.set_sensitivity(245)
 
 color_sensor = tcs3472(bus)
 
@@ -20,11 +20,12 @@ def detect_color_name(r, g, b):
     r_ratio = r / total
     g_ratio = g / total
     b_ratio = b / total
+    # Metropolia measurements while following the black line (2026-10-06).
     if r_ratio > 0.55:
         return "Red"
-    elif g_ratio > 0.40:
+    elif g_ratio > 0.325 and r_ratio < 0.45 and g > 1.3 * b:
         return "Green"
-    elif b_ratio > 0.35:
+    elif b_ratio > 0.245 and r_ratio < 0.45:
         return "Blue"
     else:
         return "Floor"

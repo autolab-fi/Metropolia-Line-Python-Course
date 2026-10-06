@@ -37,6 +37,9 @@ class MultipleSensorsTests(unittest.TestCase):
     def test_color_led_and_stationary_blue_pass(self):
         self.assertTrue(self.replay(['Green (Raw: R:30 G:90 B:20)','Green: led on','Blue: Mission complete.'])['success'])
 
+    def test_measured_blue_entry_stop_21891_passes(self):
+        self.assertTrue(self.replay(['Green (Raw: R:121 G:98 B:62)', 'Green: led on', 'Blue: Mission complete.'], stop=(105.41,34.925), drift=(105.41,34.925))['success'])
+
     def test_missing_led_fails(self):
         self.assertFalse(self.replay(['Green (Raw: R:30 G:90 B:20)','Blue: Mission complete.'])['success'])
 

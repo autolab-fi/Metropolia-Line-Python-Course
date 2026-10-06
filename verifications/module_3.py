@@ -14,7 +14,7 @@ target_points = {
     'arrays_and_elif': [(70, 50),(30,0)],
     'led_feedback': [(70,50),(30,0)],
     'simple_line_follower': [(75,16),(30,0)],
-    'logical_operators': [(75,30),(30,0)]
+    'logical_operators': [(75,16),(30,0)]
 
     #'differential_drive': [(30, 50), (30, 0)],
     #'move_function':[(50, 50), (30, 0)],
@@ -870,7 +870,7 @@ def logical_operators(robot, image, td, user_code=None):
     # ===== CONFIGURATION =====
     TASK_DURATION     = 90
     CHECKPOINT_RADIUS = 10.0   # cm
-    CHECKPOINTS       = [(60, 90), (105, 60), (80, 16)]
+    CHECKPOINTS       = [(105, 60), (60, 79), (80, 16)]
     # =========================
 
     result = {

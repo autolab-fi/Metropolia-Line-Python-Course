@@ -7,17 +7,17 @@
       "module": "module_11",
       "verificationFile": "verifications/module_11.py",
       "physicalStart": {
-        "xCm": 80,
-        "yCm": 30,
+        "xCm": 40,
+        "yCm": 18.5,
         "direction": [
-          -30,
+          30,
           0
         ]
       },
       "initialPose": {
-        "xM": 0.8,
-        "yM": 0.7,
-        "headingRad": -3.141592654
+        "xM": 0.4,
+        "yM": 0.815,
+        "headingRad": -0.0
       },
       "blockLibraryFunctions": false
     },
@@ -188,7 +188,7 @@
       "verificationFile": "verifications/module_4.py",
       "physicalStart": {
         "xCm": 45,
-        "yCm": 29,
+        "yCm": 18.5,
         "direction": [
           30,
           0
@@ -196,7 +196,7 @@
       },
       "initialPose": {
         "xM": 0.45,
-        "yM": 0.71,
+        "yM": 0.815,
         "headingRad": -0.0
       },
       "blockLibraryFunctions": false
@@ -440,7 +440,7 @@
       "verificationFile": "verifications/module_3.py",
       "physicalStart": {
         "xCm": 75,
-        "yCm": 30,
+        "yCm": 16,
         "direction": [
           30,
           0
@@ -448,7 +448,7 @@
       },
       "initialPose": {
         "xM": 0.75,
-        "yM": 0.7,
+        "yM": 0.84,
         "headingRad": -0.0
       },
       "blockLibraryFunctions": true

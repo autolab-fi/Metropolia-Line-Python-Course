@@ -57,6 +57,20 @@ Merge your systems! Program the rover to follow the track. If it sees a Green zo
 1. Hardware: Initialize the shared I2C bus, Octoliner, Color Sensor, and the LED on Pin 15.
 2. Function: Copy your completed `detect_color_name(r, g, b)` function from Mission 4.4 and paste it into your code.
     * *Hint*: For your first test run, you might need to adjust your thresholds for Green and Blue, as the black line might interfere with the sensor. To see exactly what the robot sees, add a temporary print statement inside your function right after calculating the ratios: `print(f"R: {r_ratio} | G: {g_ratio} | B: {b_ratio}")`
+   On the Metropolia track, following the black line gives weaker color contrast than holding the sensor over a solid patch. Measured normalized values were G=0.332–0.342 on green, B=0.253–0.256 on blue, and G<=0.313 / B<=0.243 on the sampled floor. Start with the conditions below, then inspect your own readings if lighting or sensor placement changes:
+
+   ```python
+   if r_ratio > 0.55:
+       return "Red"
+   elif g_ratio > 0.325 and r_ratio < 0.45 and g > 1.3 * b:
+       return "Green"
+   elif b_ratio > 0.245 and r_ratio < 0.45:
+       return "Blue"
+   return "Floor"
+   ```
+
+   The green-to-blue comparison prevents a solid blue patch from being mistaken for green. These are measured starting thresholds for this arena, not universal sensor constants.
+
 3. * **Scanner Logic:** Inside the `while True` loop, read the color and use the "Spam Filter" (`last_color`) logic.
     * If Green: Turn LED ON.
     * If Blue: Stop the robot and `break` the loop.

@@ -11,7 +11,7 @@ target_points = {
     'color_sensor_basics': [(128, 98), (0, -30)],
     'color_classification':[(128, 99), (0, -30)],
     'multiple_sensors':    [(45, 18.5), (30, 0)],
-    'data_logging':        [(45, 29), (30, 0)],
+    'data_logging':        [(45, 18.5), (30, 0)],
 }
 
 block_library_functions = {
@@ -603,8 +603,8 @@ def multiple_sensors(robot, image, td, user_code=None):
     TASK_DURATION      = 20
     GREEN_ZONE_CENTER  = (80, 18)
     GREEN_ZONE_SIZE    = 10
-    BLUE_ZONE_CENTER   = (100, 55)
-    BLUE_ZONE_RADIUS   = 15
+    BLUE_ZONE_CENTER   = (106.5, 48.5)  # Camera-measured blue patch center
+    BLUE_ZONE_RADIUS   = 16  # Patch half-height + forward sensor offset
     STOP_DRIFT_CM      = 3.0
     STOP_CHECK_DELAY   = 1.0
     VALID_COLORS       = {"Red", "Green", "Blue", "Floor", "Unknown"}
@@ -811,11 +811,14 @@ def multiple_sensors(robot, image, td, user_code=None):
 def data_logging(robot, image, td, user_code=None):
     """
     Verification for lesson: Data Logging — 4.6
-    Start: x=45, y=29, direction x=30, y=0 (any position on track accepted)
+    Start: x=45, y=18.5, direction x=30, y=0 (any position on track accepted)
     All checks MQTT-based. Student code silent during 30s mission;
     "Found: ..." lines arrive in burst after break, before "End of transmission".
-    Verification window 60s covers mission + report burst.
+    Verification window 40s covers mission + report burst.
     """
+
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     TASK_DURATION  = 40
     VALID_COLORS   = {"Red", "Green", "Blue", "Floor", "Unknown"}
@@ -957,6 +960,9 @@ def data_logging(robot, image, td, user_code=None):
             )
             text = "Mission complete!"
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 #OLD
