@@ -44,13 +44,13 @@ We can use Python's built-in `max()` function! It looks through a list and finds
 highest_value = max(sensor_array) # Returns 800
 ```
 
-If the highest value in our sensor array is less than 500, it means even the "darkest" spot the sensor sees is still too bright. The robot is completely blind and we must trigger an Emergency Stop.
+If the highest value in our sensor array is less than 700, it means even the "darkest" spot the sensor sees is still too bright. The robot is completely blind and we must trigger an Emergency Stop.
 
 ### 3. Thresholding the Error
 Instead of asking "Does Sensor 1 see the line?", we now ask "Is the Error large enough?". 
 We can create "zones" using simple math thresholds:
-* If `position < -0.15`: The line is too far left. We need to steer left.
-* If `position > 0.15`: The line is too far right. We need to steer right.
+* If `position < -0.3`: The line is too far left. We need to steer left.
+* If `position > 0.3`: The line is too far right. We need to steer right.
 * `else`: The line is somewhere near the center (`0.0`). Drive straight!
 
 ## Assignment
@@ -61,7 +61,7 @@ You will write an upgraded autonomous line-following program. The rover must use
 2. **The Tracking Loop:** Create a `while True:` loop. Inside the loop:
    * Read the raw data with `octoliner.analog_read_all()`
    * Read the position
-3. **Failsafe Check:** First, check `if max(sensor_array) < 500:`. If True, print a critical error message, stop the motors, and `break` the loop.
+3. **Failsafe Check:** First, check `if max(sensor_array) < 700:`. If True, print a critical error message, stop the motors, and `break` the loop.
 4. **Steering Logic:** If the line is successfully detected (`else:`), use an `if / elif / else` block to check the `position` variable:
    * If `< -0.3`: Turn Left (e.g., Left: `5`, Right: `25`)
    * If `> 0.3`: Turn Right (e.g., Left: `25`, Right: `5`)

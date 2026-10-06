@@ -243,8 +243,12 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
     """
     Verification for lesson: Upgraded Relay Controller — 5.2
     Start: x=40, y=18.5 (physical Octoliner alignment)
-    Checkpoints: (105, 60), (60, 90), (80, 30) - visual feedback only
+    Checkpoints: (105, 60), (60, 79), (80, 16) - visual feedback only
     """
+
+    # Preserve the verdict on subsequent frames until the worker ends the run.
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     # ===== CONFIGURATION =====
     #TASK_DURATION = 90 #Just a reference
@@ -254,7 +258,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
     
     # Checkpoints (visual only, not required for scoring)
     CHECKPOINT_RADIUS = 10.0  # cm
-    CHECKPOINTS = [(105, 60), (60, 90), (80, 16)]  # Full lap challenge
+    CHECKPOINTS = [(105, 60), (60, 79), (80, 16)]  # Full lap challenge
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -464,6 +468,9 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
                 result["description"] = f"Robot barely moved ({distance_moved:.1f}cm) | Score: 0"
                 text = "Task incomplete. Check code execution."
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 
