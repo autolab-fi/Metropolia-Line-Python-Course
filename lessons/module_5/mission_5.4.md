@@ -40,25 +40,25 @@ Upgrade your P-Controller to the ultimate Adaptive Speed Controller!
 
 **Requirements:**
 1. **Setup:** Use your code from Mission 5.3.
-2. **New Variables:** Remove `base_speed`. Create two new variables before the loop:
-   * `max_speed = 85`
-   * `braking_force = 45`
+2. **Control Variables:** Remove `base_speed`, set `kp = 25`, and create two new variables before the loop:
+   * `max_speed = 40`
+   * `braking_force = 20`
 3. **Adaptive Math:** Inside the loop, before calculating `P`:
    * Calculate `dynamic_speed` using the formula with `abs(position)`.
 4. **The P-Controller:**
    * Calculate `P` as usual (`kp * position`).
    * Calculate `left_speed` and `right_speed` using your new `dynamic_speed` instead of a fixed base speed. Don't forget to use `int()`!
-6. **Execute:** Send the speeds to the motors. Watch your robot fly down the straights, dynamically brake for the corners, and **complete one full lap!**
+5. **Execute:** Send the speeds to the motors. Watch your robot accelerate on the straights, dynamically brake for the corners, and **complete one full lap!**
+
+**Verification:** Start with sensitivity `245`, a `0.01` second pause after reading the sensor array, and a `0.01` second pause at the end of the loop. Keep the `max(sensor_array) < 700` stop-and-break failsafe. The robot starts on the line facing right. The physical check lasts about `60` seconds and requires all three checkpoints in order; the simulator ends after that route is complete.
 
 **The Tuning Challenge (Optional):**
-Once your rover is successfully completing lap, it’s time to push the physics to the limit! Remember that the absolute maximum power the motors can accept is `100`. 
+After completing a lap, change one parameter at a time and compare the result:
+* Increase or decrease `kp` slightly and observe steering corrections.
+* Change `braking_force` and compare the speed on straights and corners.
+* Increase `max_speed` in small steps only after the current setup reliably completes the route.
 
-Try experimenting with extreme parameters and observe how the rover reacts:
-* **The Drift Test:** What happens if you dramatically increase `kp` (e.g., to 40 or 50)? Can you make the rover slide into corners like a rally car?
-* **The Over-Braking Test:** What if you set a low `max_speed` (like 50) but a massive `braking_force` (like 80)? Will the inner wheel actually spin *backwards* on a sharp turn?
-* **The Speed Run:** Can you find the perfect setup to handle a `max_speed` of 100? How much braking force and `kp` do you need to survive the first corner at maximum velocity?
-
-Change one variable at a time, run the code, and discover your ultimate racing setup!
+Retain the line-loss failsafe for every experiment.
 
 ## Conclusion
 You have built a controller that adjusts its speed using the measured line error. Compare its lap with the fixed-speed controller from Mission 5.3 and change one parameter at a time when tuning.
