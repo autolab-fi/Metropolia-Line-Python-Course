@@ -8,20 +8,8 @@ next: data_logging
 
 # Mission 4.5 Working with Multiple Sensors
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-06** (run 21892).
-
 Starting settings for this exercise: `sensitivity = 245`, `threshold = 700`, `speed = 30`, `turn_speed = 3`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
-These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
-
-For line-following over tape: Red r/sum > 0.55; Green g/sum > 0.325 AND r/sum < 0.45 AND g > 1.3*b; Blue b/sum > 0.245 AND r/sum < 0.45; otherwise Floor. Handle sum=0 separately. These are local measured starting thresholds, not universal calibration.
-The simulator uses measured sample colors, but does not fully reproduce sensor illumination and tape overlap. Use physical observations to validate color thresholds.
-<!-- metropolia-guidance:end -->
-
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
 Combine the Octoliner and the Color Sensor in a single program. The rover must autonomously follow a black line while simultaneously scanning the ground, using an LED to signal anomalies without stopping.
@@ -92,7 +80,6 @@ Merge your systems! Program the rover to follow the track. If it sees a Green zo
     * If Floor: Turn LED OFF (so it turns off when leaving the Green zone).
 4. Line Following: Below the color logic, add your line-following `if/elif` block. Use sensitivity `245`, threshold `700`, speed `30` and turn speed `3` to start. Sensors `0–2` are on the right: steer right with `(speed, turn_speed)`. Sensors `5–7` are on the left: steer left with `(turn_speed, speed)`.
 5. Output: Print each new classification only when the color changes: `print(f"{current_color} (Raw: R:{r} G:{g} B:{b})")`. After turning on the LED, print `"Green: led on"`; on blue, print `"Blue: Mission complete."`, stop and break. The physical checker uses these messages together with camera confirmation that the robot has stopped near the blue area.
-
 
 ## Conclusion
 Congratulations! You have just programmed a truly multi-tasking robot. By using a shared I2C bus and a non-blocking LED signal, your rover can navigate complex terrain while simultaneously scanning for scientific anomalies. 

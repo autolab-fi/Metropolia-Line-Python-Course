@@ -8,14 +8,6 @@ next: color_sensor_basics
 
 # Mission 4.2 Telemetry 
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21816).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Learn how to track real-world execution time, perform mathematical operations to calculate the robot's actual speed, and construct structured telemetry reports using Python f-strings.
 
@@ -74,7 +66,6 @@ Your task is to conduct a speed test. You will command the rover to drive a spec
 4. Declare two additional variables for the report: a string `robot_name` (e.g., "Artemis-1") and a boolean `is_ready` (set to `True`).
 5. Output the results using a single `print()` call with an **f-string**. The output must strictly match this format:
   `STATUS:name=<your_robot_name>;dist=<your_distance>;time=<your_duration>;speed=<your_speed>;ready=<is_ready_status>`
-
 
 ## Conclusion
 Excellent work! You have successfully utilized a data structure to store and execute a complex navigation plan.

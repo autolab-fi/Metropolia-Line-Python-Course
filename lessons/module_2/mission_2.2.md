@@ -8,14 +8,6 @@ next: defining_functions
 
 # Mission 2.2 Differential Drive
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Learn about Differential Drive kinematics and examine the main challenges related to manual motor control using raw PWM values.
 
@@ -28,7 +20,6 @@ In the previous mission, you learned how electric motors work and how to turn th
 
 ### 1. Robot Kinematics
 Let's consider the features of the robot from a kinematics perspective. The rover is equipped with a **differential drive**. This means it features two primary wheels controlled independently, allowing it to maneuver by varying the speed and direction of each wheel.
-
 
 This setup provides high maneuverability, enabling the robot to rotate on the spot.
 

@@ -7,14 +7,6 @@ next: differential_drive
 ---
 # Mission 2.1 Electric Motors
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Learn about electric motors, gearboxes, and how to manually turn them on and off to reach a specific target.
 

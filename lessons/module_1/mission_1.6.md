@@ -8,14 +8,6 @@ next: sequential_navigation
 
 # Mission 1.6 Maneuvering
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21825).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 
 Master the robot's steering system by learning standard 90-degree turns and precision turning with specific angles.

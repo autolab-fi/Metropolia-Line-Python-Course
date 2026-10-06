@@ -8,14 +8,6 @@ next: encoder_theory
 
 # Mission 2.4 For Loops
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21823).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Learn how to use **for** loops to create complex movement patterns by using the loop counter variable.
 
@@ -87,7 +79,6 @@ Your rover must scan the landing zone by driving in a **Square Spiral**. You wil
 * **Navigation:** Use `move_forward_distance()` and `turn_right_angle(90)`.
 
 **Hint:** Think about how the variable `i` grows (0, 1, 2...). You can use a mathematical formula involving `i` or overwrite your distance variable inside the loop. Both ways work!
-
 
 ## Conclusion
 Excellent! You have moved from basic sequences to **algorithmic movement**. By using the loop counter, you can create any geometric pattern with just a few lines of code. Next, we will learn how to make the robot even smarter by using sensors called **Encoders** to measure distance based on actual wheel rotations!

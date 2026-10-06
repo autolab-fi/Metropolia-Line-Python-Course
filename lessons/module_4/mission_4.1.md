@@ -8,14 +8,6 @@ next: telemetry_reporting
 
 # Mission 4.1 Python Lists (Waypoints)
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21815).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Create Python lists, determine their size using `len()`, and use a `for` loop to execute a multi-step navigation route.
 
@@ -80,7 +72,6 @@ Mission Control has transmitted a sequence of forward driving distances to navig
 2. Use the `len()` function to print a message stating how many waypoints are in the route before the movement starts.
 3. Create a `for` loop to iterate through the route list.
 4. Inside the loop, command the robot to move forward by the current list value using `robot.move_forward_distance(dist)`, followed by a standard right turn using `robot.turn_right()`  and a short `time.sleep()`
-
 
 ## Conclusion
 Excellent work! You have successfully utilized a data structure to store and execute a complex navigation plan.

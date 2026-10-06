@@ -8,14 +8,6 @@ next: while_loops
 
 # Mission 2.5 Encoder Theory
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Learn about encoders and their purpose in precise robot movement.
 
@@ -63,7 +55,6 @@ print("The value of Pi is:", math.pi)
 
 ### 4. Distance and Rotation
 For a wheel with radius R, one full rotation covers a distance of L = 2 × π × R (the wheel's circumference). Our robot's wheels have a radius of **3.4 cm**, so one full rotation is approximately **21.4 cm**.
-
 
 ## Assignment: The Calibration Challenge
 Your task is to find the perfect "pulse" for your robot to make it drive almost exactly one full wheel rotation and calculate the distance traveled.

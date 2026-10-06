@@ -8,14 +8,6 @@ next: color_classification
 
 # Mission 4.3 Color Sensor Basics
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Understand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the lunar surface across multiple zones.
 
@@ -82,7 +74,6 @@ You must program the rover to act as a **Linear Scanner**: it will take a series
 Once your rover completes the scan, look closely at the data printed in your terminal. *Did you notice how the R, G, and B values changed drastically when the rover drove over a colored zone compared to the normal ground?*
 
 > **Important:** Save your code or keep this tab open! You will use this exact loop as the foundation for your next mission.
-
 
 ## Conclusion
 Spectrometer online! You have successfully established an I2C connection with a new piece of hardware and extracted raw RGB data from multiple zones.

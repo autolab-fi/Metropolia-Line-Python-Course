@@ -8,14 +8,6 @@ next: electric_motors
 
 # Mission 1.7 Sequential navigation
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21822).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 
 Create a complex route visiting multiple waypoints and learn how to document your code using comments.

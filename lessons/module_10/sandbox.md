@@ -1,13 +1,5 @@
 # Sandbox
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21818).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 
 Here you can test different functions of the robot. The robot will execute your code for up to 20 seconds.

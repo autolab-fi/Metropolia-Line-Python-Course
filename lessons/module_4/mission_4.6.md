@@ -8,20 +8,8 @@ next: concept_of_error
 
 # Mission 4.6 Post-Mission Report
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-06** (run 21893).
-
 Starting settings for this exercise: `sensitivity = 245`, `threshold = 700`, `speed = 30`, `turn_speed = 3`, `mission_duration = 30`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
-These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
-
-For line-following over tape: Red r/sum > 0.55; Green g/sum > 0.325 AND r/sum < 0.45 AND g > 1.3*b; Blue b/sum > 0.245 AND r/sum < 0.45; otherwise Floor. Handle sum=0 separately. These are local measured starting thresholds, not universal calibration.
-The simulator uses measured sample colors, but does not fully reproduce sensor illumination and tape overlap. Use physical observations to validate color thresholds.
-<!-- metropolia-guidance:end -->
-
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
 Transform the rover into a silent data-collection probe. It must drive autonomously for 30 seconds, memorize all color anomalies in its RAM, and print a formatted summary report when the mission ends.

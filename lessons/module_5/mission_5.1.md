@@ -8,17 +8,8 @@ next: failsafe_protocols
 
 # Mission 5.1 The Concept of Error
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-06** (run 21844).
-
 Starting settings for this exercise: `sensitivity = 245`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
-These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
-<!-- metropolia-guidance:end -->
-
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
 Understand the limitations of a Relay (Bang-Bang) controller and introduce the concept of "Error" as a continuous gradient using the advanced `track_line()` function.

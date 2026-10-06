@@ -8,14 +8,6 @@ next: multiple_sensors
 
 # Mission 4.4 Color Classification
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Learn how to process raw sensor data, understand color normalization, and write a custom Python function to classify RGB values into human-readable colors.
 
@@ -68,7 +60,6 @@ Your task is to upgrade your Linear Scanner from the previous mission. You will 
 3. Build the Smart Scanner: Add your previous scanning loop from Mission 4.3 below the function, add small changes inside the loop:
     * Call the function: after reading the `r, g, b` values, pass them into your new function: `color_name = detect_color_name(r, g, b)`.
     * Print: Output the final color name and the raw values using an f-string: `Scan - {color_name} (Raw: R:{r} G:{g} B:{b})`.
-
 
 ## Conclusion
 Congratulations! You have successfully built a color classification algorithm. Your rover can now adapt to the lighting conditions and accurately identify the "Red" and "Green" zones while ignoring the background noise of the lunar floor.

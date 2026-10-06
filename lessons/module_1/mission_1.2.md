@@ -8,14 +8,6 @@ next: license_to_drive
 
 # Mission 1.2 Test drive
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21826).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 
 Understand the concept of a "Robot Object" and execute your first movement code.
@@ -29,7 +21,6 @@ In this lesson, you will initiate the robot's movement. But before we push the b
 Behold the mighty rover who will assist you in learning:
 
 ![Picture of the robot](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-1/robot.jpg?raw=true)
-
 
 ## Theory: The Digital Twin
 

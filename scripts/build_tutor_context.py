@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build dated lesson notes and the opt-in AI profile manifest from course sources."""
+"""Build the opt-in AI profile manifest; lesson prose is maintained separately."""
 import argparse
 import ast
 import hashlib
@@ -10,32 +10,10 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 REPO = 'https://github.com/autolab-fi/Metropolia-Line-Python-Course'
 RAW = 'https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/'
-START = '<!-- metropolia-guidance:start -->'
-END = '<!-- metropolia-guidance:end -->'
 
 
 def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
-
-
-def guidance(note):
-    lines = [START, '## Metropolia setup notes', '', '**Guidance updated: ' + note['guidanceUpdated'] + '.**']
-    validation = note['physicalValidation']
-    if validation['status'] == 'verified':
-        lines += ['The reference run passed the physical checker on **' + validation['date'] + '** (run ' + str(validation['submissionId']) + ').']
-        if validation.get('scope'):
-            lines += [validation['scope']]
-    else:
-        lines += ['**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.']
-    if note['parameters']:
-        settings = ', '.join('`' + key + ' = ' + str(value) + '`' for key, value in note['parameters'].items())
-        lines += ['', 'Starting settings for this exercise: ' + settings + '.',
-                  'Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.',
-                  'These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.']
-    if note.get('colorGuidance'):
-        lines += ['', note['colorGuidance'], 'The simulator uses measured sample colors, but does not fully reproduce sensor illumination and tape overlap. Use physical observations to validate color thresholds.']
-    lines += [END]
-    return '\n'.join(lines)
 
 
 def checker_details(source, task_id):
@@ -65,19 +43,7 @@ def build(check=False):
     for lesson in lessons:
         key = lesson['str_id']; note = notes[key]
         path = ROOT / lesson['url'].split('/main/', 1)[1]
-        old = path.read_text()
-        block = guidance(note)
-        if START in old:
-            text = re.sub(re.escape(START) + r'.*?' + re.escape(END), lambda _: block, old, flags=re.S)
-        else:
-            # Keep YAML front matter first, then put calibration next to the lesson title.
-            heading = re.search(r'^# .+$', old, flags=re.M)
-            assert heading, key
-            text = old[:heading.end()] + '\n\n' + block + '\n' + old[heading.end():]
-        if text != old:
-            changed.append(str(path.relative_to(ROOT)))
-            if not check:
-                path.write_text(text)
+        text = path.read_text()
         reference = (ROOT/note['reference']).read_text()
         ast.parse(reference)
         meta = metadata[key]

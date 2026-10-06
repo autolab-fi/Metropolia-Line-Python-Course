@@ -8,17 +8,8 @@ next: reading_multiple_sensors
 
 # Mission 3.3 Processing Sensor Data
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-06** (run 21840).
-
 Starting settings for this exercise: `sensitivity = 243`, `threshold = 900`, `dist = 1`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
-These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
-<!-- metropolia-guidance:end -->
-
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
 Learn how to use comparison operators, understand Boolean values (`True`/`False`), and encapsulate threshold logic inside a custom Python function.

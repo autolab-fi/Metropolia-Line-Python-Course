@@ -7,13 +7,6 @@ next: visual_telemetry
 ---
 # Task 2 Perimeter
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21820).
-<!-- metropolia-guidance:end -->
-
 ## Objective
 Demonstrate your ability to optimize code and execute repetitive geometric maneuvers using a `for` loop.
 

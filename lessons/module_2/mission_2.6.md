@@ -8,14 +8,6 @@ next: intro_to_octoliner
 
 # Mission 2.6 While Loops
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-**Physical validation pending:** the current reference program has simulator coverage, but a successful run on the current physical setup has not yet been confirmed.
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 Understand the fundamental logic of **While Loops** compared to For Loops, and use active sensor monitoring to stop a robot with precision.
 
@@ -46,7 +38,6 @@ In programming, choosing the right loop changes how the robot thinks.
 
 ![for_vs_while](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-2/for_vs_while.jpeg?raw=true)
 
-
 ### 2. The Cycle of Monitoring
 A `while` loop checks the condition before every single step.
 1.  **Check:** Is the distance still safe? (`distance > 10`)
@@ -67,8 +58,6 @@ Your navigation computer is damaged, so you cannot use high-level functions like
 ```python
 target = (Target_cm / (2 * math.pi * radius)) * 360
 ```
-
-
 
 **Requirements:**
 1.  **Math:** Calculate the `target` degrees for **39 cm** using **R = 3.4 cm** and reset the encoders.

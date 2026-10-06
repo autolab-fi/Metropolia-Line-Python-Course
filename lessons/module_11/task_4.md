@@ -7,16 +7,8 @@ next:
 ---
 # Task 4 Adaptive Racing
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-06** (run 21895).
-
 Starting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
-These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
-<!-- metropolia-guidance:end -->
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
 Demonstrate your ability to debug faulty logic, fix syntax errors, and organize code.
@@ -34,7 +26,6 @@ Your task is to act as the Senior Engineer: find the bugs, fix them, and clean u
 3. **The Setup Bug:** Something is initialized, but is not configured.
 4. **The Array Bug:** The controller is trying to do math using an entire array of 8 sensors. Use the correct tracking function.
 5. **The Coma Bug:** The rover is updating sensors too slowly.
-
 
 ## Conclusion
 If you fix all 5 bugs and organize your variables, the rover will smoothly and rapidly navigate the final sector using adaptive braking. Good luck, Engineer!

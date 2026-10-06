@@ -8,18 +8,8 @@ next: led_feedback_system
 
 # Mission 3.4 Arrays and Spatial Logic
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-06** (run 21841).
-Sensor sampling and movement validated; left/right labels corrected afterwards to match sensor indices (1 right, 6 left).
-
 Starting settings for this exercise: `sensitivity = 243`, `threshold = 800`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Facing forward, sensors 0–2 are on the right, 3–4 in the center, and 5–7 on the left.
-These settings apply to the Metropolia robot and lighting at the validation date. Inspect the readings again after changes to lighting, sensor height, wiring, or the track; a passing simulation alone does not confirm hardware calibration.
-<!-- metropolia-guidance:end -->
-
+Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
 Learn how to read all 8 sensors at once using arrays, extract specific data using indices, and use `elif` statements to determine the line's position.
@@ -37,7 +27,6 @@ Today, you will learn how to capture a complete snapshot of the ground using an 
 Instead of reading 8 sensors one by one, we can read them all simultaneously using `octoliner.analog_read_all()`. This command returns an **array** (a list) containing 8 numbers.
 
 In Python, an array is enclosed in square brackets `[]`. Every item inside has an **index** (its position), starting from exactly `0`.
-
 
 ```python
 #            [0,    1,   2,  3,  4,   5,   6,   7]

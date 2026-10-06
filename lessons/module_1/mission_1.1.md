@@ -8,14 +8,6 @@ next: test_drive
 
 # Mission 1.1 Welcome to Artemis Support Program
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21807).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 
 Join the Artemis Support Program, familiarize yourself with the Mission Control Interface, and establish a connection with the Lunar Terrain Vehicle (LTV).
@@ -29,7 +21,6 @@ Welcome, Recruit!
 You have been selected for the **Artemis Support Program**. Your goal is to develop and test software for the next generation of lunar rovers. We are returning to the Moon, and this time, we are staying.
 
 To assist the astronauts, we are deploying autonomous **Lunar Terrain Vehicles (LTV)**. Before we send them to the lunar South Pole, they must be tested in our simulation facility.
-
 
 ## Mission Control Interface
 

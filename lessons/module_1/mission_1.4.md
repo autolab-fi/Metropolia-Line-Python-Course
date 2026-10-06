@@ -8,14 +8,6 @@ next: python_variables_&_commands
 
 # Mission 1.4 Directional Movement
 
-<!-- metropolia-guidance:start -->
-## Metropolia setup notes
-
-**Guidance updated: 2026-10-06.**
-The reference run passed the physical checker on **2026-10-02** (run 21824).
-<!-- metropolia-guidance:end -->
-
-
 ## Objective
 
 Explore functions for moving the robot a specific distance.
