@@ -13,7 +13,7 @@ def has_line_loss_failsafe(code):
 target_points = {
     'concept_of_error': [(22, 86),(0,-30)],           # Start: x=22, y=86, direction=-30
     'upgraded_relay_controller': [(40, 18.5), (30, 0)], # Physical line acquisition measured 2026-10-06
-    'proportional_control': [(40, 30),(30, 0)],        # Start: x=40, y=30
+    'proportional_control': [(40, 18.5),(30, 0)],        # Physical line alignment
     'tuning_and_kick': [(40, 30),(30, 0)],             # Start: x=40, y=30
     'adaptive_speed': [(40, 30),(30, 0)],              # Start: x=40, y=30
 }
@@ -480,9 +480,13 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
 def proportional_control(robot, image, td, user_code=None):
     """
     Verification for lesson: Proportional Control — 5.3
-    Start: x=40, y=30
-    Checkpoints: (105, 60), (60, 90), (80, 30) - visual feedback only
+    Start: x=40, y=18.5
+    Checkpoints: (105, 60), (60, 79), (80, 16) - visual feedback only
     """
+
+    # Preserve the final verdict until the worker finishes the run.
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     # ===== CONFIGURATION =====
     TASK_DURATION = 60
@@ -492,7 +496,7 @@ def proportional_control(robot, image, td, user_code=None):
     
     # Checkpoints (visual only, not required for scoring)
     CHECKPOINT_RADIUS = 10.0  # cm
-    CHECKPOINTS = [(105, 60), (60, 90), (80, 16)]  # Full lap challenge
+    CHECKPOINTS = [(105, 60), (60, 79), (80, 16)]  # Full lap challenge
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -701,6 +705,9 @@ def proportional_control(robot, image, td, user_code=None):
                 result["description"] = f"Robot barely moved ({distance_moved:.1f}cm) | Score: 0"
                 text = "Task incomplete. Check code execution."
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 

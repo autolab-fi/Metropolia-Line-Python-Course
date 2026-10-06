@@ -1,0 +1,59 @@
+"""Replay the measured line route and verify that a final verdict stays final."""
+import ast
+import contextlib
+import io
+import math
+import os
+from pathlib import Path
+import re
+from types import SimpleNamespace
+import unittest
+
+source = Path(__file__).resolve().parents[1] / 'verifications/module_5.py'
+functions = [n for n in ast.parse(source.read_text()).body if isinstance(n, ast.FunctionDef)
+             and n.name in ('has_line_loss_failsafe', 'proportional_control')]
+clock = SimpleNamespace(now=0.0)
+namespace = {'math': math, 'os': os, 're': re, '__file__': str(source),
+             'time': SimpleNamespace(time=lambda: clock.now),
+             'cv2': SimpleNamespace(imread=lambda path: None)}
+exec(compile(ast.Module(body=functions, type_ignores=[]), str(source), 'exec'), namespace)
+verify = namespace['proportional_control']
+reference = (source.parents[1] / 'solutions/module_5/proportional_control_reference.py').read_text()
+
+class ProportionalVerdictTests(unittest.TestCase):
+    def replay(self, positions, code=reference):
+        clock.now = 0
+        robot = SimpleNamespace(position=positions[0], position_px=None,
+                                draw_info=lambda image: image, get_msg=lambda: None)
+        with contextlib.redirect_stdout(io.StringIO()):
+            _, state, _, _ = verify(robot, None, None, code)
+        for index, position in enumerate(positions[1:], 1):
+            clock.now = index * 10
+            robot.position = position
+            _, state, _, _ = verify(robot, None, state, code)
+        clock.now = 59.5
+        _, state, text, result = verify(robot, None, state, code)
+        clock.now = 60.1
+        _, _, later_text, later = verify(robot, None, state, code)
+        self.assertEqual(later, result)
+        self.assertEqual(later_text, text)
+        return state['data'], result
+
+    def test_measured_route_21855_reaches_all_markers(self):
+        data, result = self.replay([(39.1968, 18.9345), (103.5627, 60.1518),
+                                    (62.6341, 79.0864), (80.2986, 15.0668)])
+        self.assertEqual(len(data['checkpoints_hit']), 3)
+        self.assertTrue(result['success'])
+        self.assertIn('Checkpoints: 3/3', result['description'])
+
+    def test_stationary_reference_fails_and_stays_failed(self):
+        _, result = self.replay([(40, 18.5), (40.1, 18.5)])
+        self.assertFalse(result['success'])
+        self.assertEqual(result['score'], 0)
+
+    def test_motion_without_required_code_fails(self):
+        _, result = self.replay([(40, 18.5), (100, 60)], 'print("done")')
+        self.assertFalse(result['success'])
+
+if __name__ == '__main__':
+    unittest.main()
