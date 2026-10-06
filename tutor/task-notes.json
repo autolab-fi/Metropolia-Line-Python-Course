@@ -88,7 +88,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Open hardware issue: the legacy physical checker derives its goal from image pixels (approximately 115.45, 46.18 cm), while the simulator goal is approximately (50, 20) cm. The current simulator reference is not a proven physical solution. Resolve the goal mismatch before advising motor tuning."
       ],
       "parameters": {}
     },
@@ -101,7 +102,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Hardware run 21799 ended about 10.9 degrees from the required heading, outside the 10-degree tolerance. Do not promise that the current motor settings will pass on hardware."
       ],
       "parameters": {}
     },
@@ -114,7 +116,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Timed motor commands behaved differently on hardware than in simulation in run 21800. The current turn duration is a simulation candidate, not a physically calibrated turn."
       ],
       "parameters": {}
     },
@@ -140,7 +143,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Hardware verification remains open after reset failure / turn overshoot in earlier runs 21802 and 21808. Do not call the current PWM and wheel-radius values physically validated."
       ],
       "parameters": {}
     },
@@ -153,7 +157,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Earlier physical travel overshot (about 43.8 cm). The current physical checker uses a 40 cm target; old reports mentioning a 20 cm wall describe a previous checker version. A fresh hardware pass is still required."
       ],
       "parameters": {}
     },
@@ -304,7 +309,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "Run 21817 failed during reset before the student scanner ran. Physical start (128, 98) cm is close to the edge; simulator start is (128, 90) cm. Scanner behavior on hardware is not yet established."
       ],
       "parameters": {}
     },
@@ -317,7 +323,8 @@
         "date": null
       },
       "commonMistakes": [
-        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong."
+        "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
+        "No confirmed hardware run of the current reference. Physical start (128, 99) cm is near the edge; simulator start is (128, 90) cm. Do not transfer the line-on-tape thresholds from Mission 4.5 without considering this scanning exercise."
       ],
       "parameters": {}
     },
