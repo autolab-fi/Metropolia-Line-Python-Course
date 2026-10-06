@@ -1070,8 +1070,8 @@
     "multiple_sensors": {
       "mode": "simulation-and-lab",
       "initialPose": {
-        "xM": 0.4,
-        "yM": 0.8,
+        "xM": 0.45,
+        "yM": 0.815,
         "headingRad": 0
       },
       "timeoutSec": 60,

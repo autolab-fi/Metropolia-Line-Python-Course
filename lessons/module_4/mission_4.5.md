@@ -61,7 +61,8 @@ Merge your systems! Program the rover to follow the track. If it sees a Green zo
     * If Green: Turn LED ON.
     * If Blue: Stop the robot and `break` the loop.
     * If Floor: Turn LED OFF (so it turns off when leaving the Green zone).
-4. Line Following: Below the color logic, add your line-following `if/elif` block.
+4. Line Following: Below the color logic, add your line-following `if/elif` block. Use sensitivity `245`, threshold `700`, speed `30` and turn speed `3` to start. Sensors `0–2` are on the right: steer right with `(speed, turn_speed)`. Sensors `5–7` are on the left: steer left with `(turn_speed, speed)`.
+5. Output: Print each new classification only when the color changes: `print(f"{current_color} (Raw: R:{r} G:{g} B:{b})")`. After turning on the LED, print `"Green: led on"`; on blue, print `"Blue: Mission complete."`, stop and break. The physical checker uses these messages together with camera confirmation that the robot has stopped near the blue area.
 
 
 ## Conclusion

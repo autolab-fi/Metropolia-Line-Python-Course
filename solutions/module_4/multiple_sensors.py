@@ -42,9 +42,9 @@ print("Goal: LED on GREEN, Stop on BLUE.")
 while True:
     r, g, b = color_sensor.rgb()
     current_color = detect_color_name(r, g, b)
-    print(f"{current_color} (Raw: R:{r} G:{g} B:{b})")
 
     if current_color != last_color:
+        print(f"{current_color} (Raw: R:{r} G:{g} B:{b})")
         if current_color == "Green":
             print("Green: led on")
             led.value(1)
@@ -61,9 +61,9 @@ while True:
     if sensor_data[3] > threshold or sensor_data[4] > threshold:
         robot.run_motors_speed(speed, speed)
     elif sensor_data[0] > threshold or sensor_data[1] > threshold or sensor_data[2] > threshold:
-        robot.run_motors_speed(turn_speed, speed)
-    elif sensor_data[5] > threshold or sensor_data[6] > threshold or sensor_data[7] > threshold:
         robot.run_motors_speed(speed, turn_speed)
+    elif sensor_data[5] > threshold or sensor_data[6] > threshold or sensor_data[7] > threshold:
+        robot.run_motors_speed(turn_speed, speed)
     else:
         robot.run_motors_speed(speed, speed)
 

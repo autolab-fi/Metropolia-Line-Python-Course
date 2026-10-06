@@ -10,7 +10,7 @@ target_points = {
     'telemetry':           [(75, 30), (30, 0)],
     'color_sensor_basics': [(128, 98), (0, -30)],
     'color_classification':[(128, 99), (0, -30)],
-    'multiple_sensors':    [(45, 29), (30, 0)],
+    'multiple_sensors':    [(45, 18.5), (30, 0)],
     'data_logging':        [(45, 29), (30, 0)],
 }
 
@@ -592,13 +592,16 @@ def color_classification(robot, image, td, user_code=None):
 def multiple_sensors(robot, image, td, user_code=None):
     """
     Verification for lesson: Multiple Sensors — 4.5
-    Start: x=45, y=29, direction x=30, y=0
+    Start: x=45, y=18.5, direction x=30, y=0
     LED confirmed via MQTT "Green: led on" — camera crop abandoned (LED too small).
     Stop confirmed via MQTT + robot stationary near blue zone for 1s.
     """
 
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
+
     TASK_DURATION      = 20
-    GREEN_ZONE_CENTER  = (75, 32)
+    GREEN_ZONE_CENTER  = (80, 18)
     GREEN_ZONE_SIZE    = 10
     BLUE_ZONE_CENTER   = (100, 55)
     BLUE_ZONE_RADIUS   = 15
@@ -795,6 +798,9 @@ def multiple_sensors(robot, image, td, user_code=None):
             )
             text = "Mission complete!"
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 
