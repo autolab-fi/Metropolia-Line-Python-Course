@@ -481,7 +481,7 @@ def proportional_control(robot, image, td, user_code=None):
     """
     Verification for lesson: Proportional Control — 5.3
     Start: x=40, y=18.5
-    Checkpoints: (105, 60), (60, 79), (80, 16) - visual feedback only
+    Checkpoints: (105, 60), (60, 79), (80, 16) - required in order
     """
 
     # Preserve the final verdict until the worker finishes the run.
@@ -494,7 +494,7 @@ def proportional_control(robot, image, td, user_code=None):
     # Movement tracking
     MIN_MOVEMENT_DISTANCE = 10.0  # cm - anti-cheat minimum
     
-    # Checkpoints (visual only, not required for scoring)
+    # Checkpoints required in order, matching the simulator
     CHECKPOINT_RADIUS = 10.0  # cm
     CHECKPOINTS = [(105, 60), (60, 79), (80, 16)]  # Full lap challenge
     # =========================
@@ -568,7 +568,7 @@ def proportional_control(robot, image, td, user_code=None):
                 # MQTT message tracking
                 "last_message":             None,
                 
-                # Checkpoint tracking (visual only)
+                # Ordered checkpoint tracking
                 "checkpoints_hit":          [],
                 "checkpoints_remaining":    list(CHECKPOINTS),
                 
@@ -620,7 +620,7 @@ def proportional_control(robot, image, td, user_code=None):
             if dist > td["data"]["max_distance_moved"]:
                 td["data"]["max_distance_moved"] = dist
 
-    # ── checkpoint detection (visual feedback only) ───────────────────────────
+    # ── checkpoint detection (required in order) ───────────────────────────
     if pos is not None and td["data"]["checkpoints_remaining"]:
         next_cp = td["data"]["checkpoints_remaining"][0]
         dist = math.sqrt((pos[0] - next_cp[0])**2 + (pos[1] - next_cp[1])**2)
@@ -692,12 +692,21 @@ def proportional_control(robot, image, td, user_code=None):
             total_checkpoints = len(CHECKPOINTS)
             
             # Success criteria
-            if robot_moved:
+            if robot_moved and checkpoints_hit == total_checkpoints:
                 result["success"]     = True
                 result["score"]       = 100
                 result["description"] = f"Perfect! P-controller working. Distance: {distance_moved:.1f}cm, Checkpoints: {checkpoints_hit}/{total_checkpoints} | Score: 100"
                 text = f"Mission complete! Distance: {distance_moved:.1f}cm, Checkpoints: {checkpoints_hit}/{total_checkpoints}"
             
+            elif robot_moved:
+                result["success"] = False
+                result["score"] = int(100 * checkpoints_hit / total_checkpoints)
+                result["description"] = (
+                    f"Route incomplete: Checkpoints: {checkpoints_hit}/{total_checkpoints}, "
+                    f"Distance: {distance_moved:.1f}cm. Follow the line through all checkpoints in order."
+                )
+                text = result["description"]
+
             else:
                 # Robot didn't move
                 result["success"]     = False

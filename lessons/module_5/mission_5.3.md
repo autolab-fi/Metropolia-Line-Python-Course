@@ -49,25 +49,27 @@ Because the left wheel is now spinning at `40` and the right wheel at `10`, the 
 Write a Proportional Control loop to navigate the track. You will replace your bulky `if/elif/else` steering blocks with just three elegant lines of mathematical code.
 
 **Requirements:**
-1. **Setup:** Initialize your hardware, including auto-calibration and the `math` library.
+1. **Setup:** Initialize `Robot`, the I2C bus and `Octoliner` as in the previous mission. Set `octoliner.set_sensitivity(245)`. Use the `machine` and `time` modules; this controller does not need the `math` library.
 2. **Control Variables:** Before the loop, create two variables:
    * `base_speed = 30`
-   * `kp = 10` (This is our starting guess for the Proportional Coefficient).
+   * `kp = 20` (The starting coefficient verified on the Metropolia track).
 3. **The Loop:** Inside your `while True:` loop:
-   * Read the `position` from the sensor.
-   * Include the Failsafe from the previous mission to protect the software.
+   * Read `sensor_array = octoliner.analog_read_all()`, wait `time.sleep(0.01)`, then read `position = octoliner.track_line()`.
+   * Include the Failsafe from the previous mission: if `max(sensor_array) < 700`, print a critical error message, call `robot.stop()`, and `break`.
    * If the data is valid (`else:`), perform the P-Controller math:
      * Calculate `P` by multiplying `kp` and `position`.
      * Calculate `left_speed` and `right_speed`. *(Note: Wrap your final math in `int()` like this: `int(base_speed + P)` to ensure the motor function receives whole numbers).*
      * Send the speeds to the motors using `run_motors_speed()`.
-   * Keep the `time.sleep(0.05)` delay.
+   * Keep `time.sleep(0.01)` at the end of the loop. A longer delay changes the controller response; use these timings for the initial run.
+
+4. **Route:** Follow the line through all three checkpoints in order. Driving only the first straight section is not enough to pass. If the failsafe stops the rover before the route is complete, review the starting parameters and loop timing, then retry.
 
 Execute the code! Watch closely. The rover should navigate the track much smoother than before, automatically adjusting its turn sharpness.
 
 ## Conclusion
 Brilliant! You have successfully implemented a Proportional Controller. 
 
-Look at your code: you replaced complicated logical conditions with pure, elegant mathematics. The rover now makes hundreds of tiny, calculated adjustments per second.
+Look at your code: you replaced complicated logical conditions with pure, elegant mathematics. The rover repeatedly adjusts both wheel speeds in proportion to the measured line error.
 
 However, you might notice it still isn't *perfect*. Maybe it turns a little too sluggishly, or maybe it shakes a bit on the straightaways. In the next mission, we will learn how engineers **"Tune"** the *K_p* value to achieve flawless movement!
 

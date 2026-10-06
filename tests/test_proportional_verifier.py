@@ -46,6 +46,17 @@ class ProportionalVerdictTests(unittest.TestCase):
         self.assertTrue(result['success'])
         self.assertIn('Checkpoints: 3/3', result['description'])
 
+    def test_long_straight_drive_without_route_fails(self):
+        data, result = self.replay([(40, 18.5), (99.0023, 20.5509)])
+        self.assertEqual(len(data['checkpoints_hit']), 0)
+        self.assertFalse(result['success'])
+        self.assertIn('Route incomplete', result['description'])
+
+    def test_checkpoints_in_wrong_order_do_not_complete_route(self):
+        data, result = self.replay([(40, 18.5), (60, 79), (105, 60), (80, 16)])
+        self.assertEqual(len(data['checkpoints_hit']), 1)
+        self.assertFalse(result['success'])
+
     def test_stationary_reference_fails_and_stays_failed(self):
         _, result = self.replay([(40, 18.5), (40.1, 18.5)])
         self.assertFalse(result['success'])
