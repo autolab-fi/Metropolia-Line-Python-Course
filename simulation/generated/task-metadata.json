@@ -759,24 +759,6 @@
       },
       "blockLibraryFunctions": false
     },
-    "tuning_and_kick": {
-      "module": "module_5",
-      "verificationFile": "verifications/module_5.py",
-      "physicalStart": {
-        "xCm": 40,
-        "yCm": 18.5,
-        "direction": [
-          30,
-          0
-        ]
-      },
-      "initialPose": {
-        "xM": 0.4,
-        "yM": 0.815,
-        "headingRad": -0.0
-      },
-      "blockLibraryFunctions": false
-    },
     "upgraded_relay_controller": {
       "module": "module_5",
       "verificationFile": "verifications/module_5.py",

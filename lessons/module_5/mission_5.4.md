@@ -1,58 +1,64 @@
 ---
-index: 30
+index: 31
 module: module_5
-task: tuning_and_kick
+task: adaptive_speed
 previous: proportional_control
-next: adaptive_speed
+next: art_of_debugging
 ---
 
-# Mission 5.4 Tuning & The "Software Kick"
+# Mission 5.4 Adaptive Speed 
 
 ## Objective
-Understand the effects of the Proportional Coefficient (*K_p*) on system stability, tune it for optimal performance, and implement a "Software Kick" to test the controller's recovery capabilities.
+Make the rover race-ready by implementing an Adaptive Speed algorithm that automatically slows down before corners using the `abs()` function.
 
 ![Advanced](https://img.shields.io/badge/Difficulty-Advanced-red)
 
 ## Introduction
-In the last mission, you built a working Proportional Controller. But as you probably noticed, guessing the *K_p* value (like `10`) doesn't always result in a perfect ride. 
+Your Proportional Controller is stable, but it has a flaw: it drives at a constant `base_speed`. 
+If you set the speed to `30`, the robot easily navigates sharp corners, but crawls agonizingly slowly on straightaways. If you increase the speed to `80`, it flies down the straights but crashes on the first sharp turn because it's going too fast to steer!
 
-In professional robotics, writing the formula is only 10% of the work. The other 90% is **Tuning** - finding the mathematically perfect coefficient for your specific hardware. 
-
-Furthermore, a good navigation system must be resilient. What happens if the rover hits a lunar rock or slips on loose dust? Today, we will tune our *K_p* and inject a fake "physical shock" into the system to see if the rover can survive it!
+Think about real racing drivers. They don't press the gas pedal identically the whole track. They accelerate on the straights and hit the brakes *before* entering a turn. Today, we will teach your rover to do exactly that.
 
 ## Theory
+### 1. Absolute Error (`abs`)
+To know *when* to brake, the robot needs to know if it's approaching a turn. 
+Our Error ranges from `-1.0` to `1.0`. We don't care if the turn is left or right; we only care about the *size* of the Error. 
 
-### 1. The Tuning Balance (Understeer vs. Oversteer)
-When tuning *K_p*, you are looking for the perfect balance between two extremes:
-* **Too Low (Understeering):** The robot's reactions are too weak. It drives very smoothly on straight lines, but when it reaches a sharp turn, it doesn't steer hard enough and drives off the track.
-* **Too High (Oversteering):** The robot's reactions are too aggressive. It aggressively overcorrects every tiny error, resulting in a violent wobble (oscillation). If *K_p* is way too high, it might shake itself completely off the line!
+Python has a built-in function called `abs()` (Absolute Value) that removes the minus sign:
+* `abs(-0.8)` becomes `0.8`
+* `abs(0.0)` stays `0.0`
 
-### 2. The "Software Kick"
-To truly test if your *K_p* is tuned perfectly, the robot must be able to recover from a sudden physical disturbance. 
+### 2. The Adaptive Speed Formula
+Instead of a fixed `base_speed`, we will calculate a `dynamic_speed` every single loop using this formula:
+`dynamic_speed = max_speed - (braking_force * abs(position))`
 
-Since we cannot physically kick the rover in the simulation, we will program a **Software Kick**. Using the `time.time()` stopwatch logic you learned in Module 4, we will force the robot to violently twist to the side for a split second every 5 seconds. 
-
-If your *K_p* is tuned well, the P-Controller will instantly recognize the massive Error and snap the robot back onto the line. If it's tuned poorly, the kick will permanently derail the rover, triggering your Failsafe and stopping the program.
+* On a straight line (`position = 0.0`), the robot drives at the full `max_speed`.
+* On a sharp turn (e.g., `position = 1.0`), the robot subtracts the full `braking_force` from its speed, safely slowing down to execute the turn!
 
 ## Assignment
-Your task is to integrate a 5-second interval timer into your P-Controller. When the timer triggers, apply a sharp motor movement, then let the P-Controller recover.
-
-**Verification note:** The automated check for this mission runs for about `30` seconds and expects the robot to keep moving while producing at least `2` visible `"KICK!"` events during that window.
-
-**Important note about `print()`:** Avoid printing debug values like motor speeds inside the fast `while True` loop. Too many messages can overflow the worker message buffer, and then the verification may miss your `"KICK!"` events even if your timer logic is correct.
+Upgrade your P-Controller to the ultimate Adaptive Speed Controller!
 
 **Requirements:**
-1. **Setup:** Use your P-Controller code from Mission 5.3.
-2. **The Timer Setup:** Before the `while True:` loop, create a variable `last_kick_time = time.time()` to start your stopwatch.
-3. **The Kick Logic:** Inside your loop, before calculating the Proportional Math, calculate the `elapsed_time`.
-   * Use an `if` statement to check if the elapsed time is greater than `5` seconds.
-   * If true: Print `"KICK!"`, force the motors to twist sharply (e.g., `robot.run_motors_speed(30, -30)`), pause for `0.1` seconds to let the physical twist happen, and finally **reset** your `last_kick_time` to the current time!
-4. **The P-Controller:** If it's not time to kick (`else:`), perform your standard Proportional math and steer the rover.
-5. **The Tuning Challenge:** Run the code. Observe how the rover handles the kicks. Adjust your `kp` variable up or down until the rover drives smoothly AND successfully recovers from every kick!
+1. **Setup:** Use your code from Mission 5.3.
+2. **New Variables:** Remove `base_speed`. Create two new variables before the loop:
+   * `max_speed = 85`
+   * `braking_force = 45`
+3. **Adaptive Math:** Inside the loop, before calculating `P`:
+   * Calculate `dynamic_speed` using the formula with `abs(position)`.
+4. **The P-Controller:**
+   * Calculate `P` as usual (`kp * position`).
+   * Calculate `left_speed` and `right_speed` using your new `dynamic_speed` instead of a fixed base speed. Don't forget to use `int()`!
+6. **Execute:** Send the speeds to the motors. Watch your robot fly down the straights, dynamically brake for the corners, and **complete one full lap!**
+
+**The Tuning Challenge (Optional):**
+Once your rover is successfully completing lap, it’s time to push the physics to the limit! Remember that the absolute maximum power the motors can accept is `100`. 
+
+Try experimenting with extreme parameters and observe how the rover reacts:
+* **The Drift Test:** What happens if you dramatically increase `kp` (e.g., to 40 or 50)? Can you make the rover slide into corners like a rally car?
+* **The Over-Braking Test:** What if you set a low `max_speed` (like 50) but a massive `braking_force` (like 80)? Will the inner wheel actually spin *backwards* on a sharp turn?
+* **The Speed Run:** Can you find the perfect setup to handle a `max_speed` of 100? How much braking force and `kp` do you need to survive the first corner at maximum velocity?
+
+Change one variable at a time, run the code, and discover your ultimate racing setup!
 
 ## Conclusion
-Incredible engineering! You have successfully stress-tested an autonomous control system. 
-
-By observing the recovery after the Software Kick, you saw firsthand how mathematical formulas translate into physical resilience. You now know how to diagnose understeering and oversteering, and how to find the optimal *K_p*.
-
-Your rover is now incredibly stable. In our final mission of this module, we will make it *fast* by introducing Adaptive Speed!
+You have built a controller that adjusts its speed using the measured line error. Compare its lap with the fixed-speed controller from Mission 5.3 and change one parameter at a time when tuning.

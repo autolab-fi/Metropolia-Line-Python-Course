@@ -21,7 +21,7 @@ included in the student bundle. The generated audit records hashes, not solution
 
 The October 2026 browser audit passes all 144 cases. Motion and sensor checks cover
 manual drive, encoder distance, LED classification, color stops, ordered track
-checkpoints, controller safety stops, timed kicks and telemetry. Reset terminates
+checkpoints, controller safety stops and telemetry. Reset terminates
 an active Python worker, and each execution gets a fresh Python namespace.
 
 ## Physical alignment and limits
