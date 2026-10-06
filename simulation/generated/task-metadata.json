@@ -692,7 +692,7 @@
       "verificationFile": "verifications/module_3.py",
       "physicalStart": {
         "xCm": 75,
-        "yCm": 30,
+        "yCm": 16,
         "direction": [
           30,
           0
@@ -700,7 +700,7 @@
       },
       "initialPose": {
         "xM": 0.75,
-        "yM": 0.7,
+        "yM": 0.84,
         "headingRad": -0.0
       },
       "blockLibraryFunctions": true

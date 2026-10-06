@@ -13,7 +13,7 @@ target_points = {
     'processing_sensor_data': [(85,63),(30,0)],
     'arrays_and_elif': [(70, 50),(30,0)],
     'led_feedback': [(70,50),(30,0)],
-    'simple_line_follower': [(75,30),(30,0)],
+    'simple_line_follower': [(75,16),(30,0)],
     'logical_operators': [(75,30),(30,0)]
 
     #'differential_drive': [(30, 50), (30, 0)],
@@ -672,6 +672,9 @@ def simple_line_follower(robot, image, td, user_code=None):
     Flag overlays drawn at each checkpoint, turning green when hit.
     """
 
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
+
     # ===== CONFIGURATION =====
     TASK_DURATION     = 90
     CHECKPOINT_RADIUS = 10.0   # cm
@@ -774,10 +777,9 @@ def simple_line_follower(robot, image, td, user_code=None):
 
             # early finish — shorten timer only, verdict handled by timeout block
             if not td["data"]["checkpoints_remaining"]:
-                elapsed = time.time() - td["start_time"]
-                if elapsed >= 10.0 and not td["data"]["completed"]:
+                if not td["data"]["completed"]:
                     td["data"]["completed"] = True
-                    td["end_time"] = time.time() + 10.0
+                    td["end_time"] = time.time()
                 text = "All checkpoints reached! Finishing..."
 
     msg = robot.get_msg()
@@ -849,6 +851,9 @@ def simple_line_follower(robot, image, td, user_code=None):
             result["description"] = f"You are amazing! All {total} checkpoints reached | Score: 100"
             text = "Line following complete!"
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 def logical_operators(robot, image, td, user_code=None):
