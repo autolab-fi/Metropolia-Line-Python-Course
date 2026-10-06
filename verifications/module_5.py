@@ -14,8 +14,8 @@ target_points = {
     'concept_of_error': [(22, 86),(0,-30)],           # Start: x=22, y=86, direction=-30
     'upgraded_relay_controller': [(40, 18.5), (30, 0)], # Physical line acquisition measured 2026-10-06
     'proportional_control': [(40, 18.5),(30, 0)],        # Physical line alignment
-    'tuning_and_kick': [(40, 30),(30, 0)],             # Start: x=40, y=30
-    'adaptive_speed': [(40, 30),(30, 0)],              # Start: x=40, y=30
+    'tuning_and_kick': [(40, 18.5),(30, 0)],             # Physical line alignment
+    'adaptive_speed': [(40, 18.5),(30, 0)],              # Physical line alignment
 }
 
 block_library_functions = {
@@ -726,8 +726,11 @@ def proportional_control(robot, image, td, user_code=None):
 def tuning_and_kick(robot, image, td, user_code=None):
     """
     Verification for lesson: Tuning and Kick — 5.4
-    Start: x=40, y=30
+    Start: x=40, y=18.5
     """
+
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     # ===== CONFIGURATION =====
     TASK_DURATION = 30
@@ -753,6 +756,10 @@ def tuning_and_kick(robot, image, td, user_code=None):
         robot_moved = distance_moved >= MIN_MOVEMENT_DISTANCE
         has_kicks = kick_count >= MIN_KICKS_EXPECTED
         early_reason = td["data"].get("early_finish_reason")
+
+        if ended_early:
+            result.update(success=False, score=0, description=f"Recovery failed: {early_reason}. Kicks: {kick_count}, Distance: {distance_moved:.1f}cm")
+            return result["description"]
 
         if robot_moved and has_kicks:
             result["success"] = True
@@ -828,7 +835,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
         
         code_valid = (
             has_while_true and has_analog_read and has_track_line
-            and has_robot_stop and has_break
+            and has_max_check and has_robot_stop and has_break
             and has_base_speed and has_kp and has_p_calc
             and has_left_speed and has_right_speed and has_add_subtract
             and has_last_kick_time and has_elapsed_time and has_time_check
@@ -839,6 +846,7 @@ def tuning_and_kick(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
+        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_base_speed:      missing.append('base_speed variable')
@@ -896,11 +904,11 @@ def tuning_and_kick(robot, image, td, user_code=None):
         td["data"]["last_message"] = msg
         
         # Detect KICK messages
-        if "KICK" in msg:
+        if msg.strip() == "KICK!":
             td["data"]["kick_count"] += 1
             td["data"]["kick_messages"].append(msg)
-        if "Problem" in msg:
-            td["data"]["early_finish_reason"] = "Problem"
+        if "problem" in msg.lower() or "line lost" in msg.lower():
+            td["data"]["early_finish_reason"] = msg.strip()
 
     # ── live status text ──────────────────────────────────────────────────────
     if not td["data"].get("completed_verdict"):
@@ -928,6 +936,9 @@ def tuning_and_kick(robot, image, td, user_code=None):
         else:
             text = apply_verdict(result, td, ended_early=ended_early)
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 
@@ -937,9 +948,12 @@ def tuning_and_kick(robot, image, td, user_code=None):
 def adaptive_speed(robot, image, td, user_code=None):
     """
     Verification for lesson: Adaptive Speed — 5.5
-    Start: x=40, y=30
-    Checkpoints: (105, 60), (60, 90), (80, 30) - visual feedback only
+    Start: x=40, y=18.5
+    Checkpoints: (105, 60), (60, 79), (80, 16) - required in order
     """
+
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
 
     # ===== CONFIGURATION =====
     TASK_DURATION = 60
@@ -947,9 +961,9 @@ def adaptive_speed(robot, image, td, user_code=None):
     # Movement tracking
     MIN_MOVEMENT_DISTANCE = 10.0  # cm - anti-cheat minimum
     
-    # Checkpoints (visual only, not required for scoring)
+    # Checkpoints required in order, matching the lesson lap
     CHECKPOINT_RADIUS = 10.0  # cm
-    CHECKPOINTS = [(105, 60), (60, 90), (80, 16)]  # Full lap challenge
+    CHECKPOINTS = [(105, 60), (60, 79), (80, 16)]  # Full lap challenge
     # =========================
 
     # ── default result and text ───────────────────────────────────────────────
@@ -1038,7 +1052,7 @@ def adaptive_speed(robot, image, td, user_code=None):
                 # MQTT message tracking
                 "last_message":             None,
                 
-                # Checkpoint tracking (visual only)
+                # Checkpoint tracking
                 "checkpoints_hit":          [],
                 "checkpoints_remaining":    list(CHECKPOINTS),
                 
@@ -1090,7 +1104,7 @@ def adaptive_speed(robot, image, td, user_code=None):
             if dist > td["data"]["max_distance_moved"]:
                 td["data"]["max_distance_moved"] = dist
 
-    # ── checkpoint detection (visual feedback only) ───────────────────────────
+    # ── checkpoint detection ───────────────────────────
     if pos is not None and td["data"]["checkpoints_remaining"]:
         next_cp = td["data"]["checkpoints_remaining"][0]
         dist = math.sqrt((pos[0] - next_cp[0])**2 + (pos[1] - next_cp[1])**2)
@@ -1162,12 +1176,17 @@ def adaptive_speed(robot, image, td, user_code=None):
             total_checkpoints = len(CHECKPOINTS)
             
             # Success criteria
-            if robot_moved:
+            if robot_moved and not td["data"]["checkpoints_remaining"]:
                 result["success"]     = True
                 result["score"]       = 100
                 result["description"] = f"Perfect! Adaptive speed controller working. Distance: {distance_moved:.1f}cm, Checkpoints: {checkpoints_hit}/{total_checkpoints} | Score: 100"
                 text = f"Mission complete! Distance: {distance_moved:.1f}cm, Checkpoints: {checkpoints_hit}/{total_checkpoints}"
             
+            elif robot_moved:
+                result.update(success=False, score=int(100 * checkpoints_hit / total_checkpoints),
+                              description=f"Route incomplete: Checkpoints: {checkpoints_hit}/{total_checkpoints}, Distance: {distance_moved:.1f}cm")
+                text = result["description"]
+
             else:
                 # Robot didn't move
                 result["success"]     = False
@@ -1175,4 +1194,7 @@ def adaptive_speed(robot, image, td, user_code=None):
                 result["description"] = f"Task incomplete. Robot barely moved ({distance_moved:.1f}cm) | Score: 0"
                 text = "Task incomplete. Check code execution."
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result

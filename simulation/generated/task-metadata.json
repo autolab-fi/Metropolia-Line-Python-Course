@@ -26,7 +26,7 @@
       "verificationFile": "verifications/module_5.py",
       "physicalStart": {
         "xCm": 40,
-        "yCm": 30,
+        "yCm": 18.5,
         "direction": [
           30,
           0
@@ -34,7 +34,7 @@
       },
       "initialPose": {
         "xM": 0.4,
-        "yM": 0.7,
+        "yM": 0.815,
         "headingRad": -0.0
       },
       "blockLibraryFunctions": false
@@ -764,7 +764,7 @@
       "verificationFile": "verifications/module_5.py",
       "physicalStart": {
         "xCm": 40,
-        "yCm": 30,
+        "yCm": 18.5,
         "direction": [
           30,
           0
@@ -772,7 +772,7 @@
       },
       "initialPose": {
         "xM": 0.4,
-        "yM": 0.7,
+        "yM": 0.815,
         "headingRad": -0.0
       },
       "blockLibraryFunctions": false

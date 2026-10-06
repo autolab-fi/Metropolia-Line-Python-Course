@@ -1366,7 +1366,7 @@
       "timeoutSec": 90,
       "initialPose": {
         "xM": 0.4,
-        "yM": 0.8,
+        "yM": 0.815,
         "headingRad": 0
       },
       "checks": [
@@ -1420,7 +1420,7 @@
             },
             {
               "xM": 0.6,
-              "yM": 0.1
+              "yM": 0.21
             },
             {
               "xM": 0.8,
@@ -1448,7 +1448,7 @@
       "timeoutSec": 90,
       "initialPose": {
         "xM": 0.4,
-        "yM": 0.8,
+        "yM": 0.815,
         "headingRad": 0
       },
       "checks": [
@@ -1498,7 +1498,7 @@
             },
             {
               "xM": 0.6,
-              "yM": 0.1
+              "yM": 0.21
             },
             {
               "xM": 0.8,
