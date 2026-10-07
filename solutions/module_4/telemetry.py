@@ -3,7 +3,7 @@ import time
 
 robot = Robot()
 
-robot_name = "Artemis-1"
+robot_name = "Jezero-1"
 is_ready   = True
 distance   = 40
 

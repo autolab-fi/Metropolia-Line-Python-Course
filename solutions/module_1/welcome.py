@@ -1,6 +1,6 @@
 from lineRobot import Robot
 
-print("ARTEMIS LTV SYSTEM DIAGNOSTIC")
+print("JEZERO ROVER SYSTEM DIAGNOSTIC")
 print("Initializing hardware...")
 
 # Initialize LTV unit
