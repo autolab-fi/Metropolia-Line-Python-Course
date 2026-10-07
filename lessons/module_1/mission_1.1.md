@@ -38,7 +38,7 @@ If your session expires, return to the Moodle activity and launch it again. Do n
 
 The screenshot below shows the current workspace with a **Test Drive example**. The panel sizes have been adjusted so that the code, output and simulator are easy to see. Your initial layout may use different sizes.
 
-![Current Ondroid workspace: Lesson on the left, Editor above Output and Run on the right](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/platform/ondroid-workspace-20261006.png)
+![Current Ondroid workspace: Lesson on the left, Editor above Output and Run on the right](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/platform/ondroid-workspace-jezero-20261007.png)
 
 * **Lesson:** read the objective, explanations and assignment instructions.
 * **Editor:** write your Python program in `main.py`.
@@ -51,13 +51,13 @@ Drag the panel dividers to change their sizes. The **Reset** button in the works
 
 **Test in simulator** runs your current code in the browser when simulation is available for the assignment. The image below is a close-up of the **Run → Simulator** panel after the Test Drive example. This is a simulated robot and track, not a camera feed from the laboratory.
 
-![Close-up of the current browser simulator showing the robot and track](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/platform/ondroid-simulator-20261006.png)
+![Close-up of the current browser simulator showing the robot and track](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/platform/ondroid-simulator-jezero-20261007.png)
 
 **Verify on robot** sends your program to the physical robot. Review Output, execution status and available video or feedback when the run finishes. If the robot is busy, your submission may wait in the queue.
 
 A simulator result and a physical-robot verification are separate results. Follow the assignment instructions for the required check.
 
-*Screenshots captured on 6 October 2026.*
+*Screenshots captured on 7 October 2026.*
 
 ## Assignment
 
