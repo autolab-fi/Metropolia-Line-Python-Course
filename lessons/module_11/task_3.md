@@ -16,7 +16,7 @@ Demonstrate your ability to combine `while True` loops, conditional logic, senso
 ![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)
 
 ## Assignment
-Your rover is approaching a dangerous lunar crevasse (represented by a black line). It must drive forward cautiously, detect the edge, execute an emergency stop, and send a visual confirmation signal back to the base using its onboard LED.
+Your rover is approaching a marked hazard boundary on the Jezero-inspired test terrain (represented by a black line). It must drive forward cautiously, detect the edge, execute an emergency stop, and send a visual confirmation signal back to the base using its onboard LED.
 
 **Requirements:**
 1. **Hardware Setup:** Initialize the I2C bus, the `Octoliner` sensor, and configure the onboard LED on Pin 15 as an Output (`machine.Pin.OUT`).

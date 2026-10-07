@@ -44,10 +44,10 @@ robot.move_forward_distance(20) # You can also write comments here
 
 ## Assignment
 
-You need to navigate the robot through a specific route to collect geological samples (minerals) at **4 waypoints**. You must use **comments** to label each section of the journey.
-    * Example: `# Moving to Point 1`, `# Collecting Sample 2`, `# Returning to base`.
+You need to navigate the robot through a specific route to visit **4 survey waypoints**. The on-screen mineral icons are checkpoint markers; the robot does not physically collect samples. You must use **comments** to label each section of the journey.
+    * Example: `# Moving to Point 1`, `# Visiting Survey Point 2`, `# Returning to base`.
 
-![trajectory](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-1/trajectory.jpg?raw=true)
+![trajectory](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/sequential-route.svg)
 
 You can refresh your memory of the library functions by revisiting the previous lessons.
 
@@ -57,4 +57,4 @@ You can refresh your memory of the library functions by revisiting the previous 
 
 Mission accomplished! You have successfully programmed a multi-step autonomous route and learned to keep your code clean with comments.
 
-You have completed the Basic Training! Next up is the **Weekly Challenge**, where you will put everything you've learned to the ultimate test.
+You have completed your first planned route. Return to Moodle and continue with Programming Robot Movement.

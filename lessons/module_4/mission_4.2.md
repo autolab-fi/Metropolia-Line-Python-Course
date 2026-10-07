@@ -6,7 +6,7 @@ previous: python_lists
 next: color_sensor_basics
 ---
 
-# Mission 4.2 Telemetry 
+# Mission 4.2 Telemetry
 
 ## Objective
 Learn how to track real-world execution time, perform mathematical operations to calculate the robot's actual speed, and construct structured telemetry reports using Python f-strings.
@@ -16,7 +16,7 @@ Learn how to track real-world execution time, perform mathematical operations to
 ## Introduction
 Welcome back to Mission Control! While your rover executes its routes, it must constantly report its status and sensor data back to the base—a process known as **telemetry**.
 
-In previous modules, you printed basic messages by separating text and variables with commas, like `print("Total distance:", total)`. While this is fine for simple reading, it automatically inserts unwanted spaces and quickly becomes a confusing mess of quotation marks when you try to format multiple variables like `print("name=", name, ";dist=", dist)`. 
+In previous modules, you printed basic messages by separating text and variables with commas, like `print("Total distance:", total)`. While this is fine for simple reading, it automatically inserts unwanted spaces and quickly becomes a confusing mess of quotation marks when you try to format multiple variables like `print("name=", name, ";dist=", dist)`.
 
 Automated dashboards require data to be sent in an exact, strict format to parse it correctly. Today, you will learn a much cleaner Python tool to construct these complex messages. Furthermore, instead of just broadcasting static numbers, you will generate real physical telemetry by using a digital stopwatch to calculate the rover's actual speed!
 
@@ -24,7 +24,7 @@ Automated dashboards require data to be sent in an exact, strict format to parse
 
 ### 1. Reviewing and Expanding Data Types
 In Module 1, you learned how to store integers (`int`) and decimals (`float`) in variables. To build a complete telemetry report, we need to introduce two more types:
-* **`str` (String):** Stores text. Used for names and string identifiers (e.g., `robot_name = "LunarRover-1"`).
+* **`str` (String):** Stores text. Used for names and string identifiers (e.g., `robot_name = "JezeroRover-1"`).
 * **`bool` (Boolean):** You used Booleans (`True`/`False`) when working with sensor logic. Now, we will store them directly in variables to act as status flags (e.g., `is_ready = True`).
 
 ### 2. Measuring Time and Calculating Speed
@@ -63,7 +63,7 @@ Your task is to conduct a speed test. You will command the rover to drive a spec
 1. Command the rover to drive forward by **40 cm**.
 2. Use the `time.time()` function to measure the exact `duration` of the movement.
 3. Calculate the rover's real-world speed (`speed_cm_s`). *Hint*: Remember from physics that Distance = Speed * Time.
-4. Declare two additional variables for the report: a string `robot_name` (e.g., "Artemis-1") and a boolean `is_ready` (set to `True`).
+4. Declare two additional variables for the report: a string `robot_name` (e.g., "Jezero-1") and a boolean `is_ready` (set to `True`).
 5. Output the results using a single `print()` call with an **f-string**. The output must strictly match this format:
   `STATUS:name=<your_robot_name>;dist=<your_distance>;time=<your_duration>;speed=<your_speed>;ready=<is_ready_status>`
 

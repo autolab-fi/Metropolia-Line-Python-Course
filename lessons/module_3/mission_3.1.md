@@ -17,20 +17,20 @@ Understand the working principle of Infrared (IR) line sensors, establish an I2C
 ![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)
 
 ## Introduction
-Welcome back, Recruit! Up to this point, your rover has been driving "blind," relying entirely on internal motor encoders to estimate its position. But the lunar surface is unpredictable. To achieve true autonomy, the rover needs "eyes" to observe the ground beneath it.
+Welcome back, Recruit! Up to this point, your rover has been driving "blind," relying entirely on internal motor encoders to estimate its position. But the Martian test terrain is unpredictable. To achieve true autonomy, the rover needs "eyes" to observe the ground beneath it.
 
 Today, we are activating the rover's primary optical system: the Octoliner sensor.
 
 ## Theory
 
 ### 1. How IR Sensors Work
-The robot is equipped with an 8-channel line sensor connected via the I2C interface. 
+The robot is equipped with an 8-channel line sensor connected via the I2C interface.
 
 These sensors operate by emitting infrared light downward and detecting how much of it bounces back:
 * **White Surfaces:** A light surface reflects a significant amount of IR light back to the sensor. The sensor's circuitry registers this strong reflection as a **low** numerical value (around 50-80).
 * **Black Surfaces:** A dark surface absorbs most of the infrared light, resulting in a much lower reflection. The sensor detects very little reflection, which triggers a **high** numerical value in our system (around 800-1000).
 
-![IR Sensor Working](https://api.ondroid.org/media/courses/9/images/123f8500dcc54d8cbe40bdb87dc43ada.png)
+![IR Sensor Working](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/infrared-reflection.png)
 
 This sharp difference in values is what allows the robot to differentiate between a black track and the surrounding floor.
 
@@ -45,7 +45,7 @@ from octoliner import Octoliner
 import time
 
 # Initialize I2C with appropriate pins for your board
-i2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000) 
+i2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)
 
 # Create Octoliner instance (it has a default address of 42)
 octoliner = Octoliner()

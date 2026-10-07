@@ -6,11 +6,11 @@ previous:
 next: test_drive
 ---
 
-# Mission 1.1 Welcome to Artemis Support Program
+# Mission 1.1 Welcome to Jezero Rover Exploration
 
 ## Objective
 
-Join the Artemis Support Program, familiarize yourself with the Mission Control Interface, and establish a connection with the Lunar Terrain Vehicle (LTV).
+Explore the workspace and learn how to launch the Metropolia research rover activities from Moodle.
 
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)
 
@@ -18,9 +18,15 @@ Join the Artemis Support Program, familiarize yourself with the Mission Control 
 
 Welcome, Recruit!
 
-You have been selected for the **Artemis Support Program**. Your goal is to develop and test software for the next generation of lunar rovers. We are returning to the Moon, and this time, we are staying.
+You are joining **Jezero Rover Exploration**: a programming mission inspired by the exploration of Mars. Your task is to develop the software for a research rover, from its first movement commands to autonomous line following and adaptive speed.
 
-To assist the astronauts, we are deploying autonomous **Lunar Terrain Vehicles (LTV)**. Before we send them to the lunar South Pole, they must be tested in our simulation facility.
+You will work with the **real Metropolia robot in a remote laboratory** and its browser simulator. The teaching arena represents an exploration area inspired by Jezero crater; it is not a scale map of Mars. The black line is a marked route or survey boundary, and coloured patches and checkpoints are teaching markers. The infrared sensors measure surface contrast, not mineral composition.
+
+Start by learning the controls, then read the sensors, follow the survey route and improve the rover's steering and speed. No prior robotics experience is needed.
+
+![Real Metropolia laboratory and research rover](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/real-laboratory.png)
+
+*Camera frame from a recorded Metropolia robot run. This is the physical laboratory; the browser simulator is shown separately below.*
 
 ## Open your workspace from Moodle
 

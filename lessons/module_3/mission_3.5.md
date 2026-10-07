@@ -17,23 +17,23 @@ Learn the basics of GPIO (General Purpose Input/Output) and control the rover's 
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)
 
 ## Introduction
-In the previous mission, your rover successfully scanned the lunar surface and reported the location of basaltic mineral veins to the terminal. However, in the harsh environment of the Moon, Mission Control cannot always stare at a computer screen. 
+In the previous mission, your rover successfully scanned the Martian test terrain and reported the location of the marked survey boundary to the terminal. However, during a remote exploration run, Mission Control cannot always stare at a computer screen.
 
 We need real-time, visual telemetry. Today, you will step away from the sensors for a moment to learn how to send electrical signals to external hardware, turning the rover's onboard LED into a "Target Locked" indicator!
 
 ## Theory
 
 ### 1. What is GPIO?
-GPIO stands for "General Purpose Input/Output." It is the standard interface that allows the rover's "brain" (microcontroller) to interact with external physical devices. 
+GPIO stands for "General Purpose Input/Output." It is the standard interface that allows the rover's "brain" (microcontroller) to interact with external physical devices.
 * **Input:** Reading signals (like we did with the Octoliner).
 * **Output:** Sending signals (like sending voltage to a motor or a light).
 
-![image](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_2/headlights_2.png?raw=True)
+![image](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/led-feedback.svg)
 
-Now, we will focus on sending a logical high (voltage ON) and logical low (voltage OFF) signal to an LED (Light Emitting Diode). 
+Now, we will focus on sending a logical high (voltage ON) and logical low (voltage OFF) signal to an LED (Light Emitting Diode).
 
 ### 2. Setting the Pin Mode
-Before sending any signal, we must tell the rover's computer *how* a specific hardware pin should behave. We do this using the `machine.Pin` function. 
+Before sending any signal, we must tell the rover's computer *how* a specific hardware pin should behave. We do this using the `machine.Pin` function.
 
 To turn on a light, the pin must be configured as an Output (`machine.Pin.OUT`). The rover's primary LED is wired to **Pin 15**.
 
@@ -53,9 +53,9 @@ indicator_led.off() # Stops voltage, turning the LED OFF
 ```
 
 ## Assignment
-Upgrade your step-by-step geological scanner from previos mission. Create a custom function that blinks the LED, and call it whenever the rover detects a mineral vein in any of its zones.
+Upgrade your step-by-step geological scanner from previos mission. Create a custom function that blinks the LED, and call it whenever the rover detects the marked line in any of its zones.
 
 ## Conclusion
 Outstanding engineering! You now understand how GPIO works and how to manipulate external hardware.
 
-By combining sensor inputs, custom functions, and LED outputs, you have created a smart, reactive system. You have mastered all the core pieces of robotics: reading sensors, making decisions, and controlling hardware. 
+By combining sensor inputs, custom functions, and LED outputs, you have created a smart, reactive system. You have mastered all the core pieces of robotics: reading sensors, making decisions, and controlling hardware.

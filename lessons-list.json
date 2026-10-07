@@ -9,9 +9,9 @@
                 "str_id": "welcome",
                 "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_1/mission_1.1.md",
                 "sn": 1,
-                "name": "Welcome to Artemis Support Program",
-                "description": "Get oriented with the mission control interface and verify the rover connection.",
-                "template": "from lineRobot import Robot\n\nprint(\"ARTEMIS LTV SYSTEM DIAGNOSTIC\")\nprint(\"Initializing hardware...\")\n\n# Initialize LTV unit\nltv_unit = Robot()\n\nprint(\"[TEST 1] Checking Main Drive...\")\nltv_unit.move_forward_distance(15)\nltv_unit.move_backward_distance(15)\n\nprint(\"[TEST 2] Checking Steering Mechanism...\")\nltv_unit.turn_left()\nltv_unit.turn_right()\n\nprint(\"DIAGNOSTIC COMPLETE. SYSTEMS NOMINAL.\")\nprint(\"Welcome to the team!\")",
+                "name": "Welcome to Jezero Rover Exploration",
+                "description": "Explore the Jezero rover workspace and learn how to open activities from Moodle.",
+                "template": "# Welcome to Jezero Rover Exploration.\n# No code submission is required here.\n# Return to Moodle and open Test Drive for your first program.\n",
                 "executionMode": "simulation-and-lab"
             },
             {
@@ -242,7 +242,7 @@
                 "sn": 24,
                 "name": "Color Classification",
                 "description": "Build detect_color_name() using RGB ratio normalization and if/elif classification.",
-                "template": "from lineRobot import Robot\nimport machine\nfrom tcs3472 import tcs3472\nimport time\n\nrobot = Robot()\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\ncolor_sensor = \n\n# --- YOUR CUSTOM FUNCTION ---\ndef detect_color_name(r, g, b):\n    # 1. Calculate the total light\n    total = ___ + ___ + ___\n    \n    # Anti-crash protection (division by zero)\n    if total == 0:\n        return \"Unknown\"\n        \n    # 2. Calculate the ratios (Normalization)\n    r_ratio = ___ / ___\n    g_ratio = ___ / ___\n    b_ratio = ___ / ___\n    \n    # 3. Use logic to find the dominant color\n    # Hint: Remember the warning about the lunar floor!\n    if r_ratio > ___ :\n        return \"Red\"\n    elif ___ > ___ :\n        return \"Green\"\n    else:\n        return \"Floor\"\n\n# --- YOUR SCANNER PROGRAM ---\nprint(\"Starting smart scan...\")\n\n# TODO: Add your range(6) loop from Mission 4.3 here!\n\nprint(\"Smart scan complete.\")",
+                "template": "from lineRobot import Robot\nimport machine\nfrom tcs3472 import tcs3472\nimport time\n\nrobot = Robot()\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\ncolor_sensor = \n\n# --- YOUR CUSTOM FUNCTION ---\ndef detect_color_name(r, g, b):\n    # 1. Calculate the total light\n    total = ___ + ___ + ___\n    \n    # Anti-crash protection (division by zero)\n    if total == 0:\n        return \"Unknown\"\n        \n    # 2. Calculate the ratios (Normalization)\n    r_ratio = ___ / ___\n    g_ratio = ___ / ___\n    b_ratio = ___ / ___\n    \n    # 3. Use logic to find the dominant color\n    # Hint: Remember the warning about the test-track background!\n    if r_ratio > ___ :\n        return \"Red\"\n    elif ___ > ___ :\n        return \"Green\"\n    else:\n        return \"Floor\"\n\n# --- YOUR SCANNER PROGRAM ---\nprint(\"Starting smart scan...\")\n\n# TODO: Add your range(6) loop from Mission 4.3 here!\n\nprint(\"Smart scan complete.\")",
                 "executionMode": "simulation-and-lab"
             },
             {

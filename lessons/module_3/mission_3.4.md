@@ -40,17 +40,17 @@ center_value = data_array[3] # This extracts '85'
 
 The Octoliner sensor array consists of 8 sensors, each providing an analog value that indicates the intensity of reflected IR light.
 
-Each sensor has a fixed index, printed directly on the board:
+The board has eight sensing elements. Use the indexed top-view diagram below to relate the readings to the robot:
 
-![IR Sensor view](https://api.ondroid.org/media/courses/9/images/902a6a0968614aec98f73c425f8a831d.jpg)
+![IR Sensor view](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-board.jpg)
 
 When we look at the robot from above (as in our camera view):
 
 - **Left** side of the robot → sensors 7, 6, 5
 - **Center** → sensors 4 and 3
-- **Right** side → sensors 2, 1, 0 
+- **Right** side → sensors 2, 1, 0
 
-![IR Sensor Logic](https://github.com/pranavk-2003/line-robot-curriculum/blob/assignments/images/module_7/IR_sensor_array.png?raw=True)
+![IR Sensor Logic](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-zones.svg)
 
 How we controle movments:
 - **Central sensors (3 & 4)** → Move straight
@@ -63,7 +63,7 @@ To check an entire zone, we would normally need to check all three of its sensor
 * **Left Scout:** Index 6
 
 ### 3. The `elif` Statement
-To check multiple conditions in a specific order, we use the `elif` (Else If) statement. 
+To check multiple conditions in a specific order, we use the `elif` (Else If) statement.
 
 Python checks conditions from top to bottom. As soon as it finds a `True` condition, it executes that specific block and **skips the rest**. Here is an example of how this structure looks when checking different collision sensors (do not copy this for your assignment!):
 
@@ -79,13 +79,13 @@ else:
 ```
 
 ## Assignment
-Mission Control needs to map a long, dark basaltic mineral vein on the lunar surface. Write a geological survey program that performs a step-by-step scan of the ground. The rover must make 5 stops (moving 5 cm at a time) and report the exact position of the mineral vein at each stop.
+Mission Control needs to map a marked survey boundary on the Jezero-inspired test terrain. Write a geological survey program that performs a step-by-step scan of the ground. The rover must make 5 stops (moving 5 cm at a time) and report the exact position of the mineral vein at each stop.
 
 **Requirements:**
-1. **Setup:** The hardware is initialized in the template. Define a `threshold` variable. 
+1. **Setup:** The hardware is initialized in the template. Define a `threshold` variable.
 2. **Scanning Cycle:** Create a loop.
 3. **Action:** Inside the loop, first move the rover forward and add a delay to let the instruments settle.
-4. **Read Data:** 
+4. **Read Data:**
     * Read all 8 sensors at once and save the result to a variable named `sensor_data`.
     * Extract the values for index `1`, index `3`, and index `6` from `sensor_data` and save them into three separate variables (e.g., `left_scout`).
 5. **Analyze & Report:** * Use an `if / elif / else` structure to check your variables.
@@ -93,8 +93,10 @@ Mission Control needs to map a long, dark basaltic mineral vein on the lunar sur
 6. **Shutdown:** After the loop finishes, print `"Survey complete."`
 
 ## Conclusion
-Brilliant work! You have successfully learned how to process arrays, extract specific data points by their index, and control the rover in discrete, scientific steps. By combining this with `elif` statements, you have built the foundational "brain" of an autonomous tracking system. 
+Brilliant work! You have successfully learned how to process arrays, extract specific data points by their index, and control the rover in discrete, scientific steps. By combining this with `elif` statements, you have built the foundational "brain" of an autonomous tracking system.
 
 > **Important:** Save your code or keep this tab open! You will use this exact scanning loop as the foundation for your next mission.
 
 Right now, Mission Control has to read text in the terminal to know where the mineral vein is. In the next mission, we will learn how to use the rover's GPIO pins to turn on physical warning LEDs when the rover loses the trail!
+
+*Lab convention: geological alerts and vein labels are exercise messages for detecting the printed line. The sensors measure reflected infrared light; they do not identify minerals.*

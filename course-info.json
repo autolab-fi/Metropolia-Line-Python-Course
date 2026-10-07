@@ -1,10 +1,10 @@
 {
     "fullCourseName": "Python Programming for Mobile Robotics @ Metropolia",
     "shortCourseName": "Python Programming for Mobile Robotics @ Metropolia",
-    "shortDescription": "Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors, read sensors, navigate along the track.",
-    "fullDescription": "Learn the basics of Micropython programming with a remote-controlled ESP32 robot. Control motors and LEDs, read sensors and navigate along the track.",
+    "shortDescription": "Learn Python with the Metropolia research rover: movement, sensors and adaptive line following in a Jezero-inspired robot laboratory.",
+    "fullDescription": "Program a real mobile robot in a remote laboratory inspired by exploration of Jezero crater on Mars. Learn Python through movement, functions, loops, lists and line sensors, then build a line follower with proportional steering and adaptive speed. Open activities from Moodle for automatic LTI sign-in; no separate Ondroid registration is needed.",
     "imageSmall": "https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-640x360.png?raw=true",
-    "imageBig": "https://github.com/autolab-fi/Metropolia-Line-Python-Course/blob/main/images/course-info/Metropolia-course-info.jpg?raw=true",
+    "imageBig": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/course-info/Metropolia-1920x1080.png",
     "workload": "64 hours",
     "requirements": "No previous programming or robotics knowledge is required.",
     "programmingLanguage": "python",

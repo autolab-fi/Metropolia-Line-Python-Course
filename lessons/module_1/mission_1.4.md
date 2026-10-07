@@ -26,7 +26,7 @@ In the previous lesson, you gained insight into **functions** and **parameters**
 **robot.move_backward_distance(dist)** - A function for moving the robot backward by the number of centimeters specified by the parameter **dist**.
 
 # Robot directions:
-![robot_directions](https://api.ondroid.org/media/courses/9/images/module-1/robot_directions.png)
+![robot_directions](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/robot-directions.svg)
 
 ## Assignment
 

@@ -9,25 +9,25 @@ next: color_classification
 # Mission 4.3 Color Sensor Basics
 
 ## Objective
-Understand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the lunar surface across multiple zones.
+Understand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the Martian test terrain across multiple zones.
 
 ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)
 
 ## Introduction
-Your rover is now fully capable of navigating and reporting its physical status. However, to conduct true scientific research, it needs to analyze the geological composition of the ground. 
+Your rover is now fully capable of navigating and reporting its physical status. However, to conduct true scientific research, it needs to analyze the geological composition of the ground.
 
-Today, we are activating the rover's spectrometer: the **TCS34725 Color Sensor**. This hardware will allow your robot to distinguish between different types of minerals based on their color signatures. 
+Today, we are activating the rover's spectrometer: the **TCS34725 Color Sensor**. This hardware will allow your robot to distinguish between different types of minerals based on their color signatures.
 
-![Color_sensor](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-4/color_sensor.jpg?raw=true)
+![Color_sensor](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/color-sensor.jpg)
 
 ## Theory
 
 ### 1. How the Color Sensor Works (The RGB Model)
-To understand how the robot "sees" color, we need to understand the **RGB model**. RGB stands for **R**ed, **G**reen, and **B**lue. 
+To understand how the robot "sees" color, we need to understand the **RGB model**. RGB stands for **R**ed, **G**reen, and **B**lue.
 
-![RGB](https://github.com/autolab-fi/lineRobot-micropython-course/blob/main/images/module-4/rgb_explanation.jpg?raw=true)
+![RGB](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/rgb-reflection.jpg)
 
-Instead of seeing "Yellow" or "Purple" like a human eye, the sensor measures the intensity of red, green, and blue light reflecting off the ground. By combining these three basic values, the computer can identify any color. 
+Instead of seeing "Yellow" or "Purple" like a human eye, the sensor measures the intensity of red, green, and blue light reflecting off the ground. By combining these three basic values, the computer can identify any color.
 
 ### 2. The I2C Communication Bus
 In Module 3, you connected the Octoliner using the **I2C** interface with pins `SDA=21` and `SCL=22`. You might be wondering: *how can we connect a new color sensor if the line sensor is already using those exact same pins?*
@@ -61,7 +61,7 @@ print(f"Red: {r}, Green: {g}, Blue: {b}")
 ## Assignment
 
 The rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move.
-Mission Control has positioned the rover at the start of a straight testing corridor containing colored geological anomalies. 
+Mission Control has positioned the rover at the start of a straight testing corridor containing colored geological anomalies.
 
 You must program the rover to act as a **Linear Scanner**: it will take a series of short steps forward, stopping to scan and report the raw RGB values of the surface after each step.
 

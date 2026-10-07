@@ -28,7 +28,7 @@ To achieve a smooth, professional ride, the rover needs to know not just *where*
 
 ### 1. What is "Error"?
 In control theory, **Error** is the mathematical difference between where you *want* to be (the Target) and where you *actually* are (the Current State).
-For our lunar rover, the Target is to keep the tracking line perfectly centered under the sensor array. The Error is the physical distance the line has drifted to either side.
+For our research rover, the Target is to keep the tracking line perfectly centered under the sensor array. Here, the error is a normalized line-position reading, not a distance in centimetres.
 
 ### 2. The `track_line()` Function
 Calculating the exact center of a line using 8 separate sensors requires complex math (like calculating a weighted average). Fortunately, the Octoliner library has a built-in method that performs this calculation for us instantly!
@@ -47,7 +47,7 @@ This function returns a single decimal number (`float`) representing the exact p
 This continuous gradient—smoothly transitioning from `-1.0` to `1.0`- is exactly what we need. This value is our **Error**!
 
 ## Assignment
-Mission Control requires a structural scan of a basaltic fracture (the black line). To prevent the rover from twisting off the track during the scan, the engineering team has provided a skeleton for a `diagnostic_sweep(speed_left, speed_right)` function. 
+Mission Control requires a diagnostic scan across the marked survey line. To prevent the rover from twisting off the track during the scan, the engineering team has provided a skeleton for a `diagnostic_sweep(speed_left, speed_right)` function.
 
 You must complete the core logic of this function and then execute the mission sequence.
 
@@ -64,6 +64,6 @@ You must complete the core logic of this function and then execute the mission s
 Watch the live video feed as the robot rotates over the line and observe the terminal. You should see the printed numbers transition smoothly from `-1.0` (or close to it) to `1.0`.
 
 ## Conclusion
-Excellent! You have successfully observed the continuous gradient of the line's position. 
+Excellent! You have successfully observed the continuous gradient of the line's position.
 
 The robot now sees the world not just in rigid black and white ("Yes/No"), but in highly precise shades of grey ("How much?"). This smooth Error value is the absolute foundation of advanced robotics.

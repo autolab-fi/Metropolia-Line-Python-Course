@@ -17,7 +17,7 @@ Combine the Octoliner and the Color Sensor in a single program. The rover must a
 ![Advanced](https://img.shields.io/badge/Difficulty-Advanced-red)
 
 ## Introduction
-Up until now, your rover has been doing one job at a time: either following a line blindly or scanning colors while driving straight. Real Lunar rovers perform multiple tasks simultaneously. 
+Up until now, your rover has been doing one job at a time: either following a line blindly or scanning colors while driving straight. Research rovers perform multiple tasks simultaneously.
 
 Now is a major integration time. You will take your line-following algorithm from Module 3 and merge it with your smart color scanner from Mission 4.4!
 
@@ -45,11 +45,11 @@ last_color = "Floor"
 
 while True:
     current_color = # ... detect color ...
-    
+
     if current_color != last_color:
         print(f"New color detected: {current_color}")
         # React to the color here!
-        
+
     last_color = current_color # Update memory for the next loop
 ```
 
@@ -82,6 +82,6 @@ Merge your systems! Program the rover to follow the track. If it sees a Green zo
 5. Output: Print each new classification only when the color changes: `print(f"{current_color} (Raw: R:{r} G:{g} B:{b})")`. After turning on the LED, print `"Green: led on"`; on blue, print `"Blue: Mission complete."`, stop and break. The physical checker uses these messages together with camera confirmation that the robot has stopped near the blue area.
 
 ## Conclusion
-Congratulations! You have just programmed a truly multi-tasking robot. By using a shared I2C bus and a non-blocking LED signal, your rover can navigate complex terrain while simultaneously scanning for scientific anomalies. 
+Congratulations! You have just programmed a truly multi-tasking robot. By using a shared I2C bus and a non-blocking LED signal, your rover can navigate complex terrain while simultaneously scanning for scientific anomalies.
 
 > **Important:** Save your entire script. In the final mission of this module, we will upgrade this code to turn the rover into a silent, data-gathering probe that generates a massive post-mission report!
