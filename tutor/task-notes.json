@@ -264,9 +264,9 @@
       "reference": "solutions/module_3/simple_line_follower.py",
       "guidanceUpdated": "2026-10-07",
       "physicalValidation": {
-        "status": "prototype-verified",
+        "status": "verified",
         "date": "2026-10-07",
-        "successfulTrials": 5
+        "submissionId": 21966
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
@@ -549,8 +549,8 @@
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
         "status": "verified",
-        "submissionId": 21894,
-        "date": "2026-10-06"
+        "date": "2026-10-07",
+        "submissionId": 21963
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",

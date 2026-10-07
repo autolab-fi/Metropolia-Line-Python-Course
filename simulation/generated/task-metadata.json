@@ -691,17 +691,17 @@
       "module": "module_3",
       "verificationFile": "verifications/module_3.py",
       "physicalStart": {
-        "xCm": 75,
-        "yCm": 16,
+        "xCm": 108,
+        "yCm": 30,
         "direction": [
-          30,
-          0
+          0,
+          30
         ]
       },
       "initialPose": {
-        "xM": 0.75,
-        "yM": 0.84,
-        "headingRad": -0.0
+        "xM": 1.08,
+        "yM": 0.7,
+        "headingRad": -1.570796327
       },
       "blockLibraryFunctions": true
     },
