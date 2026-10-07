@@ -47,7 +47,7 @@ This function returns a single decimal number (`float`) representing the estimat
 This value is our **Error**. In this library it changes in steps, such as `0`, `0.25` and `0.5`, rather than continuously. If a sensor pattern is not recognized, `track_line()` keeps the previous valid value. A repeated value alone does not prove that the line is still visible; the next mission adds a check of the raw sensor readings.
 
 ## Assignment
-Mission Control requires a diagnostic scan across the marked survey line. To prevent the rover from twisting off the track during the scan, the engineering team has provided a skeleton for a `diagnostic_sweep(speed_left, speed_right)` function.
+The robot starts on the right-hand section of the line, facing towards the top of the field. Mission Control requires a diagnostic scan across the marked survey line. To prevent the rover from twisting off the track during the scan, the engineering team has provided a skeleton for a `diagnostic_sweep(speed_left, speed_right)` function.
 
 You must complete the core logic of this function and then execute the mission sequence.
 
@@ -66,4 +66,4 @@ Watch the live video feed as the robot rotates over the line and observe the ter
 ## Conclusion
 Excellent! You have successfully observed a numerical estimate of the line's position.
 
-The robot now sees the world not just in rigid black and white ("Yes/No"), but in a signed estimate ("Which side, and how far across the sensor array?"). This smooth Error value is the absolute foundation of advanced robotics.
+The robot now sees the world not just in rigid black and white ("Yes/No"), but in a signed estimate ("Which side, and how far across the sensor array?"). This signed Error value is the foundation for the feedback controllers in the next missions.

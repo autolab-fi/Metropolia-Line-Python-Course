@@ -11,7 +11,7 @@ def has_line_loss_failsafe(code):
 
 
 target_points = {
-    'concept_of_error': [(22, 86),(0,-30)],           # Start: x=22, y=86, direction=-30
+    'concept_of_error': [(108, 65),(0,-30)],          # Right-hand line, facing up; avoids the dock-side reset route
     'upgraded_relay_controller': [(40, 18.5), (30, 0)], # Physical line acquisition measured 2026-10-06
     'proportional_control': [(40, 18.5),(30, 0)],        # Physical line alignment
     'adaptive_speed': [(40, 18.5),(30, 0)],              # Physical line alignment
