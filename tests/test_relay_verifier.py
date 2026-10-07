@@ -46,6 +46,18 @@ class RelayVerdictTests(unittest.TestCase):
         self.assertTrue(result['success'])
         self.assertIn('Checkpoints: 3/3', result['description'])
 
+    def test_large_motion_without_checkpoints_fails(self):
+        _, result = self.replay([(40, 18.5), (90, 18.5)])
+        self.assertFalse(result['success'])
+
+    def test_incomplete_route_fails(self):
+        _, result = self.replay([(40, 18.5), (105, 60), (60, 79)])
+        self.assertFalse(result['success'])
+
+    def test_wrong_order_fails(self):
+        _, result = self.replay([(40, 18.5), (80, 16), (60, 79), (105, 60)])
+        self.assertFalse(result['success'])
+
     def test_stationary_reference_fails_and_stays_failed(self):
         _, result = self.replay([(40, 18.5), (40.1, 18.5)])
         self.assertFalse(result['success'])

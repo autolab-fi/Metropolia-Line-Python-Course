@@ -45,6 +45,9 @@ def concept_of_error(robot, image, td, user_code=None):
     Start: x=22, y=86, direction=-30
     """
 
+    if td is not None and td["data"].get("final_result") is not None:
+        return image, td, td["data"]["final_text"], td["data"]["final_result"].copy()
+
     # ===== CONFIGURATION =====
     #TASK_DURATION = 30
     
@@ -231,6 +234,9 @@ def concept_of_error(robot, image, td, user_code=None):
                 result["description"] = f"Task incomplete. Messages: {error_count}, Distance: {distance_moved:.1f}cm | Score: 0"
                 text = "Task incomplete. Check code execution."
 
+    if td["data"].get("completed_verdict"):
+        td["data"]["final_result"] = result.copy()
+        td["data"]["final_text"] = text
     return image, td, text, result
 
 
@@ -446,12 +452,17 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
             total_checkpoints = len(CHECKPOINTS)
             
             # Success criteria
-            if robot_moved:
+            if robot_moved and checkpoints_hit == total_checkpoints:
                 result["success"]     = True
                 result["score"]       = 100
                 result["description"] = f"Perfect! Relay controller working. Distance: {distance_moved:.1f}cm, Checkpoints: {checkpoints_hit}/{total_checkpoints} | Score: 100"
                 text = f"Mission complete! Distance: {distance_moved:.1f}cm, Checkpoints: {checkpoints_hit}/{total_checkpoints}"
             
+            elif robot_moved:
+                result.update(success=False, score=int(100 * checkpoints_hit / total_checkpoints),
+                              description=f"Route incomplete: Checkpoints: {checkpoints_hit}/{total_checkpoints}, Distance: {distance_moved:.1f}cm")
+                text = result["description"]
+
             elif distance_moved >= 10.0:
                 # Robot moved some but not enough
                 result["success"]     = False

@@ -384,16 +384,17 @@
     },
     "concept_of_error": {
       "reference": "solutions/module_5/concept_of_error_reference.py",
-      "guidanceUpdated": "2026-10-06",
+      "guidanceUpdated": "2026-10-07",
       "physicalValidation": {
         "status": "verified",
-        "submissionId": 21844,
-        "date": "2026-10-06"
+        "submissionId": 21973,
+        "date": "2026-10-07"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0\u2013255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left."
+        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left.",
+        "track_line() maps patterns to discrete values and retains its previous valid value for unrecognized patterns. Do not promise a smooth sweep over the entire -1 to 1 range."
       ],
       "parameters": {
         "sensitivity": 245
@@ -401,11 +402,11 @@
     },
     "upgraded_relay_controller": {
       "reference": "solutions/module_5/upgraded_relay_controller_reference.py",
-      "guidanceUpdated": "2026-10-06",
+      "guidanceUpdated": "2026-10-07",
       "physicalValidation": {
         "status": "verified",
-        "submissionId": 21856,
-        "date": "2026-10-06"
+        "submissionId": 21970,
+        "date": "2026-10-07"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
@@ -418,11 +419,11 @@
     },
     "proportional_control": {
       "reference": "solutions/module_5/proportional_control_reference.py",
-      "guidanceUpdated": "2026-10-06",
+      "guidanceUpdated": "2026-10-07",
       "physicalValidation": {
         "status": "verified",
-        "submissionId": 21872,
-        "date": "2026-10-06"
+        "submissionId": 21971,
+        "date": "2026-10-07"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
@@ -437,11 +438,11 @@
     },
     "adaptive_speed": {
       "reference": "solutions/module_5/adaptive_speed_reference.py",
-      "guidanceUpdated": "2026-10-06",
+      "guidanceUpdated": "2026-10-07",
       "physicalValidation": {
         "status": "verified",
-        "submissionId": 21883,
-        "date": "2026-10-06"
+        "submissionId": 21972,
+        "date": "2026-10-07"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
