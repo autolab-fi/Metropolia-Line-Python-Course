@@ -46,7 +46,7 @@ def detect_color_name(r, g, b):
 
 ## Assignment
 
-The rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move.
+The rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move. Use `robot.move_forward_speed_distance(40, 10)` for these short scanning steps; the lower speed helps the robot stop consistently.
 Your task is to upgrade your Linear Scanner from the previous mission. You will create a custom Python function that uses math to convert raw RGB data into a specific color name ("Red", "Green", or "Floor"), and then apply it to your scanning loop.
 
 **⚠️ WARNING: The Illumination Trap!** The grey test-track background under the lab lights might reflect more red light than you expect (sometimes over 40% of the total light).

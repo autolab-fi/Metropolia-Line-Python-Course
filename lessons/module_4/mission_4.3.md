@@ -60,7 +60,7 @@ print(f"Red: {r}, Green: {g}, Blue: {b}")
 
 ## Assignment
 
-The rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move.
+The rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move. Use `robot.move_forward_speed_distance(40, 10)` for these short scanning steps; the lower speed helps the robot stop consistently.
 Mission Control has positioned the rover at the start of a straight testing corridor containing colored geological anomalies.
 
 You must program the rover to act as a **Linear Scanner**: it will take a series of short steps forward, stopping to scan and report the raw RGB values of the surface after each step.

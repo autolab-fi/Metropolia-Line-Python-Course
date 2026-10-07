@@ -408,7 +408,7 @@ def color_sensor_basics(robot, image, td, user_code=None):
         has_tcs3472    = "tcs3472" in active_code
         has_range6     = "range(6)" in active_code
         has_rgb        = ".rgb()" in active_code
-        has_move       = "move_forward_distance(10)" in active_code
+        has_move       = bool(re.search(r"move_forward_distance\(\s*10\s*\)|move_forward_speed_distance\([^,]+,\s*10\s*\)", active_code))
         has_scan_print = "Scan - R:" in active_code
         code_valid = (
             has_i2c and has_tcs3472 and has_range6
@@ -420,7 +420,7 @@ def color_sensor_basics(robot, image, td, user_code=None):
         if not has_tcs3472:    missing.append("tcs3472 sensor")
         if not has_range6:     missing.append("range(6) loop")
         if not has_rgb:        missing.append(".rgb() call")
-        if not has_move:       missing.append("move_forward_distance(10)")
+        if not has_move:       missing.append("a 10 cm forward movement command")
         if not has_scan_print: missing.append('print format "Scan - R:..."')
 
         td = {
@@ -534,7 +534,7 @@ def color_classification(robot, image, td, user_code=None):
                              and "b_ratio" in active_code)
         has_range6        = "range(6)" in active_code
         has_rgb           = ".rgb()" in active_code
-        has_move          = "move_forward_distance(10)" in active_code
+        has_move          = bool(re.search(r"move_forward_distance\(\s*10\s*\)|move_forward_speed_distance\([^,]+,\s*10\s*\)", active_code))
         has_detect_call   = "detect_color_name(r, g, b)" in active_code
         has_scan_print    = "Scan -" in active_code
         code_valid = (
@@ -550,7 +550,7 @@ def color_classification(robot, image, td, user_code=None):
         if not has_normalization: missing.append("r_ratio / g_ratio / b_ratio normalization")
         if not has_range6:        missing.append("range(6) loop")
         if not has_rgb:           missing.append(".rgb() call")
-        if not has_move:          missing.append("move_forward_distance(10)")
+        if not has_move:          missing.append("a 10 cm forward movement command")
         if not has_detect_call:   missing.append("detect_color_name(r, g, b) call in loop")
         if not has_scan_print:    missing.append('print format "Scan Scan -..."')
 

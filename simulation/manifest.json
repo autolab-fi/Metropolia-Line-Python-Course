@@ -980,8 +980,7 @@
         {
           "type": "source-code",
           "requiredMethods": [
-            "rgb",
-            "move_forward_distance"
+            "rgb"
           ],
           "requiredFeatures": [
             "for-loop",
@@ -990,6 +989,12 @@
           ],
           "requiredRangeArguments": [
             6
+          ],
+          "requiredAnyMethods": [
+            [
+              "move_forward_distance",
+              "move_forward_speed_distance"
+            ]
           ]
         },
         {
@@ -1024,8 +1029,7 @@
         {
           "type": "source-code",
           "requiredMethods": [
-            "rgb",
-            "move_forward_distance"
+            "rgb"
           ],
           "requiredFeatures": [
             "for-loop",
@@ -1049,6 +1053,12 @@
           ],
           "requiredRangeArguments": [
             6
+          ],
+          "requiredAnyMethods": [
+            [
+              "move_forward_distance",
+              "move_forward_speed_distance"
+            ]
           ]
         },
         {

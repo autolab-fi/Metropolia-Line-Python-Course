@@ -28,7 +28,7 @@ for step in range(6):
     r, g, b = color_sensor.rgb()
     detected_color = detect_color_name(r, g, b)
     print(f"Scan - {detected_color} (Raw: R:{r} G:{g} B:{b})")
-    robot.move_forward_distance(10)
+    robot.move_forward_speed_distance(40, 10)
     time.sleep(0.5)
 
 print("Smart scan complete.")

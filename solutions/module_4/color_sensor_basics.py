@@ -11,7 +11,7 @@ color_sensor = tcs3472(bus)
 for step in range(6):
     r, g, b = color_sensor.rgb()
     print(f"Scan - R:{r} G:{g} B:{b}")
-    robot.move_forward_distance(10)
+    robot.move_forward_speed_distance(40, 10)
     time.sleep(0.5)
 
 print("Linear scan complete.")

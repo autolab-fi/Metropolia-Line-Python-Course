@@ -50,7 +50,7 @@
           "lesson": "ef30438d7ecf73469f4b08238a0bb1fe2cccfb3dc91ec8bd031c654adacd9b52",
           "template": "e858451370a2d432a053ee85de1d9bd28c4cc0f0a605817541cfa98d01769441",
           "reference": "2f11d870fd5b7005b7907a5606c3f4c4281144aea5c59ec10d92dfc3c86f6ae0",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "b7805cd0302da8d2d90e3e53d9999a28e9aefa1a2518d04c55a5bbcd4e9d35a3"
         }
       },
@@ -114,7 +114,7 @@
           "lesson": "52dc1bb976882289a7766bb2062e2eadb1733dd99e3a46eceb1c2abfca1d6469",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "9a01ced5bb405fbecf83b5f8f9e028580f99199d8eef1869217a09edd46017af",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "d56a784ca7fda772258b5e72174d66e9ffe23d09f4f487dc20f71cb03d61a87e"
         }
       },
@@ -178,7 +178,7 @@
           "lesson": "8455f07a37fedbc6f03b024b8f86a67f754d3f3ae66fdd217d271827e681b786",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "cc854f6c9e983cf5c2631c1cf15c61674cf00f9cc753d610d617bde7f9ff438d",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "15c98ef8f34e9062a0b388e5e1d622cec92e82d41104dca1b315f7eb26ecae03"
         }
       },
@@ -245,7 +245,7 @@
           "lesson": "d4acba4f8ff45ef4eac5ad387bc034eb9f2ec4fcca354a095551220eb0de9d8b",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "3f6337d39bdaeb885c9096154bcfe23448097d74875d49d9f389584ee7b7d4db",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "db28db95755854b58cf5e7b477ead483f741d4a188ee29eb5f1a277ddba5e463"
         }
       },
@@ -325,7 +325,7 @@
           "lesson": "50d3a8e1841839680631c56fedb9a1117724b9037d92ed0e5a1647032d9d83dc",
           "template": "94184280c584574f994c7a701b640f16ae9571692ffa686617a1214a1af77c1a",
           "reference": "e1b92fbf4892c8d3135f73a8739025f4cef64838e0a40dd9e035a52d957724c9",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "ecc0253836534335b7963d30151a67c0c7ca35f21a2ab26a1bbb7ae4cd2ee769"
         }
       },
@@ -400,7 +400,7 @@
           "lesson": "808328a3fe219511c7973c30a80de8f6e2cb79032de580314b0e5c8b68b7dfed",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "7d48a252ad5d8e79b5b4d39a405fb1019ae49030b41616207188088284daf8a4",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "42805d4725907e8fff7a0b8b8d73df3de663eff36208aad61c3687082d161da5"
         }
       },
@@ -491,7 +491,7 @@
           "lesson": "5b3203dca6659db6e49f60ff3e9662e0d4103b98bfd4c2fbe9083e7c84887ffa",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "fd3b75a71aa0abfdda6a8b0f43592f22d543658eb7a2af8d654725f0649e2067",
-          "checker": "e3e5f14a49da3b8252cda71579f6f155b2317c5945e02b2508586069ec13bb51",
+          "checker": "1709d2410cf476e944f1a9929567bd04d5b159fd21aad949042e5a9f24321c33",
           "simulation": "dc46faa19171e018bda108679a53fe61dec67fe686ae9e6ed79e4175d5385623"
         }
       },
@@ -683,7 +683,7 @@
       "assignment_full_text": "---\nindex: 10\nmodule: module_2\ntask: defining_functions\nprevious: differential_drive\nnext: for_loops\n---\n# Mission 2.3 Defining Functions\n\n## Objective\nLearn what a function is and how to create your own custom functions in MicroPython.\n\n![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)\n\n## Introduction\nIn programming, a **function** is a named, reusable block of code that performs a specific task. You can think of it as a recipe or a mini-program inside your main program. \n\nWe have already used built-in functions created by other programmers, such as `print()`, `time.sleep()`, or `robot.run_motors_speed()`. But what if you need a specific maneuver that doesn't exist in the library? In this lesson, you will learn how to write your very own custom functions!\n\n## Theory\n\n### 1. Why Use Functions?\nImagine you need the robot to perform a special \"dance\" maneuver multiple times. Writing the individual motor commands, sleep times, and stop commands over and over makes your code huge and hard to read. By grouping these commands into a custom function, you can perform the whole dance later with just one short line of code.\n\n### 2. Creating a Function (`def`)\nIn Python, you define a function using the `def` keyword, followed by the function's name and parentheses. \n\nHere is an example of a function that makes the robot move forward and then wait:\n\n```python\nfrom lineRobot import Robot\nimport time\n\nrobot = Robot()\n\n# Defining the function\ndef move_forward_and_wait():\n    robot.run_motors_speed(50, 50)\n    time.sleep(2)\n    robot.stop()\n    time.sleep(1)\n\n# Calling the function\nmove_forward_and_wait()\n```\n\n**Notice two important things:**\n* **Indentation:** The code inside the function is indented (shifted to the right). This tells Python which commands belong inside the function.\n* **Defining vs Calling:** Defining a function doesn't run it automatically. You have to **call** it by writing its name with parentheses (like `move_forward_and_wait()`) at the bottom of your script to actually execute the code!\n\n### 3. Adding Parameters\nFunctions become even more powerful when you give them **parameters** (inputs). This allows the function to behave differently depending on the values you pass to it.\n\n```python\ndef custom_move_forward(speed, seconds):\n    robot.run_motors_speed(speed, speed)\n    time.sleep(seconds)\n    robot.stop()\n        \n# Now you can use it with any speed and time!\ncustom_move_forward(60, 3)  # Moves at 60% speed for 3 seconds\ncustom_move_forward(100, 1) # Moves at 100% speed for 1 second\n```\n\n### 4. Returning Values\nSome functions perform an action (like moving), while others calculate something and **return** a result back to you using the `return` keyword.\n\n```python\ndef add_numbers(num1, num2):\n    result = num1 + num2\n    return result\n\ntotal = add_numbers(5, 10) # The variable 'total' will store the number 15\n```\n\n## Assignment\nWrite a program that makes the robot turn approximately **180 degrees** by creating your own custom function.\n\n**Requirements:**\n* **Do not** use built-in navigation functions (like `turn_left`, `turn_right`, or `move_forward_distance`).\n* Define a custom function.\n* Inside your function, delete *pass* (it's just a placeholder in empty functions) in the templete and then write your code: use manual motor control methods (`run_motors_speed` or raw PWM) and `time.sleep()`.\n* Call your function at the end of the script to execute the maneuver.\n\n**Hint:** Because our robot uses a differential drive, it can rotate on the spot. To do this, one wheel must spin forward while the other spins backward at the same time!\n\n## Conclusion\nCongratulations! You are no longer just a driver; you are now extending the robot's core software. Custom functions are the building blocks of advanced programming. Next up, we will learn how to repeat these functions automatically!\nTune your turn duration on the physical robot after practicing in the simulator. The two environments can require different values; your function and the 180-degree goal stay the same.\n",
       "assignment_summary": "--- index: 10 module: module_2 task: defining_functions previous: differential_drive next: for_loops --- # Mission 2.3 Defining Functions ## Objective Learn what a function is and how to create your own custom functions in MicroPython. ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green) ## Introduction In programming, a **function** is a named, reusable block of code that performs a specific task. You can think of it as a recipe or a mini-program inside your main program. We have already used built-in functions created by other programmers, such as `print()`, `time.sleep()`, or `robot.run_motors_speed()`. But what if you need a specific maneuver that doesn't exist in the library? In this lesson, you will learn how to write your very own custom functions! ## Theory ### 1. Why Use Functions? Imagine you need the robot to perform a special \"dance\" maneuver multiple times. Writing the individual motor commands, sleep times, and stop commands over and over makes your code huge and hard to read. By grouping these commands into a custom function, you can perform the whole dance later with just one short line of code. ### 2. Creating a Function (`def`) In Python, you define a function using the `def` keyword, followed by the function's name and parentheses. Here is an example of a function that makes the robot move forward and then wait: **Notice two important things:** * **Indentation:** The code inside the function is indented (shifted to the right). This tells Python which commands belong inside the function. * **Defining vs Calling:** Defining a function doesn't run it automatically. You have to **call** it by writing its name with parentheses (like `move_forward_and_wait()`) at the bottom of your script to actually execute the code! ### 3. Adding Parameters Functions become even more powerful when you give them **parameters** (inputs). This allows the function to behave differently depending on the values you pass to it. ### 4. Returning Values Some fun",
       "reference_solution_text": "from lineRobot import Robot\nimport time\n\nrobot = Robot()\n\nt_speed = 28\nt_time = 0.85\nt_offset = 10\n\ndef turn_180(sp, t, off):\n    robot.run_motors_speed(sp, -(sp + off))\n    time.sleep(t)\n    robot.stop()\n\nturn_180(t_speed, t_time, t_offset)\n",
-      "verification_summary": "Test: Robot must turn 180 degrees using a defined function.\nHardware evidence: {\"status\": \"verified\", \"submissionId\": 21898, \"date\": \"2026-10-06\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
+      "verification_summary": "Test: Robot must turn 180 degrees using a defined function.\nHardware evidence: {\"status\": \"verified\", \"submissionId\": 21919, \"date\": \"2026-10-06\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
       "verification_rules": {
         "physical_start": {
           "xCm": 50,
@@ -737,7 +737,7 @@
         ],
         "physical_validation": {
           "status": "verified",
-          "submissionId": 21898,
+          "submissionId": 21919,
           "date": "2026-10-06"
         },
         "starting_parameters": {},
@@ -753,7 +753,8 @@
       },
       "common_mistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
+        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants.",
+        "Timed turns vary between runs on the same robot: the same 0.85 s instructor pulse passed 21898 and 21919 but underturned by 20 degrees in 21918. Treat reference constants as examples to retune, not guaranteed calibration."
       ],
       "repo_refs": {
         "context_manifest_schema": 1,
@@ -2042,7 +2043,7 @@
           "lesson": "90e3266e46e227efafcbe34559e80e9ad8734e6e755f361a2a32cd3bcb0e5c3b",
           "template": "becf5f9317c79f6ecabe3418bec24836dfeeb8d5966958ad19917c13d8cefbc1",
           "reference": "8a3bf8b67b6499cb8c4b4133cf7aaf132d06d55e32861d5d011461529af5d6a9",
-          "checker": "98994242f43bd37790a9cad13e0b77348793306d7983a87dfe93960c904d5058",
+          "checker": "be8119c556d259e536b692475417a01b5c109223431a24968bae3bdd424758e0",
           "simulation": "34a1a4d8d2add13f382f28327269e2f8764e97adb49315aa5876fc31bd8ab54e"
         }
       },
@@ -2145,16 +2146,16 @@
           "lesson": "b81c0bbb49823dd54b22ecd6c83e12887f1e916ccb16e3f5f460d5e23c3216ef",
           "template": "8eb042c53bd102354d9bfb204f08b2f8f73661a5efa095ec63c26df66dce2b37",
           "reference": "d40182c1cc22966cce39e61760147d113c1489f99e8b540803206c4b12e3189e",
-          "checker": "98994242f43bd37790a9cad13e0b77348793306d7983a87dfe93960c904d5058",
+          "checker": "be8119c556d259e536b692475417a01b5c109223431a24968bae3bdd424758e0",
           "simulation": "3bb6f9cdf0829c4b56d0c839c288992261c19a08daa3487c2c1eee0f19b0f1ee"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_4.py"
     },
     "color_sensor_basics": {
-      "assignment_full_text": "---\nindex: 23\nmodule: module_4\ntask: color_sensor_basics\nprevious: telemetry_reporting\nnext: color_classification\n---\n\n# Mission 4.3 Color Sensor Basics\n\n## Objective\nUnderstand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the Martian test terrain across multiple zones.\n\n![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)\n\n## Introduction\nYour rover is now fully capable of navigating and reporting its physical status. However, to conduct true scientific research, it needs to analyze the geological composition of the ground.\n\nToday, we are activating the rover's spectrometer: the **TCS34725 Color Sensor**. This hardware will allow your robot to distinguish between different types of minerals based on their color signatures.\n\n![Color_sensor](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/color-sensor.jpg)\n\n## Theory\n\n### 1. How the Color Sensor Works (The RGB Model)\nTo understand how the robot \"sees\" color, we need to understand the **RGB model**. RGB stands for **R**ed, **G**reen, and **B**lue.\n\n![RGB](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/rgb-reflection.jpg)\n\nInstead of seeing \"Yellow\" or \"Purple\" like a human eye, the sensor measures the intensity of red, green, and blue light reflecting off the ground. By combining these three basic values, the computer can identify any color.\n\n### 2. The I2C Communication Bus\nIn Module 3, you connected the Octoliner using the **I2C** interface with pins `SDA=21` and `SCL=22`. You might be wondering: *how can we connect a new color sensor if the line sensor is already using those exact same pins?*\n\nThe magic of I2C is that it acts as a **communication bus**. Like a shared telephone line. Multiple sensors can connect to the exact same two wires! To prevent them from talking over each other, every sensor is manufactured with a unique internal \"address\".\n* The Octoliner's default address is `42`.\n* The TCS34725 Color Sensor's address is `0x29` (which is 41 in standard numbers).\n\nBecause their addresses are different, the rover's brain can talk to both of them on the same pins without any conflict. For now, we will just initialize the color sensor on this bus:\n\n```python\nimport machine\nfrom tcs3472 import tcs3472\n\n# 1. Initialize the shared I2C bus\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\n\n# 2. Connect the color sensor to the bus\ncolor_sensor = tcs3472(bus)\n```\n\n### 3. Reading the RGB Data\nOnce the sensor is connected, reading the data is very straightforward. We use the `.rgb()` method, which reads the surface and returns three integers representing the Red, Green, and Blue intensity values (ranging from 0 to 255)\n\n```python\n# Read the color data\nr, g, b = color_sensor.rgb()\nprint(f\"Red: {r}, Green: {g}, Blue: {b}\")\n```\n\n## Assignment\n\nThe rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move.\nMission Control has positioned the rover at the start of a straight testing corridor containing colored geological anomalies.\n\nYou must program the rover to act as a **Linear Scanner**: it will take a series of short steps forward, stopping to scan and report the raw RGB values of the surface after each step.\n\n**Requirements:**\n1. Set up the hardware: initialize the `Robot` and the `tcs3472` color sensor on the I2C bus (`sda=21`, `scl=22`).\n2. Use a `for` loop with the `range` function to make the rover perform 6 identical scanning steps.\n3. Inside the loop:\n* Read the color using the `.rgb()` method and print the result using an f-string: `Scan - R:<value> G:<value> B:<value>`.\n* Сommand the rover to move forward by **10 cm**.\n* Add a `time.sleep(0.5)` delay after the movement to let the sensor stabilize over the ground.\n\nOnce your rover completes the scan, look closely at the data printed in your terminal. *Did you notice how the R, G, and B values changed drastically when the rover drove over a colored zone compared to the normal ground?*\n\n> **Important:** Save your code or keep this tab open! You will use this exact loop as the foundation for your next mission.\n\n## Conclusion\nSpectrometer online! You have successfully established an I2C connection with a new piece of hardware and extracted raw RGB data from multiple zones.\n\nRight now, the rover is just printing numbers. In the next mission, we will teach the robot's brain how to understand these numbers and classify them into actual human-readable colors!\n",
+      "assignment_full_text": "---\nindex: 23\nmodule: module_4\ntask: color_sensor_basics\nprevious: telemetry_reporting\nnext: color_classification\n---\n\n# Mission 4.3 Color Sensor Basics\n\n## Objective\nUnderstand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the Martian test terrain across multiple zones.\n\n![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)\n\n## Introduction\nYour rover is now fully capable of navigating and reporting its physical status. However, to conduct true scientific research, it needs to analyze the geological composition of the ground.\n\nToday, we are activating the rover's spectrometer: the **TCS34725 Color Sensor**. This hardware will allow your robot to distinguish between different types of minerals based on their color signatures.\n\n![Color_sensor](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/color-sensor.jpg)\n\n## Theory\n\n### 1. How the Color Sensor Works (The RGB Model)\nTo understand how the robot \"sees\" color, we need to understand the **RGB model**. RGB stands for **R**ed, **G**reen, and **B**lue.\n\n![RGB](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/rgb-reflection.jpg)\n\nInstead of seeing \"Yellow\" or \"Purple\" like a human eye, the sensor measures the intensity of red, green, and blue light reflecting off the ground. By combining these three basic values, the computer can identify any color.\n\n### 2. The I2C Communication Bus\nIn Module 3, you connected the Octoliner using the **I2C** interface with pins `SDA=21` and `SCL=22`. You might be wondering: *how can we connect a new color sensor if the line sensor is already using those exact same pins?*\n\nThe magic of I2C is that it acts as a **communication bus**. Like a shared telephone line. Multiple sensors can connect to the exact same two wires! To prevent them from talking over each other, every sensor is manufactured with a unique internal \"address\".\n* The Octoliner's default address is `42`.\n* The TCS34725 Color Sensor's address is `0x29` (which is 41 in standard numbers).\n\nBecause their addresses are different, the rover's brain can talk to both of them on the same pins without any conflict. For now, we will just initialize the color sensor on this bus:\n\n```python\nimport machine\nfrom tcs3472 import tcs3472\n\n# 1. Initialize the shared I2C bus\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\n\n# 2. Connect the color sensor to the bus\ncolor_sensor = tcs3472(bus)\n```\n\n### 3. Reading the RGB Data\nOnce the sensor is connected, reading the data is very straightforward. We use the `.rgb()` method, which reads the surface and returns three integers representing the Red, Green, and Blue intensity values (ranging from 0 to 255)\n\n```python\n# Read the color data\nr, g, b = color_sensor.rgb()\nprint(f\"Red: {r}, Green: {g}, Blue: {b}\")\n```\n\n## Assignment\n\nThe rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move. Use `robot.move_forward_speed_distance(40, 10)` for these short scanning steps; the lower speed helps the robot stop consistently.\nMission Control has positioned the rover at the start of a straight testing corridor containing colored geological anomalies.\n\nYou must program the rover to act as a **Linear Scanner**: it will take a series of short steps forward, stopping to scan and report the raw RGB values of the surface after each step.\n\n**Requirements:**\n1. Set up the hardware: initialize the `Robot` and the `tcs3472` color sensor on the I2C bus (`sda=21`, `scl=22`).\n2. Use a `for` loop with the `range` function to make the rover perform 6 identical scanning steps.\n3. Inside the loop:\n* Read the color using the `.rgb()` method and print the result using an f-string: `Scan - R:<value> G:<value> B:<value>`.\n* Сommand the rover to move forward by **10 cm**.\n* Add a `time.sleep(0.5)` delay after the movement to let the sensor stabilize over the ground.\n\nOnce your rover completes the scan, look closely at the data printed in your terminal. *Did you notice how the R, G, and B values changed drastically when the rover drove over a colored zone compared to the normal ground?*\n\n> **Important:** Save your code or keep this tab open! You will use this exact loop as the foundation for your next mission.\n\n## Conclusion\nSpectrometer online! You have successfully established an I2C connection with a new piece of hardware and extracted raw RGB data from multiple zones.\n\nRight now, the rover is just printing numbers. In the next mission, we will teach the robot's brain how to understand these numbers and classify them into actual human-readable colors!\n",
       "assignment_summary": "--- index: 23 module: module_4 task: color_sensor_basics previous: telemetry_reporting next: color_classification --- # Mission 4.3 Color Sensor Basics ## Objective Understand the RGB color model, initialize the TCS34725 color sensor via the I2C interface, and read raw color data from the Martian test terrain across multiple zones. ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green) ## Introduction Your rover is now fully capable of navigating and reporting its physical status. However, to conduct true scientific research, it needs to analyze the geological composition of the ground. Today, we are activating the rover's spectrometer: the **TCS34725 Color Sensor**. This hardware will allow your robot to distinguish between different types of minerals based on their color signatures. ![Color_sensor](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/color-sensor.jpg) ## Theory ### 1. How the Color Sensor Works (The RGB Model) To understand how the robot \"sees\" color, we need to understand the **RGB model**. RGB stands for **R**ed, **G**reen, and **B**lue. ![RGB](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/rgb-reflection.jpg) Instead of seeing \"Yellow\" or \"Purple\" like a human eye, the sensor measures the intensity of red, green, and blue light reflecting off the ground. By combining these three basic values, the computer can identify any color. ### 2. The I2C Communication Bus In Module 3, you connected the Octoliner using the **I2C** interface with pins `SDA=21` and `SCL=22`. You might be wondering: *how can we connect a new color sensor if the line sensor is already using those exact same pins?* The magic of I2C is that it acts as a **communication bus**. Like a shared telephone line. Multiple sensors can connect to the exact same two wires! To prevent them from talking over each other, every sensor is manufactured with a unique internal \"address\". * The Octo",
-      "reference_solution_text": "from lineRobot import Robot\nimport machine\nfrom tcs3472 import tcs3472\nimport time\n\nrobot = Robot()\n\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\ncolor_sensor = tcs3472(bus)\n\nfor step in range(6):\n    r, g, b = color_sensor.rgb()\n    print(f\"Scan - R:{r} G:{g} B:{b}\")\n    robot.move_forward_distance(10)\n    time.sleep(0.5)\n\nprint(\"Linear scan complete.\")\n",
+      "reference_solution_text": "from lineRobot import Robot\nimport machine\nfrom tcs3472 import tcs3472\nimport time\n\nrobot = Robot()\n\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\ncolor_sensor = tcs3472(bus)\n\nfor step in range(6):\n    r, g, b = color_sensor.rgb()\n    print(f\"Scan - R:{r} G:{g} B:{b}\")\n    robot.move_forward_speed_distance(40, 10)\n    time.sleep(0.5)\n\nprint(\"Linear scan complete.\")\n",
       "verification_summary": "Verification for lesson: Color Sensor Basics — 4.3\nStart: x=125, y=84, direction x=0, y=-30\nHardware evidence: {\"status\": \"pending\", \"submissionId\": null, \"date\": null}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
       "verification_rules": {
         "physical_start": {
@@ -2173,8 +2174,7 @@
           {
             "type": "source-code",
             "requiredMethods": [
-              "rgb",
-              "move_forward_distance"
+              "rgb"
             ],
             "requiredFeatures": [
               "for-loop",
@@ -2183,6 +2183,12 @@
             ],
             "requiredRangeArguments": [
               6
+            ],
+            "requiredAnyMethods": [
+              [
+                "move_forward_distance",
+                "move_forward_speed_distance"
+              ]
             ]
           },
           {
@@ -2231,19 +2237,19 @@
         "reference_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/solutions/module_4/color_sensor_basics.py",
         "guidance_updated": "2026-10-06",
         "source_sha256": {
-          "lesson": "52a9a750c0802b53cbddacb7c95a888f3742854e239caf43a4de688826f5a63b",
+          "lesson": "0077d34edadbe8807d1432ce734664396bf6bf328ba3df34410848317e170991",
           "template": "6908f4ed3810dcf44df09e925d877665b4e5603e8732942256377dc1bbf7f296",
-          "reference": "acbadb78dc430642bfac533213b4e37537d72854b32984d4920d0e2558262999",
-          "checker": "98994242f43bd37790a9cad13e0b77348793306d7983a87dfe93960c904d5058",
-          "simulation": "b263316cc0ecadb6ad0d5f0eb6c2504bb7317e543a23deac0c1e5b41ae57d95c"
+          "reference": "3ab60fdbfa2cc2166f2f1ab384106859216e33dc29b5de5d3288fc3b63f86be5",
+          "checker": "be8119c556d259e536b692475417a01b5c109223431a24968bae3bdd424758e0",
+          "simulation": "40259d97781b50bea2183ebacf278acd940090f75f77116bb36a41d1576d804d"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_4.py"
     },
     "color_classification": {
-      "assignment_full_text": "---\nindex: 24\nmodule: module_4\ntask: color_classification\nprevious: color_sensor_basics\nnext: multiple_sensors\n---\n\n# Mission 4.4 Color Classification\n\n## Objective\nLearn how to process raw sensor data, understand color normalization, and write a custom Python function to classify RGB values into human-readable colors.\n\n![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)\n\n## Introduction\nIn the previous mission, your rover successfully scanned the terrain and printed raw RGB (Red, Green, Blue) values. However, raw numbers are hard for humans to read, and even harder for a robot to use for making decisions.\n\nIf we want the rover to say \"I found Green!\" instead of \"R:165 G:174 B:142\", we need to teach its brain how to interpret those numbers.\n\n## Theory\n\n### 1. The Illumination Problem\nYou might think we can just say: `if r > 150: print(\"Red\")`. But there is a huge problem: **lighting changes**.\nIf the rover drives into a shadow, the raw values for *all* colors will drop. The sensor might read `R:80 G:20 B:20`. The red value is low (80), but the object is still clearly red!\n\nTo fix this, we don't look at the raw numbers. We look at the **proportions** (ratios).\n\n### 2. Normalizing Data\nTo find the true color, we calculate what percentage of the total light belongs to each color. This is called **data normalization**.\n1. First, we find the total amount of light: `total = r + g + b`\n2. Then, we divide each color by the total: `r_ratio = r / total`\n\nIf `r_ratio` is `0.5`, it means 50% of all the light reflecting off the ground is red. This proportion stays the same whether the rover is in bright sunlight or deep shadow!\n\n**The Golden Rule of Normalization:** Because we are dividing by the total, the sum of your ratios (`r_ratio + g_ratio + b_ratio`) will **always equal exactly 1.0 (100%)**.\n\n### 3. Creating a Custom Function\nWe will package this math into a custom **function**. A function is a reusable block of code that takes inputs, processes them, and `returns` an output.\n\n```python\ndef detect_color_name(r, g, b):\n    # Math goes here\n    return \"Red\" # The output\n```\n\n## Assignment\n\nThe rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move.\nYour task is to upgrade your Linear Scanner from the previous mission. You will create a custom Python function that uses math to convert raw RGB data into a specific color name (\"Red\", \"Green\", or \"Floor\"), and then apply it to your scanning loop.\n\n**⚠️ WARNING: The Illumination Trap!** The grey test-track background under the lab lights might reflect more red light than you expect (sometimes over 40% of the total light).\n* Do not just guess the numbers!\n* Look at the raw data logs from your Mission 4.3 scan and use a calculator to find the exact `r_ratio` of the floor versus the Red zone.\n* Set your `if r_ratio > ___` threshold high enough to ignore the floor, but low enough to detect the real Red zone.\n\n**Requirements:**\n1. Set up the hardware: Initialize the `Robot` and the `tcs3472` color sensor on the I2C bus.\n2. Complete the `detect_color_name(r, g, b)` function:\n    * Math: Calculate the `total` light, and then divide each color by the total to find `r_ratio`, `g_ratio`, and `b_ratio`.\n    * Logic: Fill in the `if/elif` statements. *Hint: A good starting point for a dominant color is `0.45` (45%). For example, if it's red, `r_ratio` should be `> 0.45`.\n3. Build the Smart Scanner: Add your previous scanning loop from Mission 4.3 below the function, add small changes inside the loop:\n    * Call the function: after reading the `r, g, b` values, pass them into your new function: `color_name = detect_color_name(r, g, b)`.\n    * Print: Output the final color name and the raw values using an f-string: `Scan - {color_name} (Raw: R:{r} G:{g} B:{b})`.\n\n## Conclusion\nCongratulations! You have successfully built a color classification algorithm. Your rover can now adapt to the lighting conditions and accurately identify the \"Red\" and \"Green\" zones while ignoring the background noise of the test-track background.\n\n> **Important:** Save your completed `detect_color_name(r, g, b)` function. You will need to copy and paste this exact function into your next mission, where we will combine the color scanner with the line-tracking algorithm!\n",
+      "assignment_full_text": "---\nindex: 24\nmodule: module_4\ntask: color_classification\nprevious: color_sensor_basics\nnext: multiple_sensors\n---\n\n# Mission 4.4 Color Classification\n\n## Objective\nLearn how to process raw sensor data, understand color normalization, and write a custom Python function to classify RGB values into human-readable colors.\n\n![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)\n\n## Introduction\nIn the previous mission, your rover successfully scanned the terrain and printed raw RGB (Red, Green, Blue) values. However, raw numbers are hard for humans to read, and even harder for a robot to use for making decisions.\n\nIf we want the rover to say \"I found Green!\" instead of \"R:165 G:174 B:142\", we need to teach its brain how to interpret those numbers.\n\n## Theory\n\n### 1. The Illumination Problem\nYou might think we can just say: `if r > 150: print(\"Red\")`. But there is a huge problem: **lighting changes**.\nIf the rover drives into a shadow, the raw values for *all* colors will drop. The sensor might read `R:80 G:20 B:20`. The red value is low (80), but the object is still clearly red!\n\nTo fix this, we don't look at the raw numbers. We look at the **proportions** (ratios).\n\n### 2. Normalizing Data\nTo find the true color, we calculate what percentage of the total light belongs to each color. This is called **data normalization**.\n1. First, we find the total amount of light: `total = r + g + b`\n2. Then, we divide each color by the total: `r_ratio = r / total`\n\nIf `r_ratio` is `0.5`, it means 50% of all the light reflecting off the ground is red. This proportion stays the same whether the rover is in bright sunlight or deep shadow!\n\n**The Golden Rule of Normalization:** Because we are dividing by the total, the sum of your ratios (`r_ratio + g_ratio + b_ratio`) will **always equal exactly 1.0 (100%)**.\n\n### 3. Creating a Custom Function\nWe will package this math into a custom **function**. A function is a reusable block of code that takes inputs, processes them, and `returns` an output.\n\n```python\ndef detect_color_name(r, g, b):\n    # Math goes here\n    return \"Red\" # The output\n```\n\n## Assignment\n\nThe rover starts at **(125, 84) cm**, facing toward the top of the camera image, along the right-hand color corridor. Take six readings, each followed by a 10 cm forward move. Use `robot.move_forward_speed_distance(40, 10)` for these short scanning steps; the lower speed helps the robot stop consistently.\nYour task is to upgrade your Linear Scanner from the previous mission. You will create a custom Python function that uses math to convert raw RGB data into a specific color name (\"Red\", \"Green\", or \"Floor\"), and then apply it to your scanning loop.\n\n**⚠️ WARNING: The Illumination Trap!** The grey test-track background under the lab lights might reflect more red light than you expect (sometimes over 40% of the total light).\n* Do not just guess the numbers!\n* Look at the raw data logs from your Mission 4.3 scan and use a calculator to find the exact `r_ratio` of the floor versus the Red zone.\n* Set your `if r_ratio > ___` threshold high enough to ignore the floor, but low enough to detect the real Red zone.\n\n**Requirements:**\n1. Set up the hardware: Initialize the `Robot` and the `tcs3472` color sensor on the I2C bus.\n2. Complete the `detect_color_name(r, g, b)` function:\n    * Math: Calculate the `total` light, and then divide each color by the total to find `r_ratio`, `g_ratio`, and `b_ratio`.\n    * Logic: Fill in the `if/elif` statements. *Hint: A good starting point for a dominant color is `0.45` (45%). For example, if it's red, `r_ratio` should be `> 0.45`.\n3. Build the Smart Scanner: Add your previous scanning loop from Mission 4.3 below the function, add small changes inside the loop:\n    * Call the function: after reading the `r, g, b` values, pass them into your new function: `color_name = detect_color_name(r, g, b)`.\n    * Print: Output the final color name and the raw values using an f-string: `Scan - {color_name} (Raw: R:{r} G:{g} B:{b})`.\n\n## Conclusion\nCongratulations! You have successfully built a color classification algorithm. Your rover can now adapt to the lighting conditions and accurately identify the \"Red\" and \"Green\" zones while ignoring the background noise of the test-track background.\n\n> **Important:** Save your completed `detect_color_name(r, g, b)` function. You will need to copy and paste this exact function into your next mission, where we will combine the color scanner with the line-tracking algorithm!\n",
       "assignment_summary": "--- index: 24 module: module_4 task: color_classification previous: color_sensor_basics next: multiple_sensors --- # Mission 4.4 Color Classification ## Objective Learn how to process raw sensor data, understand color normalization, and write a custom Python function to classify RGB values into human-readable colors. ![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange) ## Introduction In the previous mission, your rover successfully scanned the terrain and printed raw RGB (Red, Green, Blue) values. However, raw numbers are hard for humans to read, and even harder for a robot to use for making decisions. If we want the rover to say \"I found Green!\" instead of \"R:165 G:174 B:142\", we need to teach its brain how to interpret those numbers. ## Theory ### 1. The Illumination Problem You might think we can just say: `if r > 150: print(\"Red\")`. But there is a huge problem: **lighting changes**. If the rover drives into a shadow, the raw values for *all* colors will drop. The sensor might read `R:80 G:20 B:20`. The red value is low (80), but the object is still clearly red! To fix this, we don't look at the raw numbers. We look at the **proportions** (ratios). ### 2. Normalizing Data To find the true color, we calculate what percentage of the total light belongs to each color. This is called **data normalization**. 1. First, we find the total amount of light: `total = r + g + b` 2. Then, we divide each color by the total: `r_ratio = r / total` If `r_ratio` is `0.5`, it means 50% of all the light reflecting off the ground is red. This proportion stays the same whether the rover is in bright sunlight or deep shadow! **The Golden Rule of Normalization:** Because we are dividing by the total, the sum of your ratios (`r_ratio + g_ratio + b_ratio`) will **always equal exactly 1.0 (100%)**. ### 3. Creating a Custom Function We will package this math into a custom **function**. A function is a reusable block of code that takes inputs, processes them, and `re",
-      "reference_solution_text": "from lineRobot import Robot\nimport machine\nfrom tcs3472 import tcs3472\nimport time\n\nrobot = Robot()\n\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\ncolor_sensor = tcs3472(bus)\n\ndef detect_color_name(r, g, b):\n    total = r + g + b\n    if total == 0:\n        return \"Unknown\"\n    r_ratio = r / total\n    g_ratio = g / total\n    b_ratio = b / total\n    if r_ratio > 0.5:\n        return \"Red\"\n    elif g_ratio > 0.4:\n        return \"Green\"\n    elif b_ratio > 0.4:\n        return \"Blue\"\n    else:\n        return \"Floor\"\n\nfor step in range(6):\n    r, g, b = color_sensor.rgb()\n    detected_color = detect_color_name(r, g, b)\n    print(f\"Scan - {detected_color} (Raw: R:{r} G:{g} B:{b})\")\n    robot.move_forward_distance(10)\n    time.sleep(0.5)\n\nprint(\"Smart scan complete.\")\n",
+      "reference_solution_text": "from lineRobot import Robot\nimport machine\nfrom tcs3472 import tcs3472\nimport time\n\nrobot = Robot()\n\nbus = machine.I2C(sda=machine.Pin(21), scl=machine.Pin(22))\ncolor_sensor = tcs3472(bus)\n\ndef detect_color_name(r, g, b):\n    total = r + g + b\n    if total == 0:\n        return \"Unknown\"\n    r_ratio = r / total\n    g_ratio = g / total\n    b_ratio = b / total\n    if r_ratio > 0.5:\n        return \"Red\"\n    elif g_ratio > 0.4:\n        return \"Green\"\n    elif b_ratio > 0.4:\n        return \"Blue\"\n    else:\n        return \"Floor\"\n\nfor step in range(6):\n    r, g, b = color_sensor.rgb()\n    detected_color = detect_color_name(r, g, b)\n    print(f\"Scan - {detected_color} (Raw: R:{r} G:{g} B:{b})\")\n    robot.move_forward_speed_distance(40, 10)\n    time.sleep(0.5)\n\nprint(\"Smart scan complete.\")\n",
       "verification_summary": "Verification for lesson: Color Classification — 4.4\nStart: x=125, y=84, direction x=0, y=-30\nHardware evidence: {\"status\": \"pending\", \"submissionId\": null, \"date\": null}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
       "verification_rules": {
         "physical_start": {
@@ -2269,8 +2275,7 @@
           {
             "type": "source-code",
             "requiredMethods": [
-              "rgb",
-              "move_forward_distance"
+              "rgb"
             ],
             "requiredFeatures": [
               "for-loop",
@@ -2294,6 +2299,12 @@
             ],
             "requiredRangeArguments": [
               6
+            ],
+            "requiredAnyMethods": [
+              [
+                "move_forward_distance",
+                "move_forward_speed_distance"
+              ]
             ]
           },
           {
@@ -2337,11 +2348,11 @@
         "reference_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/solutions/module_4/color_classification.py",
         "guidance_updated": "2026-10-06",
         "source_sha256": {
-          "lesson": "d2df86b5c2fb66116d51bdf19b13254d0f207832e131ad03ecc2fb4a6167de0c",
+          "lesson": "a182a6bb6a95a0f5eb420d586b83d8201878d55c6fa493275481eb9cabff273d",
           "template": "1126199c9b54011b94ea4ba98adb0d775f1ba8a65a92dd44f5f6cb14f523f9bf",
-          "reference": "40fda2eebae94ec1f9fe5f67682a9ecd7b1e80b20c82ef640121da3fdd4b2481",
-          "checker": "98994242f43bd37790a9cad13e0b77348793306d7983a87dfe93960c904d5058",
-          "simulation": "171a3beee6486547dedee32083c1518b4e0508bed53bc94cf4cb39a07d1e8264"
+          "reference": "b0ab1590648cd114e0f4173f08f797b5777ac45c931b7ff093938139bc5697d3",
+          "checker": "be8119c556d259e536b692475417a01b5c109223431a24968bae3bdd424758e0",
+          "simulation": "950974f25e2f17b29a881742ec05757e4443935498edd750239935d315da8e3a"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_4.py"
@@ -2472,7 +2483,7 @@
           "lesson": "62060f6a9d0914b6e83957e219277b2349bdc9284383956549a1dd9f65acfade",
           "template": "35a88ae69ca7958f1ddd2c298fbd268578442997d05c14e7f221d6accfce553e",
           "reference": "82e60cf302050d5a421d83d562ff016ab0b9fe64e2abd8126e653a65e18ba864",
-          "checker": "98994242f43bd37790a9cad13e0b77348793306d7983a87dfe93960c904d5058",
+          "checker": "be8119c556d259e536b692475417a01b5c109223431a24968bae3bdd424758e0",
           "simulation": "2416f5f9b7982fe311d5be460bc441ee6453e48d6fa3bca4f3ccf7f3525ba8fa"
         }
       },
@@ -2585,7 +2596,7 @@
           "lesson": "197de812981c005a54b3370837077e46c1f9591401873542481e7271a5072687",
           "template": "d2c0038435d79ba692f7c1ceeae3431895a9f51bbb83dde8039c59097fa6d1fd",
           "reference": "b1b0ff9a9d520deaf10bfabec9856dd0570ad2a46aef6928c0a11781e17e446d",
-          "checker": "98994242f43bd37790a9cad13e0b77348793306d7983a87dfe93960c904d5058",
+          "checker": "be8119c556d259e536b692475417a01b5c109223431a24968bae3bdd424758e0",
           "simulation": "052fa8599966ecf9836a4e0fad67d8f676ca9fe2ffb9a73015a618ffef248785"
         }
       },
@@ -3238,7 +3249,7 @@
           "lesson": "58ef800dbb9ad9d016948ac37cf68be3bf46bcf91a8b605e1d3cdbdd47413cf3",
           "template": "7265847094a8ee0f604ad51bdfa0238ab49786608b8fe4ac6fe6759199784bb6",
           "reference": "61428fc653c1ef8b31639093bed8d49ac7b032bb7ea4793be81af774eccc68cb",
-          "checker": "56aca9b9b2f75462c44b8ea6475d1d99c07b89cdea76c34e3d2e09651d80f0d0",
+          "checker": "4744a2493b56a75a8916414cab1952acde6e157f6c826b496325a0aef94e4268",
           "simulation": "153e0d5ac5d199b5895dc708a8092474e8e9dbe958d4bd4ed5bcdf3e1626e68d"
         }
       },
@@ -3356,7 +3367,7 @@
           "lesson": "2f343b5605b6c4c40de6329a6b42ebe77b94c18b34c2fa61195df8ea2e97493d",
           "template": "1fd342f10ec2358565c57adc5631d6930db41f39343b341229acfe0942db9935",
           "reference": "b286b2c98581a1b3f1d080636aba931a78a444aa3c759688c948dfd85f143b0a",
-          "checker": "56aca9b9b2f75462c44b8ea6475d1d99c07b89cdea76c34e3d2e09651d80f0d0",
+          "checker": "4744a2493b56a75a8916414cab1952acde6e157f6c826b496325a0aef94e4268",
           "simulation": "b48defdc99268800db67d7aa6656339cd7d5e8f2670fdda617fb2136373fa84a"
         }
       },
@@ -3457,7 +3468,7 @@
           "lesson": "a76c579b3532357249826df9d3386ef2fb96c4e60bfd1cd56375549af0e499b4",
           "template": "4a0ca5c9b42643189e18f62dd5760fd5383d8d4f67dfdfe7d9ba3f21623803d7",
           "reference": "c1e60dc8afa5f7b6243d20477327c9c74c234c7a6fce4498d5b7c4a2b2dc5e17",
-          "checker": "56aca9b9b2f75462c44b8ea6475d1d99c07b89cdea76c34e3d2e09651d80f0d0",
+          "checker": "4744a2493b56a75a8916414cab1952acde6e157f6c826b496325a0aef94e4268",
           "simulation": "3a3cded3694bc2b5ad7a0aa7e369d6ca1816fa7457ff9cbb8e6db79102b7fea8"
         }
       },
@@ -3585,7 +3596,7 @@
           "lesson": "c65abe90f6d6cf5874afec66bb4d626be54d8b6fe5eed7f3facd6e7fdf0ceba5",
           "template": "aba78b061cf324b3507ecf8c6875a99df542e5a3be5f9c443d7fb3fc4d75cf48",
           "reference": "01af7d906003e2b16bf8ac3223794cd68b446fab20559c2ab86edd29f6683c8c",
-          "checker": "56aca9b9b2f75462c44b8ea6475d1d99c07b89cdea76c34e3d2e09651d80f0d0",
+          "checker": "4744a2493b56a75a8916414cab1952acde6e157f6c826b496325a0aef94e4268",
           "simulation": "226b6cde79bdda0df6bafda173c9354b122fa9bc4ee3ba3692dd33c57e424d95"
         }
       },

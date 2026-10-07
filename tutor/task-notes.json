@@ -116,12 +116,13 @@
       "guidanceUpdated": "2026-10-06",
       "physicalValidation": {
         "status": "verified",
-        "submissionId": 21898,
+        "submissionId": 21919,
         "date": "2026-10-06"
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
-        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants."
+        "This is a timed open-loop tuning exercise. Students intentionally tune motor values and pulse duration separately in simulation and on hardware. Different successful numerical settings are expected, not a simulator defect. Teach changing one parameter at a time; do not hand out the instructor reference constants.",
+        "Timed turns vary between runs on the same robot: the same 0.85 s instructor pulse passed 21898 and 21919 but underturned by 20 degrees in 21918. Treat reference constants as examples to retune, not guaranteed calibration."
       ],
       "parameters": {},
       "simulationReference": "solutions/module_2/defining_functions_simulation.py",
