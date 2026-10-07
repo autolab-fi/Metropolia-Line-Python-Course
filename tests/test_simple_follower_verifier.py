@@ -41,21 +41,21 @@ class SimpleFollowerTests(unittest.TestCase):
         return state, result
 
     def test_complete_route_finishes_even_before_ten_seconds(self):
-        state, result = self.replay([(75,16),(103,45),(98,80)])
+        state, result = self.replay([(108,30),(106,43),(105,55)])
         self.assertTrue(result['success'])
         self.assertEqual(state['end_time'],4)
 
     def test_one_checkpoint_is_not_complete(self):
-        _, result = self.replay([(75,16),(103,45)])
+        _, result = self.replay([(108,30),(106,43)])
         self.assertFalse(result['success'])
         self.assertEqual(result['score'],50)
 
     def test_wrong_order_fails(self):
-        _, result = self.replay([(75,16),(98,80),(103,45)])
+        _, result = self.replay([(108,30),(105,55),(106,43)])
         self.assertFalse(result['success'])
 
     def test_empty_code_cannot_pass_by_motion(self):
-        _, result = self.replay([(75,16),(103,45),(98,80)],'pass')
+        _, result = self.replay([(108,30),(106,43),(105,55)],'pass')
         self.assertFalse(result['success'])
 
 if __name__ == '__main__':

@@ -17,7 +17,7 @@ Learn how to use `or` and `and` logical operators to combine multiple conditions
 ![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)
 
 ## Introduction
-In the previous mission, your rover successfully drove itself! However, relying on only three "scout" sensors has a major flaw: **blind spots**. If the track has a sharp turn, the line might slip between the scouts, causing the rover to lose the path. 
+In the previous mission, supplied code grouped the readings into three zones using `max()`. Now you will build these zone conditions yourself using `or`, then follow a longer route with bends. Using every sensor avoids gaps between isolated scout readings.
 
 The `and` operator can also recognize an intersection when one is present. The current test uses a closed track: complete its checkpoints in order while continuously following the line.
 

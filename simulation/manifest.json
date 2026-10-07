@@ -765,20 +765,13 @@
           ],
           "requiredAnyMethods": [
             [
-              "run_motors_speed",
-              "turn_left_angle",
-              "turn_right_angle"
+              "run_motors_speed"
             ]
           ],
           "requiredFeatures": [
             "while-true-loop",
             "if-statement",
             "elif-statement"
-          ],
-          "requiredIndexAccesses": [
-            1,
-            3,
-            6
           ]
         },
         {
@@ -790,15 +783,15 @@
           "type": "ordered-checkpoints",
           "points": [
             {
-              "xM": 1.03,
-              "yM": 0.55
+              "xM": 1.06,
+              "yM": 0.57
             },
             {
-              "xM": 0.98,
-              "yM": 0.2
+              "xM": 1.05,
+              "yM": 0.45
             }
           ],
-          "toleranceM": 0.1,
+          "toleranceM": 0.04,
           "stopProgramOnPass": true
         },
         {
@@ -807,9 +800,9 @@
       ],
       "timeoutSec": 90,
       "initialPose": {
-        "xM": 0.75,
-        "yM": 0.84,
-        "headingRad": 0
+        "xM": 1.06,
+        "yM": 0.7,
+        "headingRad": -1.5707963267948966
       }
     },
     "logical_operators": {
