@@ -1233,7 +1233,12 @@
         {
           "type": "program-finished"
         }
-      ]
+      ],
+      "initialPose": {
+        "xM": 1.02,
+        "yM": 0.35,
+        "headingRad": 1.570796327
+      }
     },
     "upgraded_relay_controller": {
       "mode": "simulation-and-lab",
