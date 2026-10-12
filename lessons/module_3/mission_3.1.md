@@ -1,4 +1,7 @@
 ---
+
+**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
+
 index: 14
 module: module_3
 task: intro_to_octoliner

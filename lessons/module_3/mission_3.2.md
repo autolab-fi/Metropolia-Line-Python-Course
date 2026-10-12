@@ -1,4 +1,7 @@
 ---
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 index: 15
 module: module_3
 task: conditional_logic

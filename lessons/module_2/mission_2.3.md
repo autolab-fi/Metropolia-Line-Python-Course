@@ -1,4 +1,7 @@
 ---
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 index: 10
 module: module_2
 task: defining_functions

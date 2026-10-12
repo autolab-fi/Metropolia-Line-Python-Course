@@ -1,4 +1,7 @@
 ---
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 index: 7
 module: module_1
 task: sequential_navigation

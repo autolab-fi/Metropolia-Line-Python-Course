@@ -1,0 +1,33 @@
+"""Moodle's selected activities keep matching lesson, simulator and tutor rules."""
+import json
+from pathlib import Path
+import unittest
+
+ROOT=Path(__file__).resolve().parents[1]
+EITHER={
+    'welcome','test_drive','directional_movement','python_variables_commands',
+    'maneuvering','sequential_navigation','defining_functions','for_loops',
+    'conditional_logic','processing_sensor_data','arrays_and_elif','led_feedback',
+    'simple_line_follower','logical_operators','python_lists','concept_of_error',
+    'upgraded_relay_controller','proportional_control',
+}
+HARDWARE={'electric_motors','intro_to_octoliner','adaptive_speed'}
+
+class CompletionPolicyTests(unittest.TestCase):
+    def test_all_selected_activities_have_consistent_completion_rules(self):
+        lessons={t['str_id']:t for m in json.loads((ROOT/'lessons-list.json').read_text()) for t in m['lessons']}
+        sim=json.loads((ROOT/'simulation/manifest.json').read_text())['tasks']
+        tutor=json.loads((ROOT/'tutor/generated/profiles.json').read_text())['tasks']
+        self.assertEqual(len(EITHER|HARDWARE),21)
+        for key in EITHER|HARDWARE:
+            with self.subTest(task=key):
+                mode='simulation-or-lab' if key in EITHER else 'simulation-and-lab'
+                self.assertEqual(lessons[key]['executionMode'],mode)
+                self.assertEqual(sim[key]['mode'],mode)
+                self.assertEqual(tutor[key]['verification_rules']['execution_mode'],mode)
+                text=(ROOT/lessons[key]['url'].split('/main/')[1]).read_text()
+                self.assertIn('**Completion:**',text)
+                rule=tutor[key]['verification_rules']['completion_requires']
+                self.assertIn('simulator OR physical' if key in EITHER else 'successful physical verification',rule)
+        self.assertEqual(lessons['sandbox']['executionMode'],'simulation-and-lab')
+        self.assertEqual({key for key,t in lessons.items() if t['executionMode']=='simulation-or-lab'},EITHER)

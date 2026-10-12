@@ -1,4 +1,7 @@
 ---
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 index: 1
 module: module_1
 task: welcome
@@ -49,20 +52,26 @@ Drag the panel dividers to change their sizes. The **Reset** button in the works
 
 ## Simulator and physical robot
 
-**Test in simulator** runs your current code in the browser when simulation is available for the assignment. The image below is a close-up of the **Run → Simulator** panel after the Test Drive example. This is a simulated robot and track, not a camera feed from the laboratory.
+**Check in simulator** runs your current code in the browser when simulation is available for the assignment. The image below is a close-up of the **Run → Simulator** panel after the Test Drive example. This is a simulated robot and track, not a camera feed from the laboratory.
 
 ![Close-up of the current browser simulator showing the robot and track](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/platform/ondroid-simulator-jezero-20261007.png)
 
 **Verify on robot** sends your program to the physical robot. Review Output, execution status and available video or feedback when the run finishes. If the robot is busy, your submission may wait in the queue.
 
-A simulator result and a physical-robot verification are separate results. Follow the assignment instructions for the required check.
+For 18 of the 21 core activities, a successful **Check in simulator** or **Verify on robot** completes the activity and sends the same grade to Moodle. You do not need to repeat a passed activity on the other target.
+
+Three activities require a successful **Verify on robot**: **Electric Motors**, **Introduction to Octoliner Sensor**, and **Adaptive Speed**. You can practise these in the simulator first.
+
+Earlier simulator runs were practice. To receive credit under the new rule, run **Check in simulator** once more.
+
+Sandbox is optional practice. Activities outside the 21 core Moodle activities retain their own completion rules.
 
 *Screenshots captured on 7 October 2026.*
 
 ## Assignment
 
 1. Locate Lesson, Editor, Output and Run in your workspace.
-2. Find **Test in simulator** and **Verify on robot** and read the distinction above. You do not need to submit code for this introduction.
+2. Read the distinction between **Check in simulator** and **Verify on robot** above. Click **Check in simulator** with the starter comments to mark this introduction complete; no Python program is needed.
 3. Return to Moodle and open **Test Drive** to write and run your first movement program.
 
 ## Continue through the course

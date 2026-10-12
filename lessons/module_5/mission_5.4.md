@@ -1,4 +1,7 @@
 ---
+
+**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
+
 index: 31
 module: module_5
 task: adaptive_speed

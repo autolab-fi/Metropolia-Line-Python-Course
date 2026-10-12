@@ -59,7 +59,7 @@ def build(check=False):
             'physical_validation': validation,
             'starting_parameters': note['parameters'],
             'execution_mode': lesson['executionMode'],
-            'completion_requires': ('orientation only; no code submission; continue to Test Drive from Moodle' if key == 'welcome' else 'successful physical verification; simulation is practice'),
+            'completion_requires': ('successful simulator OR physical verification after this policy update; either completes the activity and sends the same Moodle grade. Earlier simulator practice runs remain practice; run a new check to receive credit' if lesson['executionMode'] == 'simulation-or-lab' else 'optional practice; no required verification' if lesson['executionMode'] == 'simulation-optional' else 'successful physical verification; simulation is practice'),
             'simulator_limitations': 'Measured Metropolia RGB samples do not reproduce all illumination/tape overlap. Timed motor motion and reset behavior need physical validation.',
             'do_not_reveal': ['full reference solution', 'raw checker implementation', 'hidden test thresholds'],
         }

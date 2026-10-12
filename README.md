@@ -36,3 +36,10 @@ Course info:
 - *imageBig*: URL for the large image (approximately 1920x1080 px).
 - *workload*: Estimated time required to complete the course.
 - *programmingLanguage*: string identifyer of programming language used in course.
+## Completion of the 21 core Moodle activities
+
+The 18 activities marked `simulation-or-lab` accept a successful simulator or physical robot check. Both paths save course progress and send 100/100 through LTI AGS for the launched Moodle activity. Earlier simulator practice attempts do not retroactively receive grades; a new check is required.
+
+Electric Motors (`electric_motors`), Introduction to Octoliner Sensor (`intro_to_octoliner`) and Adaptive Speed (`adaptive_speed`) retain `simulation-and-lab`: both targets are available, and successful physical verification is required for completion. The optional Sandbox and activities outside the selected 21 keep their existing rules.
+
+Publish frontend/backend support for `simulation-or-lab` before updating this course or the shared simulator manifest. The physical checkers, reference motion, reset poses and HAMK policy are unchanged.

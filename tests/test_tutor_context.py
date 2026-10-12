@@ -34,7 +34,7 @@ class TutorContextTests(unittest.TestCase):
                 if note['physicalValidation']['status']=='verified':
                     self.assertIsNotNone(note['physicalValidation']['submissionId'])
                     self.assertIsNotNone(note['physicalValidation']['date'])
-                self.assertEqual(lessons[key]['executionMode'],'simulation-and-lab')
+                self.assertIn(lessons[key]['executionMode'], {'simulation-and-lab', 'simulation-or-lab'})
 
     def test_racing_starter_has_the_five_documented_fixes(self):
         lessons = {t['str_id']:t for m in json.loads((ROOT/'lessons-list.json').read_text()) for t in m['lessons']}

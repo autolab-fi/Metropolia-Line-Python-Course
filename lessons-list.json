@@ -11,8 +11,8 @@
                 "sn": 1,
                 "name": "Welcome to Jezero Rover Exploration",
                 "description": "Explore the Jezero rover workspace and learn how to open activities from Moodle.",
-                "template": "# Welcome to Jezero Rover Exploration.\n# No code submission is required here.\n# Return to Moodle and open Test Drive for your first program.\n",
-                "executionMode": "simulation-and-lab"
+                "template": "# Welcome to Jezero Rover Exploration.\n# Read the lesson, then click Check in simulator to complete this introduction.\n# No Python program is needed here.\n# Return to Moodle and open Test Drive for your first program.\n",
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "test_drive",
@@ -21,7 +21,7 @@
                 "name": "Test drive",
                 "description": "Create a robot object and run your first movement command.",
                 "template": "# Write code here",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "license_to_drive",
@@ -39,7 +39,7 @@
                 "name": "Directional Movement",
                 "description": "Use distance-based movement functions to move forward and backward precisely.",
                 "template": "# Write code here",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "python_variables_commands",
@@ -48,7 +48,7 @@
                 "name": "Python Variables & Commands",
                 "description": "Introduce variables, arithmetic, and print statements to control and report motion.",
                 "template": "from lineRobot import Robot\n\nrobot = Robot()\n\n# 1. Create variables\nback_dist = \nfwd_dist = \n\n# 2. Move using variables\n\n\n# 3. Calculate and print total distance\n# (Write your calculation and print here)\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "maneuvering",
@@ -57,7 +57,7 @@
                 "name": "Maneuvering",
                 "description": "Perform 90-degree and precision turns with and without variables.",
                 "template": "# Write code here",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "sequential_navigation",
@@ -66,7 +66,7 @@
                 "name": "Sequential navigation",
                 "description": "Plan a multi-step route and document your code using comments.",
                 "template": "# Write code here",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             }
         ]
     },
@@ -101,7 +101,7 @@
                 "name": "Defining Functions",
                 "description": "Creating reusable code blocks for movement.",
                 "template": "from lineRobot import Robot\nimport time\n\nrobot = Robot()\n\n# Define your function here\ndef turn_180():\n    pass\n\n# Call your function\n# turn_180()",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "for_loops",
@@ -110,7 +110,7 @@
                 "name": "For Loops",
                 "description": "Repeating actions efficiently using loops.",
                 "template": "from lineRobot import Robot\nimport time\n\nrobot = Robot()\n\nside = 60\nstep = 5 \n\n# TODO: Set up a loop to repeat the pattern 10 times using 'for'\n# TODO: Inside the loop, calculate the distance and move the robot\n\nrobot.stop()",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "encoder_theory",
@@ -154,7 +154,7 @@
                 "name": "Conditional Logic & Reactive Behavior",
                 "description": "Use if/else and break to make the rover react and stop when a line is detected.",
                 "template": "from lineRobot import Robot\nimport machine\nimport time\nfrom octoliner import Octoliner\n\n# Initialize Hardware\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = \n\noctoliner.set_sensitivity(243)\n\nrobot.run_motors_speed(20, 20)\n\n# Create While loop\nwhile :\n    \n    # Implement conditional logic\n    if  ___ > 800:\n        \n    time.sleep(0.05)\n\nprint(\"Target found. Rover stopped.\")",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "processing_sensor_data",
@@ -163,7 +163,7 @@
                 "name": "Processing Sensor Data",
                 "description": "Apply comparison operators and booleans, then wrap threshold checks in a function.",
                 "template": "from lineRobot import Robot\nimport machine\nimport time\nfrom octoliner import Octoliner\n\n# Initialize Hardware\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\nrobot = Robot()\n\n# Define global variables and set sensitivity\nsensi = \nthreshold = \ndist = \noctoliner.set_sensitivity(sensi)\n\n# Define the detect_line function with parameters\ndef detect_line(distance, threshold):\n    found_minerals = False\n    \n    # Create a for loop (15 iterations)\n    \n        # Move robot forward by 'distance'\n    \n          print(\"Sensor 3 :\", sensor_3, \"Found geological layers!\")\n        \n       # Add a small delay (0.1s)\n        \n\n# Call the function here and pass your variables\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "arrays_and_elif",
@@ -172,7 +172,7 @@
                 "name": "Arrays and Spatial Logic",
                 "description": "Read all 8 sensors, extract scout indices, and use elif to classify line position.",
                 "template": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\n# Initialize Hardware\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\n\n# Define your threshold\n\n# Create a for loop (5 iterations)\n\n    \n    # Move forward by 5 cm and wait a moment to settle (0.5s)\n    # Read the full array of sensors into a variable\n    \n    # Extract the three \"scout\" values by their index\n    left_scout = \n    center_scout = \n    right_scout = \n    \n    # Use conditional logic to determine where the mineral vein is and print the result\n    \nprint(\"Survey complete.\")\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "led_feedback",
@@ -181,7 +181,7 @@
                 "name": "Visual Telemetry (LEDs)",
                 "description": "Control onboard LEDs with GPIO to show real-time scan status.",
                 "template": "# Write code here",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "simple_line_follower",
@@ -190,7 +190,7 @@
                 "name": "Simple Line Follower",
                 "description": "Complete three steering branches to follow a short line section using supplied sensor zones.",
                 "template": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\n\nthreshold = 700\nspeed = 15\nturn_speed = 3\nleft_speed = speed\nright_speed = speed\nlost_samples = 0\nlost_limit = 15\n\nwhile True:\n    sensor_data = octoliner.analog_read_all()\n    left_scout = max(sensor_data[5], sensor_data[6], sensor_data[7])\n    center_scout = max(sensor_data[3], sensor_data[4])\n    right_scout = max(sensor_data[0], sensor_data[1], sensor_data[2])\n\n    if center_scout > threshold:\n        left_speed, right_speed = 0, 0  # TODO: drive straight\n        lost_samples = 0\n    elif left_scout > threshold:\n        left_speed, right_speed = 0, 0  # TODO: steer left\n        lost_samples = 0\n    elif right_scout > threshold:\n        left_speed, right_speed = 0, 0  # TODO: steer right\n        lost_samples = 0\n    else:\n        lost_samples += 1\n        if lost_samples >= lost_limit:\n            robot.stop()\n            print(\"Line lost. Stop and check the starting position.\")\n            break\n\n    robot.run_motors_speed(left_speed, right_speed)\n    time.sleep(0.02)\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "logical_operators",
@@ -199,7 +199,7 @@
                 "name": "Upgrading Vision (Logical Operators)",
                 "description": "Use or/and to combine sensor zones, reduce blind spots, and detect intersections.",
                 "template": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\n# Initialize Hardware\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity() # Try different values (0-255)\n\nrobot = Robot()\n\n# 1. Define your variables\nthreshold = \nspeed = 30\nturn_speed = 3 # Use motor speeds to steer\n\n# Create an infinite loop\nwhile True:\n    # 2. Read sensor data (sensors 0-7)\n    # center: 3, 4 | right: 0, 1, 2 | left: 5, 6, 7\n\n    # 3. Use if/elif/else to steer the rover\n    # Logic for following the line\n\n    # 4. Handle 'line lost' condition\n    # For example: move forward at minimal speed\n\n    # Tiny delay for stability\n    time.sleep(0.01)\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             }
         ]
     },
@@ -216,7 +216,7 @@
                 "name": "Python Lists & Waypoints",
                 "description": "Use a list and a for loop to navigate a multi-waypoint route.",
                 "template": "from lineRobot import Robot\nimport time\n\nrobot = Robot()\n\n# Create your list \n\n# Find the length of the list\ntotal_waypoints = 0 # Replace 0 with the len() function\n\n# Print the report\nprint(\"Mission Control, I have received\", total_waypoints, \"waypoints.\")\n\n# Create your for loop here to execute the route\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "telemetry",
@@ -278,7 +278,7 @@
                 "name": "Concept of Error",
                 "description": "Build a diagnostic sweep function to read and print line position Error values using track_line().",
                 "template": "import machine\nimport time\nfrom lineRobot import Robot\nfrom octoliner import Octoliner\n\n# Pre-written Diagnostic Protocol\ndef diagnostic_sweep(speed_left, speed_right):\n    print(\"Starting sweep...\")\n    for i in range(5):\n        robot.run_motors_speed(speed_left, speed_right)\n        time.sleep(0.1)\n        robot.stop()\n        \n        # TODO: Read the line position using track_line() and print the Error variable to the terminal\n        \n        time.sleep(0.4)\n        \n    print(\"Returning to center...\")\n    robot.run_motors_speed(-speed_left, -speed_right)\n    time.sleep(0.4)\n    robot.stop()\n    print(\"Sweep complete.\")\n\n# Setup\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(245)\n\n# Mission Sequence (Call the function, move, call again)\n",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "upgraded_relay_controller",
@@ -287,7 +287,7 @@
                 "name": "Upgraded Relay Controller",
                 "description": "Build a three-way relay controller with failsafe detection using max(sensor_array) < 700.",
                 "template": "import machine\nimport time\nfrom lineRobot import Robot\nfrom octoliner import Octoliner\n\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\n\noctoliner.set_sensitivity(245) # Maybe you will need to adjust the value \n\n\nwhile True:\n    sensor_array = \n    #print(sensor_array) \n    position = \n\n    # Failsafe Check - if no sensor detects line\n    # TODO: Write an if statement using max() to check if the value is less than 700\n    if :\n        # Print a warning, stop the robot, and break the loop\n   \n    else:\n        # TODO: Use if/elif/else to steer based on the 'position' variable\n\n    time.sleep(0.01)",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "proportional_control",
@@ -296,7 +296,7 @@
                 "name": "Proportional Control",
                 "description": "Implement a P-controller using base_speed, kp, and proportional steering calculations.",
                 "template": "import machine\nimport time\nfrom lineRobot import Robot\nfrom octoliner import Octoliner\n\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\n\noctoliner.set_sensitivity(245) # Maybe you will need to adjust the value \n\n# 1. Control Variables\nbase_speed = \nkp = \n\nprint(\"Starting Proportional Controller...\")\n\nwhile True:\n    sensor_array = \n    # print(sensor_array)\n    position = \n\n    # 2. Strict Failsafe Check from previous mission\n    if :\n        # Print a warning, stop the robot, and break the loop\n        \n    else:\n        # 3. P-Controller Math: Calculate P (kp * position)\n        P = \n        \n        # TODO: Calculate left_speed and right_speed (use int()!) and send it to motors\n        left_speed = \n        right_speed =    \n\n    time.sleep(0.01)",
-                "executionMode": "simulation-and-lab"
+                "executionMode": "simulation-or-lab"
             },
             {
                 "str_id": "adaptive_speed",
