@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 20
 module: module_3
 task: logical_operators
@@ -10,6 +7,9 @@ next: python_lists
 ---
 
 # Mission 3.7 Upgrading Vision (Logical Operators)
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 Starting settings for this exercise: `sensitivity = 245`, `threshold = 700`, `speed = 30`, `turn_speed = 3`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 21
 module: module_4
 task: python_lists
@@ -10,6 +7,9 @@ next: telemetry_reporting
 ---
 
 # Mission 4.1 Python Lists (Waypoints)
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 Create Python lists, determine their size using `len()`, and use a `for` loop to execute a multi-step navigation route.

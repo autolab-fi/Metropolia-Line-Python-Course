@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 5
 module: module_1
 task: python_variables_commands
@@ -10,6 +7,9 @@ next: maneuvering
 ---
 
 # Mission 1.5 Python Variables & Commands
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 

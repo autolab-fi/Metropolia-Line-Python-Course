@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 29
 module: module_5
 task: proportional_control
@@ -10,6 +7,9 @@ next: adaptive_speed
 ---
 
 # Mission 5.3 Proportional Control Logic
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 Starting settings for this exercise: `sensitivity = 245`, `base_speed = 30`, `kp = 20`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

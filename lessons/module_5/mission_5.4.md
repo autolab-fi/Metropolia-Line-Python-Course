@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
-
 index: 31
 module: module_5
 task: adaptive_speed
@@ -10,6 +7,9 @@ next: art_of_debugging
 ---
 
 # Mission 5.4 Adaptive Speed 
+
+**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
+
 
 Starting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

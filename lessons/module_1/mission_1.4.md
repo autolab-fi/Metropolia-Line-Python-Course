@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 4
 module: module_1
 task: directional_movement
@@ -10,6 +7,9 @@ next: python_variables_&_commands
 ---
 
 # Mission 1.4 Directional Movement
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 

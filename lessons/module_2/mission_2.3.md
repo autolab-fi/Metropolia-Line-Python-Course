@@ -1,14 +1,15 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 10
 module: module_2
 task: defining_functions
 previous: differential_drive
 next: for_loops
 ---
+
 # Mission 2.3 Defining Functions
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 Learn what a function is and how to create your own custom functions in MicroPython.

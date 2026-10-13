@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 2
 module: module_1
 task: test_drive
@@ -10,6 +7,9 @@ next: license_to_drive
 ---
 
 # Mission 1.2 Test drive
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 

@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 11
 module: module_2
 task: for_loops
@@ -10,6 +7,9 @@ next: encoder_theory
 ---
 
 # Mission 2.4 For Loops
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 Learn how to use **for** loops to create complex movement patterns by using the loop counter variable.

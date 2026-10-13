@@ -1,14 +1,15 @@
 ---
-
-**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
-
 index: 8
 module: module_2
 task: electric_motors
 previous: sequential_navigation
 next: differential_drive
 ---
+
 # Mission 2.1 Electric Motors
+
+**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
+
 
 ## Objective
 Learn about electric motors, gearboxes, and how to manually turn them on and off to reach a specific target.

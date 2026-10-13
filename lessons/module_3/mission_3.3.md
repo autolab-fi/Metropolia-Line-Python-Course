@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 16
 module: module_3
 task: processing_sensor_data
@@ -10,6 +7,9 @@ next: reading_multiple_sensors
 ---
 
 # Mission 3.3 Processing Sensor Data
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 Starting settings for this exercise: `sensitivity = 243`, `threshold = 900`, `dist = 1`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

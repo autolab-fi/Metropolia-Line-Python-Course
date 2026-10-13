@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 15
 module: module_3
 task: conditional_logic
@@ -10,6 +7,9 @@ next: processing_sensor_data
 ---
 
 # Mission 3.2 Conditional Logic & Reactive Behavior
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 Starting settings for this exercise: `sensitivity = 243`, `threshold = 800`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

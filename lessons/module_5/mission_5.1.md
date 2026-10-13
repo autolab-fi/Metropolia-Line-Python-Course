@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 27
 module: module_5
 task: concept_of_error
@@ -10,6 +7,9 @@ next: failsafe_protocols
 ---
 
 # Mission 5.1 The Concept of Error
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 Starting settings for this exercise: `sensitivity = 245`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

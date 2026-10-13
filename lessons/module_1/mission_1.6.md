@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 6
 module: module_1
 task: maneuvering
@@ -10,6 +7,9 @@ next: sequential_navigation
 ---
 
 # Mission 1.6 Maneuvering
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 

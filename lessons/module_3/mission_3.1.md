@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
-
 index: 14
 module: module_3
 task: intro_to_octoliner
@@ -10,6 +7,9 @@ next: conditional_logic_reactive
 ---
 
 # Mission 3.1 Introduction to Octoliner Sensor
+
+**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
+
 
 Starting settings for this exercise: `sensitivity = 230`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.

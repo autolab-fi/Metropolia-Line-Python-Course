@@ -1,7 +1,4 @@
 ---
-
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
-
 index: 19
 module: module_3
 task: simple_line_follower
@@ -10,6 +7,9 @@ next: logical_operators
 ---
 
 # Mission 3.6 Simple Line Follower
+
+**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+
 
 ## Objective
 Use `if/elif/else` and motor speeds to follow a short, nearly straight section of the line. This is your first relay controller: it chooses between driving straight, steering left and steering right.

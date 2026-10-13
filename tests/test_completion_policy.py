@@ -26,7 +26,12 @@ class CompletionPolicyTests(unittest.TestCase):
                 self.assertEqual(sim[key]['mode'],mode)
                 self.assertEqual(tutor[key]['verification_rules']['execution_mode'],mode)
                 text=(ROOT/lessons[key]['url'].split('/main/')[1]).read_text()
-                self.assertIn('**Completion:**',text)
+                self.assertTrue(text.startswith('---\n'))
+                _, header, body = text.split('---', 2)
+                self.assertNotIn('**Completion:**', header)
+                self.assertIn('index:', header)
+                self.assertIn('task:', header)
+                self.assertIn('**Completion:**', body)
                 rule=tutor[key]['verification_rules']['completion_requires']
                 self.assertIn('simulator OR physical' if key in EITHER else 'successful physical verification',rule)
         self.assertEqual(lessons['sandbox']['executionMode'],'simulation-and-lab')
