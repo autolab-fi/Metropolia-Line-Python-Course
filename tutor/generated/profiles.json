@@ -1221,7 +1221,7 @@
           "lesson": "9a2a426bb8ae9f3e75cac192614037c0bab3723e38710f9ae6c0493cb2c736e8",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "e29850b05248a178f671e3dbf3eda03278bbef573b77d82fea86492d61a7f4a9",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "63c18d572c53aeb1cf0ceb4b3bf88e285296ffa70cebb9582c378f1e12505f98"
         }
       },
@@ -1321,7 +1321,7 @@
           "lesson": "a3e78a357bb64d9e9802f052ed7aa46cf682bab97b844b23ad238f8c24e7adc9",
           "template": "5f1a81dd3dcd0d7e9fb3366286eebc03cc95a2b62678c563f32c767513764c9c",
           "reference": "40769d7e32d41f9259c7cb51823fff77422a46dc4d4fe3ccec86c9abbe2d635c",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "4f6c28d3ec1281651e6405b3e960b2f272764561ea058df7ce31fa719bf4d69c"
         }
       },
@@ -1438,7 +1438,7 @@
           "lesson": "2fe10dca388b8bc1542886b25f0c4aa8927e687ef17e81fb064208c17c874a2f",
           "template": "e141dae6ccb3f7e11c9f65ee5fcb84f9e5118dd44f09fd110eda4b1d584494d4",
           "reference": "66f7299d490e8c50ddff37e56821b7a26a96494025c48d38314c7e7f04c98545",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "547b3f7b9204879afb56433774292c9e0639fa95689bf021d85d1b09680e123d"
         }
       },
@@ -1551,7 +1551,7 @@
           "lesson": "9545dc6368a0c122fc81c4c0b11666b3a64587ac60d70be5dca56f010cdcfe5b",
           "template": "a822831e4e5557a5d2d69bbf943e05f6bafaf260ec4de456bc4e4224b9cb0ea4",
           "reference": "d71244d486f5bd7d9c0743181b2f31f5d02fafab3ddc3b9e8612ebc323938b6c",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "daed13ff4807a355e14a177c0e26b17ebe1d917943fba2c14d13e78f0145291c"
         }
       },
@@ -1678,7 +1678,7 @@
           "lesson": "3e2e30db8ca0bd900316b9d125cc29bafcdc5ccb7eee0446501b9e92ab021323",
           "template": "1b9de6d33e5ea58b4e1407ca7c58766394e3050db1581d30bba2bf58bf6b80ce",
           "reference": "65e92bec26d107cc0fc7f45e10d293b569be55d061b4677579dc4204862ff296",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "f549b81bd2cf609d3970139078ab772ee7abd891626581b785bdf07778cb5c2a"
         }
       },
@@ -1791,7 +1791,7 @@
           "lesson": "ea3b64263da738dc554ab009da6d72ca0ed5b8fbe9d20f83bcbf6e4e30096e63",
           "template": "7c81475bbc491005570631404da2cad43de835cd5a4fc9baeabdabf369819cbf",
           "reference": "b4213714a0eba0e56fd562dae2bd37d13320fed54705b3477c39fb73d3634e08",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "9a2ec7c0cf53cfc5336d25a8cf9218fcea93607f1d4c1c022e055af7c5904ed0"
         }
       },
@@ -1922,7 +1922,7 @@
           "lesson": "2e0e953d7ea619ad63689abb62b4ad31ef8fcc6b720af29cf3ccf32f0bbefcbb",
           "template": "4a1e6843716b3f896ec0ec9a8989a0b46930206d847eb3871dd7262d452bab1a",
           "reference": "30bb2113f641756085770d7769dd9b08d755740e0abe00ee094743e7c68c83aa",
-          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "checker": "9982e187594ce955ae46cf8f05f05bec0975991337f828ec161e11b7ba7e25de",
           "simulation": "3089b1b0f64fb192cec270ea77e161aa79b3f49e2f7933a05beb34b9bcfd596e"
         }
       },

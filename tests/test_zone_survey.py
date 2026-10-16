@@ -65,3 +65,11 @@ class SurveyTests(unittest.TestCase):
                     bad = list(messages)
                     bad[0] = 'Line in multiple zones' if bad[0] == 'No line' else 'No line'
                     self.assertFalse(self.verify(task, code, bad))
+
+    def test_mqtt_concatenation_and_packet_fragmentation(self):
+        for task in ('arrays_and_elif', 'led_feedback'):
+            code, messages = self.execute(task, [0, 1, 3, 7, 0])
+            stream = ''.join(messages)
+            self.assertTrue(self.verify(task, code, [stream]))
+            self.assertTrue(self.verify(task, code, [stream[i:i+7] for i in range(0, len(stream), 7)]))
+            self.assertFalse(self.verify(task, code, [stream.replace('Left: True', 'Left: False', 1)]))

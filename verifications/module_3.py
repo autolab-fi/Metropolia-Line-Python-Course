@@ -451,23 +451,30 @@ def _record_zone_report(data, msg):
     """Pair each classification with its reported Boolean states on hardware."""
     import re
     labels = ['No line', 'Line in one zone', 'Line in multiple zones']
-    for line in msg.splitlines():
-        line = line.strip()
-        if line in labels:
+    # Firmware may concatenate print calls or split them across MQTT packets.
+    # Parse semantic records from the stream rather than requiring packet lines.
+    stream = data.get('report_buffer', '') + msg
+    pattern = re.compile(r'No line|Line in one zone|Line in multiple zones|'
+                         r'Left:\s*(True|False)\s+Center:\s*(True|False)\s+Right:\s*(True|False)|'
+                         r'Survey complete\.')
+    consumed = 0
+    for match in pattern.finditer(stream):
+        token = match.group(0)
+        consumed = match.end()
+        if token in labels:
             if data.get('pending_classification') is not None:
                 data['invalid_scan_report'] = True
-            data['pending_classification'] = line
-        elif line.startswith('Left:'):
-            match = re.fullmatch(r'Left: (True|False) Center: (True|False) Right: (True|False)', line)
-            if not match:
-                data['invalid_scan_report'] = True
-                continue
+            data['pending_classification'] = token
+        elif token.startswith('Left:'):
             count = sum(value == 'True' for value in match.groups())
             expected = labels[min(count, 2)]
             if data.get('pending_classification') != expected:
                 data['invalid_scan_report'] = True
-            data.setdefault('zone_reports', []).append(line)
+            data.setdefault('zone_reports', []).append(token)
             data['pending_classification'] = None
+        elif token == 'Survey complete.':
+            data['complete_received'] = True
+    data['report_buffer'] = stream[consumed:][-4096:]
 
 
 def _zone_reports_valid(data):
