@@ -23,3 +23,5 @@ Configure the onboard LED with `machine.Pin(15, machine.Pin.OUT)`. Its `.on()` a
 5. If no zone detects the line, do not blink. If two or three zones detect it, still blink only once.
 
 The simulator checks that each detected scan has one complete LED pulse and each empty scan has none. Keep the LED off between scans and at the end.
+
+The physical robot starts at camera coordinates **(75, 50) cm**, facing right. The simulator uses its own aligned start on the virtual map.

@@ -681,7 +681,12 @@
         {
           "type": "program-finished"
         }
-      ]
+      ],
+      "initialPose": {
+        "xM": 0.7,
+        "yM": 0.5,
+        "headingRad": 0
+      }
     },
     "led_feedback": {
       "mode": "simulation-or-lab",

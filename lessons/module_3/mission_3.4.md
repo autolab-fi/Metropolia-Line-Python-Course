@@ -36,3 +36,5 @@ Use `if / elif / else` to distinguish zero, one, or multiple active zones. Exact
 6. After the loop, print `Survey complete.`.
 
 The simulator compares each classification and each zone state with the actual readings. Reporting several active zones is correct; choosing only the center would discard information.
+
+The physical robot starts at camera coordinates **(75, 50) cm**, facing right. The simulator uses its own aligned start on the virtual map.

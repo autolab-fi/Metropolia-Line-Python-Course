@@ -11,8 +11,8 @@ target_points = {
     'intro_to_octoliner': [(100,60),(30,0)],
     'conditional_logic' : [(80,60), (30,0)],
     'processing_sensor_data': [(85,63),(30,0)],
-    'arrays_and_elif': [(70, 50),(30,0)],
-    'led_feedback': [(70,50),(30,0)],
+    'arrays_and_elif': [(75, 50),(30,0)],
+    'led_feedback': [(75,50),(30,0)],
     'simple_line_follower': [(108,30),(0,30)],
     'logical_operators': [(75,16),(30,0)]
 
@@ -578,7 +578,7 @@ def arrays_and_elif(robot, image, td, user_code=None):
             result["success"] = True
             result["score"] = 100
             result["description"] = (
-                f"You are amazing! Survey complete with {len(td['data']['scan_msgs'])} readings | Score: 100"
+                f"You are amazing! Survey complete with {len(td['data'].get('zone_reports', []))} readings | Score: 100"
             )
             text = "Survey complete!"
 

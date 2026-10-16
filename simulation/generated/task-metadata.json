@@ -43,7 +43,7 @@
       "module": "module_3",
       "verificationFile": "verifications/module_3.py",
       "physicalStart": {
-        "xCm": 70,
+        "xCm": 75,
         "yCm": 50,
         "direction": [
           30,
@@ -51,7 +51,7 @@
         ]
       },
       "initialPose": {
-        "xM": 0.7,
+        "xM": 0.75,
         "yM": 0.5,
         "headingRad": -0.0
       },
@@ -385,7 +385,7 @@
       "module": "module_3",
       "verificationFile": "verifications/module_3.py",
       "physicalStart": {
-        "xCm": 70,
+        "xCm": 75,
         "yCm": 50,
         "direction": [
           30,
@@ -393,7 +393,7 @@
         ]
       },
       "initialPose": {
-        "xM": 0.7,
+        "xM": 0.75,
         "yM": 0.5,
         "headingRad": -0.0
       },
