@@ -228,8 +228,10 @@
       "reference": "solutions/module_3/arrays_and_elif.py",
       "guidanceUpdated": "2026-10-16",
       "physicalValidation": {
-        "status": "pending",
-        "reason": "Zone-count redesign; previous validation applies to the old task."
+        "status": "verified",
+        "submissionId": 24429,
+        "date": "2026-10-16",
+        "notes": "Final physical start (75, 50), facing right; five scans. MQTT concatenation and fragmentation supported."
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
@@ -247,8 +249,10 @@
       "reference": "solutions/module_3/led_feedback.py",
       "guidanceUpdated": "2026-10-16",
       "physicalValidation": {
-        "status": "pending",
-        "reason": "Zone-count redesign; previous validation applies to the old task."
+        "status": "verified",
+        "submissionId": 24430,
+        "date": "2026-10-16",
+        "notes": "Final physical start (75, 50), facing right; five scans. MQTT concatenation and fragmentation supported."
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
@@ -443,8 +447,13 @@
       "reference": "solutions/module_5/adaptive_speed_reference.py",
       "guidanceUpdated": "2026-10-16",
       "physicalValidation": {
-        "status": "pending",
-        "reason": "Calibratable line-loss threshold; 500 is the new starting value, physical calibration still required."
+        "status": "verified",
+        "submissionId": 24423,
+        "date": "2026-10-16",
+        "additionalSubmissionIds": [
+          24425
+        ],
+        "notes": "Both runs reached all three checkpoints with loss_threshold=500. Telemetry run recorded minimum peak 932; a below-700 on-line dip was not reproduced."
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
