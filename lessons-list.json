@@ -170,8 +170,8 @@
                 "url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_3/mission_3.4.md",
                 "sn": 17,
                 "name": "Arrays and Spatial Logic",
-                "description": "Read all 8 sensors, extract scout indices, and use elif to classify line position.",
-                "template": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\n# Initialize Hardware\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\n\n# Define your threshold\n\n# Create a for loop (5 iterations)\n\n    \n    # Move forward by 5 cm and wait a moment to settle (0.5s)\n    # Read the full array of sensors into a variable\n    \n    # Extract the three \"scout\" values by their index\n    left_scout = \n    center_scout = \n    right_scout = \n    \n    # Use conditional logic to determine where the mineral vein is and print the result\n    \nprint(\"Survey complete.\")\n",
+                "description": "Read all 8 sensors and use elif to classify zero, one, or multiple active zones.",
+                "template": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\nthreshold = 800\n\n# Scan five times: move, settle, read and classify the three zones.\n# Use if / elif / else for zero, one, or multiple active zones.\n",
                 "executionMode": "simulation-or-lab"
             },
             {
@@ -180,7 +180,7 @@
                 "sn": 18,
                 "name": "Visual Telemetry (LEDs)",
                 "description": "Control onboard LEDs with GPIO to show real-time scan status.",
-                "template": "# Write code here",
+                "template": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\nthreshold = 800\n\n# Scan five times: move, settle, read and classify the three zones.\n# Add a blinkLED() function and blink once per detected scan.\n",
                 "executionMode": "simulation-or-lab"
             },
             {

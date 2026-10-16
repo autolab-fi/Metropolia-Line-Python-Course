@@ -6,8 +6,29 @@ import numpy as np
 import re
 
 def has_line_loss_failsafe(code):
-    """Match the lesson's threshold without depending on Python whitespace."""
-    return bool(re.search(r"\bmax\s*\([^)]*\)\s*<\s*700(?:\.0*)?\b", code))
+    """Accept a calibrated positive 10-bit threshold, literal or named constant."""
+    import ast
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        return False
+    constants = {}
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and isinstance(node.value, ast.Constant):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    constants[target.id] = node.value.value
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Compare) or len(node.ops) != 1 or not isinstance(node.ops[0], ast.Lt):
+            continue
+        call = node.left
+        if not (isinstance(call, ast.Call) and isinstance(call.func, ast.Name) and call.func.id == 'max' and len(call.args) == 1):
+            continue
+        value = node.comparators[0]
+        threshold = value.value if isinstance(value, ast.Constant) else constants.get(value.id) if isinstance(value, ast.Name) else None
+        if type(threshold) in (int, float) and 0 < threshold < 1024:
+            return True
+    return False
 
 
 target_points = {
@@ -301,7 +322,7 @@ def upgraded_relay_controller(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < loss_threshold failsafe (use a calibrated threshold between 0 and 1024)')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_left_threshold:  missing.append('left threshold (< -0.3)')
@@ -551,7 +572,7 @@ def proportional_control(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < loss_threshold failsafe (use a calibrated threshold between 0 and 1024)')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_base_speed:      missing.append('base_speed variable')
@@ -808,7 +829,7 @@ def adaptive_speed(robot, image, td, user_code=None):
         if not has_while_true:      missing.append('while True loop')
         if not has_analog_read:     missing.append('analog_read_all()')
         if not has_track_line:      missing.append('track_line()')
-        if not has_max_check:       missing.append('max(sensor_array) < 700 failsafe')
+        if not has_max_check:       missing.append('max(sensor_array) < loss_threshold failsafe (use a calibrated threshold between 0 and 1024)')
         if not has_robot_stop:      missing.append('robot.stop()')
         if not has_break:           missing.append('break statement')
         if not has_kp:              missing.append('kp variable')

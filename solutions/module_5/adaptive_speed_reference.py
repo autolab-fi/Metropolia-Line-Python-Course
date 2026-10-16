@@ -13,6 +13,7 @@ octoliner.set_sensitivity(245)
 kp = 25
 max_speed = 40
 braking_force = 20
+loss_threshold = 500
 
 print("Starting Adaptive Speed Controller...")
 
@@ -22,7 +23,7 @@ while True:
     position = octoliner.track_line()
 
     # Failsafe Check
-    if max(sensor_array) < 700:
+    if max(sensor_array) < loss_threshold:
         print("CRITICAL: Line lost! Emergency Stop.")
         robot.stop()
         break

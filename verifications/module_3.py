@@ -447,20 +447,49 @@ def processing_sensor_data(robot, image, td, user_code=None):
     return image, td, text, result
 
 
+def _record_zone_report(data, msg):
+    """Pair each classification with its reported Boolean states on hardware."""
+    import re
+    labels = ['No line', 'Line in one zone', 'Line in multiple zones']
+    for line in msg.splitlines():
+        line = line.strip()
+        if line in labels:
+            if data.get('pending_classification') is not None:
+                data['invalid_scan_report'] = True
+            data['pending_classification'] = line
+        elif line.startswith('Left:'):
+            match = re.fullmatch(r'Left: (True|False) Center: (True|False) Right: (True|False)', line)
+            if not match:
+                data['invalid_scan_report'] = True
+                continue
+            count = sum(value == 'True' for value in match.groups())
+            expected = labels[min(count, 2)]
+            if data.get('pending_classification') != expected:
+                data['invalid_scan_report'] = True
+            data.setdefault('zone_reports', []).append(line)
+            data['pending_classification'] = None
+
+
+def _zone_reports_valid(data):
+    return (len(data.get('zone_reports', [])) == 5
+            and not data.get('invalid_scan_report')
+            and data.get('pending_classification') is None)
+
+
 def arrays_and_elif(robot, image, td, user_code=None):
     """
     Verification for lesson: Arrays and Spatial Logic
     Students must:
     - Use analog_read_all() to read all 8 sensors
     - Extract indices 1, 3, and 6
-    - Use if/elif/else to classify vein position
-    - Print one of four expected strings per step
+    - Use if/elif/else to classify the number of active zones
+    - Print one of three expected classifications per step
     - Print "Survey complete." after the loop
     """
 
     # ===== CONFIGURATION =====
     TASK_DURATION  = 20     # enough for 5 moves + settle delays
-    EXPECTED_MSGS  = ["Vein: Center", "Vein: Left", "Vein: Right", "No minerals"]
+    EXPECTED_MSGS  = ["No line", "Line in one zone", "Line in multiple zones"]
     COMPLETE_MSG   = "Survey complete."
     # =========================
 
@@ -511,6 +540,7 @@ def arrays_and_elif(robot, image, td, user_code=None):
     msg = robot.get_msg()
     if msg is not None:
         text = f"Message: {msg}"
+        _record_zone_report(td["data"], msg)
         if any(m in msg for m in EXPECTED_MSGS):
             td["data"]["scan_msgs"].append(msg)
             text = f"Scan result received ({len(td['data']['scan_msgs'])}/5): {msg}"
@@ -530,11 +560,11 @@ def arrays_and_elif(robot, image, td, user_code=None):
             result["score"] = 0
             result["description"] = "'Survey complete.' message not received | Score: 0"
             text = "Survey complete message missing."
-        elif len(td["data"]["scan_msgs"]) < 5:
+        elif not _zone_reports_valid(td["data"]):
             result["success"] = False
             result["score"] = 0
             result["description"] = (
-                f"Only {len(td['data']['scan_msgs'])}/5 scan results received | Score: 0"
+                "Expected five matching classifications and Boolean zone reports | Score: 0"
             )
             text = "Not enough scan results."
         else:
@@ -559,9 +589,9 @@ def led_feedback(robot, image, td, user_code=None):
 
     # ===== CONFIGURATION =====
     TASK_DURATION      = 30
-    EXPECTED_MSGS      = ["Vein: Center", "Vein: Left", "Vein: Right", "No minerals"]
+    EXPECTED_MSGS      = ["No line", "Line in one zone", "Line in multiple zones"]
     COMPLETE_MSG       = "Survey complete."
-    NUMBER_OF_SCANS    = 15
+    NUMBER_OF_SCANS    = 5
     # =========================
 
     result = {
@@ -625,6 +655,7 @@ def led_feedback(robot, image, td, user_code=None):
     msg = robot.get_msg()
     if msg is not None:
         text = f"Message: {msg}"
+        _record_zone_report(td["data"], msg)
         if any(m in msg for m in EXPECTED_MSGS):
             td["data"]["scan_msgs"].append(msg)
             text = f"Scan result ({len(td['data']['scan_msgs'])}/{NUMBER_OF_SCANS}): {msg}"
@@ -643,11 +674,11 @@ def led_feedback(robot, image, td, user_code=None):
             result["score"] = 0
             result["description"] = "'Survey complete.' not received | Score: 0"
             text = "Survey complete message missing."
-        elif len(td["data"]["scan_msgs"]) < 5:
+        elif not _zone_reports_valid(td["data"]):
             result["success"] = False
             result["score"] = 0
             result["description"] = (
-                f"Only {len(td['data']['scan_msgs'])}/5 scan results received | Score: 0"
+                "Expected five matching classifications and Boolean zone reports | Score: 0"
             )
             text = "Not enough scan results."
         else:

@@ -3,103 +3,36 @@ index: 17
 module: module_3
 task: arrays_and_elif
 previous: processing_sensor_data
-next: led_feedback_system
+next: led_feedback
 ---
 
 # Mission 3.4 Arrays and Spatial Logic
 
-**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.
+**Completion:** Pass **Check in simulator** or **Verify on robot**.
 
+Read the three zones independently. A wide line or a crossing can activate several zones at once; no zone has priority.
 
-Starting settings for this exercise: `sensitivity = 243`, `threshold = 800`.
-Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
+## Arrays and zone indices
+`octoliner.analog_read_all()` returns a list of eight readings. Python list indices start at zero: `sensor_data[3]` selects the fourth reading. Viewed from above, sensors 5–7 are on the left, 3–4 in the center, and 0–2 on the right. For this exercise use one scout per zone: 6, 3, and 1 respectively.
 
-## Objective
-Learn how to read all 8 sensors at once using arrays, extract specific data using indices, and use `elif` statements to determine the line's position.
+## Boolean values and `elif`
+A comparison such as `reading > threshold` produces `True` or `False`. `int(True)` is 1 and `int(False)` is 0, so adding the three converted results gives the number of active zones.
 
-![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)
-
-## Introduction
-Until now, you have been reading a single sensor using `analog_read(index)`. But to follow a path, the rover needs full spatial awareness to know if the line is drifting to the left or to the right.
-
-Today, you will learn how to capture a complete snapshot of the ground using an "array" of data, and how to make complex decisions using a new programming tool: the `elif` statement.
-
-## Theory
-
-### 1. Arrays and Indices
-Instead of reading 8 sensors one by one, we can read them all simultaneously using `octoliner.analog_read_all()`. This command returns an **array** (a list) containing 8 numbers.
-
-In Python, an array is enclosed in square brackets `[]`. Every item inside has an **index** (its position), starting from exactly `0`.
-
-```python
-#            [0,    1,   2,  3,  4,   5,   6,   7]
-data_array = [245, 240, 210, 85, 90, 240, 245, 250]
-
-# You can extract a specific number by putting its index in brackets:
-center_value = data_array[3] # This extracts '85'
-```
-
-### 2. IR Sensor Configuration
-
-The Octoliner sensor array consists of 8 sensors, each providing an analog value that indicates the intensity of reflected IR light.
-
-The board has eight sensing elements. Use the indexed top-view diagram below to relate the readings to the robot:
-
-![IR Sensor view](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-board.jpg)
-
-When we look at the robot from above (as in our camera view):
-
-- **Left** side of the robot → sensors 7, 6, 5
-- **Center** → sensors 4 and 3
-- **Right** side → sensors 2, 1, 0
-
-![IR Sensor Logic](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-zones.svg)
-
-How we controle movments:
-- **Central sensors (3 & 4)** → Move straight
-- **Rigrt sensors (0,1,2)** → Guide right turns
-- **Left sensors (5,6,7)** → Guide left turns
-
-To check an entire zone, we would normally need to check all three of its sensors. However, to keep our very first navigation program simple, we will pick just **one specific sensor from each zone** to act as our primary "scout":
-* **Right Scout:** Index 1
-* **Center Scout:** Index 3
-* **Left Scout:** Index 6
-
-### 3. The `elif` Statement
-To check multiple conditions in a specific order, we use the `elif` (Else If) statement.
-
-Python checks conditions from top to bottom. As soon as it finds a `True` condition, it executes that specific block and **skips the rest**. Here is an example of how this structure looks when checking different collision sensors (do not copy this for your assignment!):
-
-```python
-if front_radar < safe_distance:
-    print("Obstacle ahead! Stop!")
-elif back_radar < safe_distance:
-    print("Obstacle behind! Stop!")
-elif side_radar < safe_distance:
-    print("Obstacle on the side!")
-else:
-    print("All clear. Proceed.")
-```
+Use `if / elif / else` to distinguish zero, one, or multiple active zones. Exactly one of these cases applies to each scan.
 
 ## Assignment
-Mission Control needs to map a marked survey boundary on the Jezero-inspired test terrain. Write a geological survey program that performs a step-by-step scan of the ground. The rover must make 5 stops (moving 5 cm at a time) and report the exact position of the mineral vein at each stop.
+1. Set sensitivity to **243** and `threshold = 800`. A reading detects the line only when it is **greater than** the threshold.
+2. Repeat **5 times**: move forward **5 cm**, wait **0.5 seconds**, then call `octoliner.analog_read_all()` once and store the result in `sensor_data`.
+3. Compare three readings with the threshold: **left = index 6**, **center = index 3**, **right = index 1**. Save each comparison as a Boolean.
+4. Count the active zones. Use `if / elif / else` to print exactly one classification per scan:
+   - zero: `No line`
+   - one: `Line in one zone`
+   - two or three: `Line in multiple zones`
+5. Print the three Boolean states on the next line using `print("Left:", left, "Center:", center, "Right:", right)`. For example, if the left and center zones detect the line:
+   ```text
+   Line in multiple zones
+   Left: True Center: True Right: False
+   ```
+6. After the loop, print `Survey complete.`.
 
-**Requirements:**
-1. **Setup:** The hardware is initialized in the template. Define a `threshold` variable.
-2. **Scanning Cycle:** Create a loop.
-3. **Action:** Inside the loop, first move the rover forward and add a delay to let the instruments settle.
-4. **Read Data:**
-    * Read all 8 sensors at once and save the result to a variable named `sensor_data`.
-    * Extract the values for index `1`, index `3`, and index `6` from `sensor_data` and save them into three separate variables (e.g., `left_scout`).
-5. **Analyze & Report:** * Use an `if / elif / else` structure to check your variables.
-    * Print `"Vein: Center"`, `"Vein: Left"`, `"Vein: Right"`, or `"No minerals"` accordingly.
-6. **Shutdown:** After the loop finishes, print `"Survey complete."`
-
-## Conclusion
-Brilliant work! You have successfully learned how to process arrays, extract specific data points by their index, and control the rover in discrete, scientific steps. By combining this with `elif` statements, you have built the foundational "brain" of an autonomous tracking system.
-
-> **Important:** Save your code or keep this tab open! You will use this exact scanning loop as the foundation for your next mission.
-
-Right now, Mission Control has to read text in the terminal to know where the mineral vein is. In the next mission, we will learn how to use the rover's GPIO pins to turn on physical warning LEDs when the rover loses the trail!
-
-*Lab convention: geological alerts and vein labels are exercise messages for detecting the printed line. The sensors measure reflected infrared light; they do not identify minerals.*
+The simulator compares each classification and each zone state with the actual readings. Reporting several active zones is correct; choosing only the center would discard information.

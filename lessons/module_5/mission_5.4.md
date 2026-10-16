@@ -11,7 +11,7 @@ next: art_of_debugging
 **Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.
 
 
-Starting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`.
+Starting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`, `loss_threshold = 500`.
 Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.
 
 ## Objective
@@ -56,7 +56,7 @@ Upgrade your P-Controller to the ultimate Adaptive Speed Controller!
    * Calculate `left_speed` and `right_speed` using your new `dynamic_speed` instead of a fixed base speed. Don't forget to use `int()`!
 5. **Execute:** Send the speeds to the motors. Watch your robot accelerate on the straights, dynamically brake for the corners, and **complete one full lap!**
 
-**Verification:** Start with sensitivity `245`, a `0.01` second pause after reading the sensor array, and a `0.01` second pause at the end of the loop. Keep the `max(sensor_array) < 700` stop-and-break failsafe. The robot starts on the line facing right. The physical check lasts about `60` seconds and requires all three checkpoints in order; the simulator ends after that route is complete.
+**Verification:** Start with sensitivity `245`, a `0.01` second pause after reading the sensor array, and a `0.01` second pause at the end of the loop. Keep a `max(sensor_array) < loss_threshold` stop-and-break failsafe. Start with `loss_threshold = 500`; this is a separate line-loss threshold, not a steering threshold. Calibrate it from readings on the actual surface: it must be above the maximum background reading and below the weakest maximum reading while on the line. A lower threshold avoids false stops only if it still distinguishes the background. The checker accepts calibrated literal thresholds and named constants; it does not require exactly 700. The robot starts on the line facing right. The physical check lasts about `60` seconds and requires all three checkpoints in order; the simulator ends after that route is complete.
 
 **The Tuning Challenge (Optional):**
 After completing a lap, change one parameter at a time and compare the result:

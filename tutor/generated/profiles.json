@@ -1221,7 +1221,7 @@
           "lesson": "9a2a426bb8ae9f3e75cac192614037c0bab3723e38710f9ae6c0493cb2c736e8",
           "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
           "reference": "e29850b05248a178f671e3dbf3eda03278bbef573b77d82fea86492d61a7f4a9",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
           "simulation": "63c18d572c53aeb1cf0ceb4b3bf88e285296ffa70cebb9582c378f1e12505f98"
         }
       },
@@ -1321,7 +1321,7 @@
           "lesson": "a3e78a357bb64d9e9802f052ed7aa46cf682bab97b844b23ad238f8c24e7adc9",
           "template": "5f1a81dd3dcd0d7e9fb3366286eebc03cc95a2b62678c563f32c767513764c9c",
           "reference": "40769d7e32d41f9259c7cb51823fff77422a46dc4d4fe3ccec86c9abbe2d635c",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
           "simulation": "4f6c28d3ec1281651e6405b3e960b2f272764561ea058df7ce31fa719bf4d69c"
         }
       },
@@ -1438,17 +1438,17 @@
           "lesson": "2fe10dca388b8bc1542886b25f0c4aa8927e687ef17e81fb064208c17c874a2f",
           "template": "e141dae6ccb3f7e11c9f65ee5fcb84f9e5118dd44f09fd110eda4b1d584494d4",
           "reference": "66f7299d490e8c50ddff37e56821b7a26a96494025c48d38314c7e7f04c98545",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
           "simulation": "547b3f7b9204879afb56433774292c9e0639fa95689bf021d85d1b09680e123d"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_3.py"
     },
     "arrays_and_elif": {
-      "assignment_full_text": "---\nindex: 17\nmodule: module_3\ntask: arrays_and_elif\nprevious: processing_sensor_data\nnext: led_feedback_system\n---\n\n# Mission 3.4 Arrays and Spatial Logic\n\n**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.\n\n\nStarting settings for this exercise: `sensitivity = 243`, `threshold = 800`.\nSensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.\n\n## Objective\nLearn how to read all 8 sensors at once using arrays, extract specific data using indices, and use `elif` statements to determine the line's position.\n\n![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange)\n\n## Introduction\nUntil now, you have been reading a single sensor using `analog_read(index)`. But to follow a path, the rover needs full spatial awareness to know if the line is drifting to the left or to the right.\n\nToday, you will learn how to capture a complete snapshot of the ground using an \"array\" of data, and how to make complex decisions using a new programming tool: the `elif` statement.\n\n## Theory\n\n### 1. Arrays and Indices\nInstead of reading 8 sensors one by one, we can read them all simultaneously using `octoliner.analog_read_all()`. This command returns an **array** (a list) containing 8 numbers.\n\nIn Python, an array is enclosed in square brackets `[]`. Every item inside has an **index** (its position), starting from exactly `0`.\n\n```python\n#            [0,    1,   2,  3,  4,   5,   6,   7]\ndata_array = [245, 240, 210, 85, 90, 240, 245, 250]\n\n# You can extract a specific number by putting its index in brackets:\ncenter_value = data_array[3] # This extracts '85'\n```\n\n### 2. IR Sensor Configuration\n\nThe Octoliner sensor array consists of 8 sensors, each providing an analog value that indicates the intensity of reflected IR light.\n\nThe board has eight sensing elements. Use the indexed top-view diagram below to relate the readings to the robot:\n\n![IR Sensor view](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-board.jpg)\n\nWhen we look at the robot from above (as in our camera view):\n\n- **Left** side of the robot → sensors 7, 6, 5\n- **Center** → sensors 4 and 3\n- **Right** side → sensors 2, 1, 0\n\n![IR Sensor Logic](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-zones.svg)\n\nHow we controle movments:\n- **Central sensors (3 & 4)** → Move straight\n- **Rigrt sensors (0,1,2)** → Guide right turns\n- **Left sensors (5,6,7)** → Guide left turns\n\nTo check an entire zone, we would normally need to check all three of its sensors. However, to keep our very first navigation program simple, we will pick just **one specific sensor from each zone** to act as our primary \"scout\":\n* **Right Scout:** Index 1\n* **Center Scout:** Index 3\n* **Left Scout:** Index 6\n\n### 3. The `elif` Statement\nTo check multiple conditions in a specific order, we use the `elif` (Else If) statement.\n\nPython checks conditions from top to bottom. As soon as it finds a `True` condition, it executes that specific block and **skips the rest**. Here is an example of how this structure looks when checking different collision sensors (do not copy this for your assignment!):\n\n```python\nif front_radar < safe_distance:\n    print(\"Obstacle ahead! Stop!\")\nelif back_radar < safe_distance:\n    print(\"Obstacle behind! Stop!\")\nelif side_radar < safe_distance:\n    print(\"Obstacle on the side!\")\nelse:\n    print(\"All clear. Proceed.\")\n```\n\n## Assignment\nMission Control needs to map a marked survey boundary on the Jezero-inspired test terrain. Write a geological survey program that performs a step-by-step scan of the ground. The rover must make 5 stops (moving 5 cm at a time) and report the exact position of the mineral vein at each stop.\n\n**Requirements:**\n1. **Setup:** The hardware is initialized in the template. Define a `threshold` variable.\n2. **Scanning Cycle:** Create a loop.\n3. **Action:** Inside the loop, first move the rover forward and add a delay to let the instruments settle.\n4. **Read Data:**\n    * Read all 8 sensors at once and save the result to a variable named `sensor_data`.\n    * Extract the values for index `1`, index `3`, and index `6` from `sensor_data` and save them into three separate variables (e.g., `left_scout`).\n5. **Analyze & Report:** * Use an `if / elif / else` structure to check your variables.\n    * Print `\"Vein: Center\"`, `\"Vein: Left\"`, `\"Vein: Right\"`, or `\"No minerals\"` accordingly.\n6. **Shutdown:** After the loop finishes, print `\"Survey complete.\"`\n\n## Conclusion\nBrilliant work! You have successfully learned how to process arrays, extract specific data points by their index, and control the rover in discrete, scientific steps. By combining this with `elif` statements, you have built the foundational \"brain\" of an autonomous tracking system.\n\n> **Important:** Save your code or keep this tab open! You will use this exact scanning loop as the foundation for your next mission.\n\nRight now, Mission Control has to read text in the terminal to know where the mineral vein is. In the next mission, we will learn how to use the rover's GPIO pins to turn on physical warning LEDs when the rover loses the trail!\n\n*Lab convention: geological alerts and vein labels are exercise messages for detecting the printed line. The sensors measure reflected infrared light; they do not identify minerals.*\n",
-      "assignment_summary": "--- index: 17 module: module_3 task: arrays_and_elif previous: processing_sensor_data next: led_feedback_system --- # Mission 3.4 Arrays and Spatial Logic **Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option. Starting settings for this exercise: `sensitivity = 243`, `threshold = 800`. Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes. ## Objective Learn how to read all 8 sensors at once using arrays, extract specific data using indices, and use `elif` statements to determine the line's position. ![Intermediate](https://img.shields.io/badge/Difficulty-Intermediate-orange) ## Introduction Until now, you have been reading a single sensor using `analog_read(index)`. But to follow a path, the rover needs full spatial awareness to know if the line is drifting to the left or to the right. Today, you will learn how to capture a complete snapshot of the ground using an \"array\" of data, and how to make complex decisions using a new programming tool: the `elif` statement. ## Theory ### 1. Arrays and Indices Instead of reading 8 sensors one by one, we can read them all simultaneously using `octoliner.analog_read_all()`. This command returns an **array** (a list) containing 8 numbers. In Python, an array is enclosed in square brackets `[]`. Every item inside has an **index** (its position), starting from exactly `0`. ### 2. IR Sensor Configuration The Octoliner sensor array consists of 8 sensors, each providing an analog value that indicates the intensity of reflected IR light. The board has eight sensing elements. Use the indexed top-view diagram below to relate the readings to the robot: ![IR Sensor view](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/octoliner-board.jpg) When we look at the robot from above ",
-      "reference_solution_text": "from lineRobot import Robot\nimport machine\nfrom time import sleep\nfrom octoliner import Octoliner\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\n\nrobot = Robot()\nthreshold = 800\n\nfor i in range(5):\n    robot.move_forward_distance(5)\n    sleep(0.3)\n\n    sensor_data = octoliner.analog_read_all()\n    right_scout   = sensor_data[1]\n    center_scout = sensor_data[3]\n    left_scout  = sensor_data[6]\n\n    if center_scout > threshold:\n        print(\"Vein: Center\")\n    elif right_scout > threshold:\n        print(\"Vein: Right\")\n    elif left_scout > threshold:\n        print(\"Vein: Left\")\n    else:\n        print(\"No minerals\")\n\nprint(\"Survey complete.\")\n",
-      "verification_summary": "Verification for lesson: Arrays and Spatial Logic\nStudents must:\n- Use analog_read_all() to read all 8 sensors\n- Extract indices 1, 3, and 6\n- Use if/elif/else to classify vein position\n- Print one of four expected strings per step\n- Print \"Survey complete.\" after the loop\nHardware evidence: {\"status\": \"verified\", \"submissionId\": 21960, \"date\": \"2026-10-07\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
+      "assignment_full_text": "---\nindex: 17\nmodule: module_3\ntask: arrays_and_elif\nprevious: processing_sensor_data\nnext: led_feedback\n---\n\n# Mission 3.4 Arrays and Spatial Logic\n\n**Completion:** Pass **Check in simulator** or **Verify on robot**.\n\nRead the three zones independently. A wide line or a crossing can activate several zones at once; no zone has priority.\n\n## Arrays and zone indices\n`octoliner.analog_read_all()` returns a list of eight readings. Python list indices start at zero: `sensor_data[3]` selects the fourth reading. Viewed from above, sensors 5–7 are on the left, 3–4 in the center, and 0–2 on the right. For this exercise use one scout per zone: 6, 3, and 1 respectively.\n\n## Boolean values and `elif`\nA comparison such as `reading > threshold` produces `True` or `False`. `int(True)` is 1 and `int(False)` is 0, so adding the three converted results gives the number of active zones.\n\nUse `if / elif / else` to distinguish zero, one, or multiple active zones. Exactly one of these cases applies to each scan.\n\n## Assignment\n1. Set sensitivity to **243** and `threshold = 800`. A reading detects the line only when it is **greater than** the threshold.\n2. Repeat **5 times**: move forward **5 cm**, wait **0.5 seconds**, then call `octoliner.analog_read_all()` once and store the result in `sensor_data`.\n3. Compare three readings with the threshold: **left = index 6**, **center = index 3**, **right = index 1**. Save each comparison as a Boolean.\n4. Count the active zones. Use `if / elif / else` to print exactly one classification per scan:\n   - zero: `No line`\n   - one: `Line in one zone`\n   - two or three: `Line in multiple zones`\n5. Print the three Boolean states on the next line using `print(\"Left:\", left, \"Center:\", center, \"Right:\", right)`. For example, if the left and center zones detect the line:\n   ```text\n   Line in multiple zones\n   Left: True Center: True Right: False\n   ```\n6. After the loop, print `Survey complete.`.\n\nThe simulator compares each classification and each zone state with the actual readings. Reporting several active zones is correct; choosing only the center would discard information.\n",
+      "assignment_summary": "--- index: 17 module: module_3 task: arrays_and_elif previous: processing_sensor_data next: led_feedback --- # Mission 3.4 Arrays and Spatial Logic **Completion:** Pass **Check in simulator** or **Verify on robot**. Read the three zones independently. A wide line or a crossing can activate several zones at once; no zone has priority. ## Arrays and zone indices `octoliner.analog_read_all()` returns a list of eight readings. Python list indices start at zero: `sensor_data[3]` selects the fourth reading. Viewed from above, sensors 5–7 are on the left, 3–4 in the center, and 0–2 on the right. For this exercise use one scout per zone: 6, 3, and 1 respectively. ## Boolean values and `elif` A comparison such as `reading > threshold` produces `True` or `False`. `int(True)` is 1 and `int(False)` is 0, so adding the three converted results gives the number of active zones. Use `if / elif / else` to distinguish zero, one, or multiple active zones. Exactly one of these cases applies to each scan. ## Assignment 1. Set sensitivity to **243** and `threshold = 800`. A reading detects the line only when it is **greater than** the threshold. 2. Repeat **5 times**: move forward **5 cm**, wait **0.5 seconds**, then call `octoliner.analog_read_all()` once and store the result in `sensor_data`. 3. Compare three readings with the threshold: **left = index 6**, **center = index 3**, **right = index 1**. Save each comparison as a Boolean. 4. Count the active zones. Use `if / elif / else` to print exactly one classification per scan: - zero: `No line` - one: `Line in one zone` - two or three: `Line in multiple zones` 5. Print the three Boolean states on the next line using `print(\"Left:\", left, \"Center:\", center, \"Right:\", right)`. For example, if the left and center zones detect the line: 6. After the loop, print `Survey complete.`. The simulator compares each classification and each zone state with the actual readings. Reporting several active zones is correct; choosing only the center wou",
+      "reference_solution_text": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\nthreshold = 800\n\nfor i in range(5):\n    robot.move_forward_distance(5)\n    time.sleep(0.5)\n    sensor_data = octoliner.analog_read_all()\n    left = sensor_data[6] > threshold\n    center = sensor_data[3] > threshold\n    right = sensor_data[1] > threshold\n    count = int(left) + int(center) + int(right)\n\n    if count == 0:\n        print(\"No line\")\n    elif count == 1:\n        print(\"Line in one zone\")\n    else:\n        print(\"Line in multiple zones\")\n    print(\"Left:\", left, \"Center:\", center, \"Right:\", right)\n\nprint(\"Survey complete.\")\n",
+      "verification_summary": "Verification for lesson: Arrays and Spatial Logic\nStudents must:\n- Use analog_read_all() to read all 8 sensors\n- Extract indices 1, 3, and 6\n- Use if/elif/else to classify the number of active zones\n- Print one of three expected classifications per step\n- Print \"Survey complete.\" after the loop\nHardware evidence: {\"status\": \"pending\", \"reason\": \"Zone-count redesign; previous validation applies to the old task.\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
       "verification_rules": {
         "physical_start": {
           "xCm": 70,
@@ -1461,10 +1461,9 @@
         "physical_checker_constants": {
           "TASK_DURATION": 20,
           "EXPECTED_MSGS": [
-            "Vein: Center",
-            "Vein: Left",
-            "Vein: Right",
-            "No minerals"
+            "No line",
+            "Line in one zone",
+            "Line in multiple zones"
           ],
           "COMPLETE_MSG": "Survey complete."
         },
@@ -1500,10 +1499,9 @@
           {
             "type": "stdout-lines",
             "allowed": [
-              "Vein: Center",
-              "Vein: Left",
-              "Vein: Right",
-              "No minerals"
+              "No line",
+              "Line in one zone",
+              "Line in multiple zones"
             ],
             "minimumMatches": 5,
             "required": [
@@ -1511,18 +1509,17 @@
             ]
           },
           {
-            "type": "octoliner-classification",
+            "type": "octoliner-zone-count",
             "minimumScans": 5,
-            "threshold": 700
+            "threshold": 800
           },
           {
             "type": "program-finished"
           }
         ],
         "physical_validation": {
-          "status": "verified",
-          "submissionId": 21960,
-          "date": "2026-10-07"
+          "status": "pending",
+          "reason": "Zone-count redesign; previous validation applies to the old task."
         },
         "starting_parameters": {
           "sensitivity": 243,
@@ -1540,29 +1537,31 @@
       "common_mistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left.",
+        "Classify the number of active zones, not a preferred zone; the detection threshold is 800.",
+        "Print all three Boolean states for every scan; blink once per detected scan in 3.5."
       ],
       "repo_refs": {
         "context_manifest_schema": 1,
         "course_repo_url": "https://github.com/autolab-fi/Metropolia-Line-Python-Course",
         "task_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_3/mission_3.4.md",
         "reference_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/solutions/module_3/arrays_and_elif.py",
-        "guidance_updated": "2026-10-07",
+        "guidance_updated": "2026-10-16",
         "source_sha256": {
-          "lesson": "cf9102768082dae856947ea4608e07ffd44d58b3318dd13553c52f581ca23380",
-          "template": "ff1b83679baaa70cb7b997d967b432fc65921b4fdfa66d8d1f16e169e7f83d66",
-          "reference": "cead4bf7357413b0aa60adc0fe81eb70a38e261c05d906818c98a7a3ba89e217",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
-          "simulation": "dd4cc50442c84bc3d1da022083ccc36987981154ffa06c4eb52db07617e79d21"
+          "lesson": "9545dc6368a0c122fc81c4c0b11666b3a64587ac60d70be5dca56f010cdcfe5b",
+          "template": "a822831e4e5557a5d2d69bbf943e05f6bafaf260ec4de456bc4e4224b9cb0ea4",
+          "reference": "d71244d486f5bd7d9c0743181b2f31f5d02fafab3ddc3b9e8612ebc323938b6c",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "simulation": "daed13ff4807a355e14a177c0e26b17ebe1d917943fba2c14d13e78f0145291c"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_3.py"
     },
     "led_feedback": {
-      "assignment_full_text": "---\nindex: 18\nmodule: module_3\ntask: led_feedback\nprevious: arrays_and_elif\nnext: simple_line_follower\n---\n\n# Mission 3.5 Visual Telemetry (LEDs)\n\n**Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option.\n\n\nStarting settings for this exercise: `sensitivity = 243`, `threshold = 800`.\nSensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.\n\n## Objective\nLearn the basics of GPIO (General Purpose Input/Output) and control the rover's onboard LED to provide physical visual feedback during a geological scan.\n\n![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green)\n\n## Introduction\nIn the previous mission, your rover successfully scanned the Martian test terrain and reported the location of the marked survey boundary to the terminal. However, during a remote exploration run, Mission Control cannot always stare at a computer screen.\n\nWe need real-time, visual telemetry. Today, you will step away from the sensors for a moment to learn how to send electrical signals to external hardware, turning the rover's onboard LED into a \"Target Locked\" indicator!\n\n## Theory\n\n### 1. What is GPIO?\nGPIO stands for \"General Purpose Input/Output.\" It is the standard interface that allows the rover's \"brain\" (microcontroller) to interact with external physical devices.\n* **Input:** Reading signals (like we did with the Octoliner).\n* **Output:** Sending signals (like sending voltage to a motor or a light).\n\n![image](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/led-feedback.svg)\n\nNow, we will focus on sending a logical high (voltage ON) and logical low (voltage OFF) signal to an LED (Light Emitting Diode).\n\n### 2. Setting the Pin Mode\nBefore sending any signal, we must tell the rover's computer *how* a specific hardware pin should behave. We do this using the `machine.Pin` function.\n\nTo turn on a light, the pin must be configured as an Output (`machine.Pin.OUT`). The rover's primary LED is wired to **Pin 15**.\n\n```python\nimport machine\n\n# Configure Pin 15 as an Output and name it 'indicator_led'\nindicator_led = machine.Pin(15, machine.Pin.OUT)\n```\n\n### 3. Writing to a Pin\nOnce the pin is configured as an output, you can control the electrical voltage going to it using the `.on()` and `.off()` commands.\n\n```python\nindicator_led.on()  # Sends voltage, turning the LED ON\nindicator_led.off() # Stops voltage, turning the LED OFF\n```\n\n## Assignment\nUpgrade your step-by-step geological scanner from previos mission. Create a custom function that blinks the LED, and call it whenever the rover detects the marked line in any of its zones.\n\n## Conclusion\nOutstanding engineering! You now understand how GPIO works and how to manipulate external hardware.\n\nBy combining sensor inputs, custom functions, and LED outputs, you have created a smart, reactive system. You have mastered all the core pieces of robotics: reading sensors, making decisions, and controlling hardware.\n",
-      "assignment_summary": "--- index: 18 module: module_3 task: led_feedback previous: arrays_and_elif next: simple_line_follower --- # Mission 3.5 Visual Telemetry (LEDs) **Completion:** Pass **Check in simulator** or **Verify on robot** to complete this activity and receive the same Moodle grade. Choose either option. Starting settings for this exercise: `sensitivity = 243`, `threshold = 800`. Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes. ## Objective Learn the basics of GPIO (General Purpose Input/Output) and control the rover's onboard LED to provide physical visual feedback during a geological scan. ![Beginner](https://img.shields.io/badge/Difficulty-Beginner-green) ## Introduction In the previous mission, your rover successfully scanned the Martian test terrain and reported the location of the marked survey boundary to the terminal. However, during a remote exploration run, Mission Control cannot always stare at a computer screen. We need real-time, visual telemetry. Today, you will step away from the sensors for a moment to learn how to send electrical signals to external hardware, turning the rover's onboard LED into a \"Target Locked\" indicator! ## Theory ### 1. What is GPIO? GPIO stands for \"General Purpose Input/Output.\" It is the standard interface that allows the rover's \"brain\" (microcontroller) to interact with external physical devices. * **Input:** Reading signals (like we did with the Octoliner). * **Output:** Sending signals (like sending voltage to a motor or a light). ![image](https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/images/jezero/led-feedback.svg) Now, we will focus on sending a logical high (voltage ON) and logical low (voltage OFF) signal to an LED (Light Emitting Diode). ### 2. Setting the Pin Mode Before sending any signal, we must tell the rover's computer *how* a specific hardware pin should beh",
-      "reference_solution_text": "from lineRobot import Robot\nimport machine\nfrom time import sleep\nfrom octoliner import Octoliner\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\n\nrobot = Robot()\nled = machine.Pin(15, machine.Pin.OUT)\n\nthreshold = 800\n\ndef blink_led():\n    for i in range(0, 5):\n        led.on()\n        sleep(0.2)\n        led.off()\n        sleep(0.2)\n\nfor i in range(5):\n    robot.move_forward_distance(5)\n    sleep(0.3)\n\n    sensor_data = octoliner.analog_read_all()\n    left_scout   = sensor_data[6]\n    center_scout = sensor_data[3]\n    right_scout  = sensor_data[1]\n\n    if center_scout > threshold:\n        print(\"Vein: Center\")\n        blink_led()\n    elif left_scout > threshold:\n        print(\"Vein: Left\")\n        blink_led()\n    elif right_scout > threshold:\n        print(\"Vein: Right\")\n        blink_led()\n    else:\n        print(\"No minerals\")\n\nprint(\"Survey complete.\")\n",
-      "verification_summary": "Verification for lesson: Visual Telemetry (LEDs)\nStudents must:\n- Define a function that contains both .on() and .off() LED calls\n- Use machine.Pin(15) for the LED\n- Call the blink function when a vein is detected\n- Still print scan results and \"Survey complete.\"\nHardware evidence: {\"status\": \"verified\", \"submissionId\": 21961, \"date\": \"2026-10-07\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
+      "assignment_full_text": "---\nindex: 18\nmodule: module_3\ntask: led_feedback\nprevious: arrays_and_elif\nnext: simple_line_follower\n---\n\n# Mission 3.5 Visual Telemetry (LEDs)\n\n**Completion:** Pass **Check in simulator** or **Verify on robot**.\n\nExtend your scanner from **3.4** with a light that signals detection of the marked line in **any zone**.\n\n## GPIO and functions\nConfigure the onboard LED with `machine.Pin(15, machine.Pin.OUT)`. Its `.on()` and `.off()` methods switch it on and off. Put one on/off cycle in a function so you can call it after a scan.\n\n## Assignment\n1. Keep the complete scanner from 3.4: sensitivity **243**, threshold **800**, **5 steps of 5 cm**, **0.5 seconds** settling time, zone classifications, Boolean state reports, and the final `Survey complete.` message.\n2. Configure **pin 15** as an output.\n3. Define a function `blinkLED()` that turns the LED on, waits **0.2 seconds**, turns it off, and waits **0.2 seconds**.\n4. After each scan, call the function **once if at least one zone detects the line**. Use `left or center or right` to express this condition.\n5. If no zone detects the line, do not blink. If two or three zones detect it, still blink only once.\n\nThe simulator checks that each detected scan has one complete LED pulse and each empty scan has none. Keep the LED off between scans and at the end.\n",
+      "assignment_summary": "--- index: 18 module: module_3 task: led_feedback previous: arrays_and_elif next: simple_line_follower --- # Mission 3.5 Visual Telemetry (LEDs) **Completion:** Pass **Check in simulator** or **Verify on robot**. Extend your scanner from **3.4** with a light that signals detection of the marked line in **any zone**. ## GPIO and functions Configure the onboard LED with `machine.Pin(15, machine.Pin.OUT)`. Its `.on()` and `.off()` methods switch it on and off. Put one on/off cycle in a function so you can call it after a scan. ## Assignment 1. Keep the complete scanner from 3.4: sensitivity **243**, threshold **800**, **5 steps of 5 cm**, **0.5 seconds** settling time, zone classifications, Boolean state reports, and the final `Survey complete.` message. 2. Configure **pin 15** as an output. 3. Define a function `blinkLED()` that turns the LED on, waits **0.2 seconds**, turns it off, and waits **0.2 seconds**. 4. After each scan, call the function **once if at least one zone detects the line**. Use `left or center or right` to express this condition. 5. If no zone detects the line, do not blink. If two or three zones detect it, still blink only once. The simulator checks that each detected scan has one complete LED pulse and each empty scan has none. Keep the LED off between scans and at the end. ",
+      "reference_solution_text": "import machine\nimport time\nfrom octoliner import Octoliner\nfrom lineRobot import Robot\n\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\noctoliner.set_sensitivity(243)\nrobot = Robot()\nthreshold = 800\n\nindicator_led = machine.Pin(15, machine.Pin.OUT)\n\ndef blinkLED():\n    indicator_led.on()\n    time.sleep(0.2)\n    indicator_led.off()\n    time.sleep(0.2)\n\nfor i in range(5):\n    robot.move_forward_distance(5)\n    time.sleep(0.5)\n    sensor_data = octoliner.analog_read_all()\n    left = sensor_data[6] > threshold\n    center = sensor_data[3] > threshold\n    right = sensor_data[1] > threshold\n    count = int(left) + int(center) + int(right)\n\n    if count == 0:\n        print(\"No line\")\n    elif count == 1:\n        print(\"Line in one zone\")\n    else:\n        print(\"Line in multiple zones\")\n    print(\"Left:\", left, \"Center:\", center, \"Right:\", right)\n    if left or center or right:\n        blinkLED()\n\nprint(\"Survey complete.\")\n",
+      "verification_summary": "Verification for lesson: Visual Telemetry (LEDs)\nStudents must:\n- Define a function that contains both .on() and .off() LED calls\n- Use machine.Pin(15) for the LED\n- Call the blink function when a vein is detected\n- Still print scan results and \"Survey complete.\"\nHardware evidence: {\"status\": \"pending\", \"reason\": \"Zone-count redesign; previous validation applies to the old task.\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
       "verification_rules": {
         "physical_start": {
           "xCm": 70,
@@ -1575,13 +1574,12 @@
         "physical_checker_constants": {
           "TASK_DURATION": 30,
           "EXPECTED_MSGS": [
-            "Vein: Center",
-            "Vein: Left",
-            "Vein: Right",
-            "No minerals"
+            "No line",
+            "Line in one zone",
+            "Line in multiple zones"
           ],
           "COMPLETE_MSG": "Survey complete.",
-          "NUMBER_OF_SCANS": 15
+          "NUMBER_OF_SCANS": 5
         },
         "simulator_checks": [
           {
@@ -1619,18 +1617,11 @@
             "sensor": "octoliner"
           },
           {
-            "type": "gpio-pulse-sequence",
-            "pin": 15,
-            "minimumPulses": 1,
-            "minimumOnDurationSec": 0.1
-          },
-          {
             "type": "stdout-lines",
             "allowed": [
-              "Vein: Center",
-              "Vein: Left",
-              "Vein: Right",
-              "No minerals"
+              "No line",
+              "Line in one zone",
+              "Line in multiple zones"
             ],
             "minimumMatches": 5,
             "required": [
@@ -1638,18 +1629,24 @@
             ]
           },
           {
-            "type": "octoliner-classification",
+            "type": "octoliner-zone-count",
             "minimumScans": 5,
-            "threshold": 700
+            "threshold": 800
+          },
+          {
+            "type": "octoliner-led-scans",
+            "threshold": 800,
+            "pin": 15,
+            "minimumScans": 5,
+            "minimumOnDurationSec": 0.1
           },
           {
             "type": "program-finished"
           }
         ],
         "physical_validation": {
-          "status": "verified",
-          "submissionId": 21961,
-          "date": "2026-10-07"
+          "status": "pending",
+          "reason": "Zone-count redesign; previous validation applies to the old task."
         },
         "starting_parameters": {
           "sensitivity": 243,
@@ -1667,20 +1664,22 @@
       "common_mistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left.",
+        "Classify the number of active zones, not a preferred zone; the detection threshold is 800.",
+        "Print all three Boolean states for every scan; blink once per detected scan in 3.5."
       ],
       "repo_refs": {
         "context_manifest_schema": 1,
         "course_repo_url": "https://github.com/autolab-fi/Metropolia-Line-Python-Course",
         "task_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_3/mission_3.5.md",
         "reference_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/solutions/module_3/led_feedback.py",
-        "guidance_updated": "2026-10-07",
+        "guidance_updated": "2026-10-16",
         "source_sha256": {
-          "lesson": "d7e442e7d885715980d8ab8f316f3c5f04efd0b63267f7a7a259331ce58a2ef8",
-          "template": "541309f9764cc6ff43b9711c3ecb72bb06cfcffaa723b81c78db9c27ad5e34c9",
-          "reference": "efdefae10e6bd9e6db3ccd07e941061f96046a0ba7238cffa125a2198f37f1ed",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
-          "simulation": "3e2984b2c56735f795b796a835ae395f5cf0908c9cc54b4bbf60b0c3144d716e"
+          "lesson": "3e2e30db8ca0bd900316b9d125cc29bafcdc5ccb7eee0446501b9e92ab021323",
+          "template": "1b9de6d33e5ea58b4e1407ca7c58766394e3050db1581d30bba2bf58bf6b80ce",
+          "reference": "65e92bec26d107cc0fc7f45e10d293b569be55d061b4677579dc4204862ff296",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
+          "simulation": "f549b81bd2cf609d3970139078ab772ee7abd891626581b785bdf07778cb5c2a"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_3.py"
@@ -1792,7 +1791,7 @@
           "lesson": "ea3b64263da738dc554ab009da6d72ca0ed5b8fbe9d20f83bcbf6e4e30096e63",
           "template": "7c81475bbc491005570631404da2cad43de835cd5a4fc9baeabdabf369819cbf",
           "reference": "b4213714a0eba0e56fd562dae2bd37d13320fed54705b3477c39fb73d3634e08",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
           "simulation": "9a2ec7c0cf53cfc5336d25a8cf9218fcea93607f1d4c1c022e055af7c5904ed0"
         }
       },
@@ -1923,7 +1922,7 @@
           "lesson": "2e0e953d7ea619ad63689abb62b4ad31ef8fcc6b720af29cf3ccf32f0bbefcbb",
           "template": "4a1e6843716b3f896ec0ec9a8989a0b46930206d847eb3871dd7262d452bab1a",
           "reference": "30bb2113f641756085770d7769dd9b08d755740e0abe00ee094743e7c68c83aa",
-          "checker": "54cf49bf9315c4e9c0edb3ae4cfed330210af034d5ab3bb08721fc443aa981af",
+          "checker": "55798d92ab082a1210065670518bfc44e54a1eca9bad2c00708a517d6d3b70ae",
           "simulation": "3089b1b0f64fb192cec270ea77e161aa79b3f49e2f7933a05beb34b9bcfd596e"
         }
       },
@@ -2699,7 +2698,7 @@
           "lesson": "5c62ef3a71f2d3d92c9aef85210611d10b41937e8a3c3f946cab44c4821b3c05",
           "template": "3542a0c36decf7bceff259dbe08c24e46eaace96414944edf7f33432eb570a95",
           "reference": "a17f816abf90d69a9b2a233a91e76a582b322d226e7cf7db3454658d753e5583",
-          "checker": "71a5d76914ada89ab1ffc5c79b3ab5841a63e22281b0012388a78a707787045e",
+          "checker": "a4b3da517dd9eefe29a45c2decc8de4d7e1a484a45b6f8c3683772852ee9e177",
           "simulation": "3a263dd42411e7d1d333a608ec8f27ad75fa2a04ecf7f4f21890919a96e1cc91"
         }
       },
@@ -2821,7 +2820,7 @@
           "lesson": "335b638a3f4f987981f6873bdea9d5cf045d3838c3335ace4d65b8bfc879cb5f",
           "template": "5c528871bf4d146c78b5614a47f438e48002b339c6bf4e1640687d0ec43f5db9",
           "reference": "9921a565fddce396478fa4c66681fd6e926a38f19b657eeb82b532d6a6baf36c",
-          "checker": "71a5d76914ada89ab1ffc5c79b3ab5841a63e22281b0012388a78a707787045e",
+          "checker": "a4b3da517dd9eefe29a45c2decc8de4d7e1a484a45b6f8c3683772852ee9e177",
           "simulation": "25475a5ebf9ea40da43b7c8e063652b25d8c308ed23f9102d205f2679c17ba2e"
         }
       },
@@ -2953,17 +2952,17 @@
           "lesson": "48e40de11bb39db7cf9eec5531033fdf8350eeaaa295a9daf3e3e22f72b21550",
           "template": "20592e2616d6654be5c4891cc3b1c906c321f15d54a09c3dcf8a31acc197fc04",
           "reference": "f7711a3f9d0315aa1bbe8c739c18d50858ea896061a3bc0e37de2c4a358e308c",
-          "checker": "71a5d76914ada89ab1ffc5c79b3ab5841a63e22281b0012388a78a707787045e",
+          "checker": "a4b3da517dd9eefe29a45c2decc8de4d7e1a484a45b6f8c3683772852ee9e177",
           "simulation": "4a7223c5b7a1a6a55c265eb39c82ec5c78b7809a61b9191d1a4e416f5cf8d1e8"
         }
       },
       "checker_source_ref": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/verifications/module_5.py"
     },
     "adaptive_speed": {
-      "assignment_full_text": "---\nindex: 31\nmodule: module_5\ntask: adaptive_speed\nprevious: proportional_control\nnext: art_of_debugging\n---\n\n# Mission 5.4 Adaptive Speed \n\n**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.\n\n\nStarting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`.\nSensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.\n\n## Objective\nMake the rover race-ready by implementing an Adaptive Speed algorithm that automatically slows down before corners using the `abs()` function.\n\n![Advanced](https://img.shields.io/badge/Difficulty-Advanced-red)\n\n## Introduction\nYour Proportional Controller is stable, but it has a flaw: it drives at a constant `base_speed`. \nIf you set the speed to `30`, the robot easily navigates sharp corners, but crawls agonizingly slowly on straightaways. If you increase the speed to `80`, it flies down the straights but crashes on the first sharp turn because it's going too fast to steer!\n\nThink about real racing drivers. They don't press the gas pedal identically the whole track. They accelerate on the straights and hit the brakes *before* entering a turn. Today, we will teach your rover to do exactly that.\n\n## Theory\n### 1. Absolute Error (`abs`)\nTo know *when* to brake, the robot needs to know if it's approaching a turn. \nOur Error ranges from `-1.0` to `1.0`. We don't care if the turn is left or right; we only care about the *size* of the Error. \n\nPython has a built-in function called `abs()` (Absolute Value) that removes the minus sign:\n* `abs(-0.8)` becomes `0.8`\n* `abs(0.0)` stays `0.0`\n\n### 2. The Adaptive Speed Formula\nInstead of a fixed `base_speed`, we will calculate a `dynamic_speed` every single loop using this formula:\n`dynamic_speed = max_speed - (braking_force * abs(position))`\n\n* On a straight line (`position = 0.0`), the robot drives at the full `max_speed`.\n* On a sharp turn (e.g., `position = 1.0`), the robot subtracts the full `braking_force` from its speed, safely slowing down to execute the turn!\n\n## Assignment\nUpgrade your P-Controller to the ultimate Adaptive Speed Controller!\n\n**Requirements:**\n1. **Setup:** Use your code from Mission 5.3.\n2. **Control Variables:** Remove `base_speed`, set `kp = 25`, and create two new variables before the loop:\n   * `max_speed = 40`\n   * `braking_force = 20`\n3. **Adaptive Math:** Inside the loop, before calculating `P`:\n   * Calculate `dynamic_speed` using the formula with `abs(position)`.\n4. **The P-Controller:**\n   * Calculate `P` as usual (`kp * position`).\n   * Calculate `left_speed` and `right_speed` using your new `dynamic_speed` instead of a fixed base speed. Don't forget to use `int()`!\n5. **Execute:** Send the speeds to the motors. Watch your robot accelerate on the straights, dynamically brake for the corners, and **complete one full lap!**\n\n**Verification:** Start with sensitivity `245`, a `0.01` second pause after reading the sensor array, and a `0.01` second pause at the end of the loop. Keep the `max(sensor_array) < 700` stop-and-break failsafe. The robot starts on the line facing right. The physical check lasts about `60` seconds and requires all three checkpoints in order; the simulator ends after that route is complete.\n\n**The Tuning Challenge (Optional):**\nAfter completing a lap, change one parameter at a time and compare the result:\n* Increase or decrease `kp` slightly and observe steering corrections.\n* Change `braking_force` and compare the speed on straights and corners.\n* Increase `max_speed` in small steps only after the current setup reliably completes the route.\n\nRetain the line-loss failsafe for every experiment.\n\n## Conclusion\nYou have built a controller that adjusts its speed using the measured line error. Compare its lap with the fixed-speed controller from Mission 5.3 and change one parameter at a time when tuning.\n",
-      "assignment_summary": "--- index: 31 module: module_5 task: adaptive_speed previous: proportional_control next: art_of_debugging --- # Mission 5.4 Adaptive Speed **Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice. Starting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`. Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes. ## Objective Make the rover race-ready by implementing an Adaptive Speed algorithm that automatically slows down before corners using the `abs()` function. ![Advanced](https://img.shields.io/badge/Difficulty-Advanced-red) ## Introduction Your Proportional Controller is stable, but it has a flaw: it drives at a constant `base_speed`. If you set the speed to `30`, the robot easily navigates sharp corners, but crawls agonizingly slowly on straightaways. If you increase the speed to `80`, it flies down the straights but crashes on the first sharp turn because it's going too fast to steer! Think about real racing drivers. They don't press the gas pedal identically the whole track. They accelerate on the straights and hit the brakes *before* entering a turn. Today, we will teach your rover to do exactly that. ## Theory ### 1. Absolute Error (`abs`) To know *when* to brake, the robot needs to know if it's approaching a turn. Our Error ranges from `-1.0` to `1.0`. We don't care if the turn is left or right; we only care about the *size* of the Error. Python has a built-in function called `abs()` (Absolute Value) that removes the minus sign: * `abs(-0.8)` becomes `0.8` * `abs(0.0)` stays `0.0` ### 2. The Adaptive Speed Formula Instead of a fixed `base_speed`, we will calculate a `dynamic_speed` every single loop using this formula: `dynamic_speed = max_speed - (braking_force * abs(position))` * On a straight line (`pos",
-      "reference_solution_text": "import machine\nimport time\nfrom lineRobot import Robot\nfrom octoliner import Octoliner\n\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\n\noctoliner.set_sensitivity(245)\n\nkp = 25\nmax_speed = 40\nbraking_force = 20\n\nprint(\"Starting Adaptive Speed Controller...\")\n\nwhile True:\n    sensor_array = octoliner.analog_read_all()\n    time.sleep(0.01)\n    position = octoliner.track_line()\n\n    # Failsafe Check\n    if max(sensor_array) < 700:\n        print(\"CRITICAL: Line lost! Emergency Stop.\")\n        robot.stop()\n        break\n    else:\n        # Calculate Adaptive Speed\n        dynamic_speed = max_speed - (braking_force * abs(position))\n\n        # Calculate P-Controller Power\n        P = kp * position\n\n        # Apply Power to Dynamic Speed\n        left_speed = int(dynamic_speed + P)\n        right_speed = int(dynamic_speed - P)\n\n        # Send to Motors\n        robot.run_motors_speed(left_speed, right_speed)\n\n    time.sleep(0.01)\n",
-      "verification_summary": "Verification for lesson: Adaptive Speed — 5.4\nStart: x=40, y=18.5\nCheckpoints: (105, 60), (60, 79), (80, 16) - required in order\nHardware evidence: {\"status\": \"verified\", \"submissionId\": 21972, \"date\": \"2026-10-07\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
+      "assignment_full_text": "---\nindex: 31\nmodule: module_5\ntask: adaptive_speed\nprevious: proportional_control\nnext: art_of_debugging\n---\n\n# Mission 5.4 Adaptive Speed \n\n**Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice.\n\n\nStarting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`, `loss_threshold = 500`.\nSensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes.\n\n## Objective\nMake the rover race-ready by implementing an Adaptive Speed algorithm that automatically slows down before corners using the `abs()` function.\n\n![Advanced](https://img.shields.io/badge/Difficulty-Advanced-red)\n\n## Introduction\nYour Proportional Controller is stable, but it has a flaw: it drives at a constant `base_speed`. \nIf you set the speed to `30`, the robot easily navigates sharp corners, but crawls agonizingly slowly on straightaways. If you increase the speed to `80`, it flies down the straights but crashes on the first sharp turn because it's going too fast to steer!\n\nThink about real racing drivers. They don't press the gas pedal identically the whole track. They accelerate on the straights and hit the brakes *before* entering a turn. Today, we will teach your rover to do exactly that.\n\n## Theory\n### 1. Absolute Error (`abs`)\nTo know *when* to brake, the robot needs to know if it's approaching a turn. \nOur Error ranges from `-1.0` to `1.0`. We don't care if the turn is left or right; we only care about the *size* of the Error. \n\nPython has a built-in function called `abs()` (Absolute Value) that removes the minus sign:\n* `abs(-0.8)` becomes `0.8`\n* `abs(0.0)` stays `0.0`\n\n### 2. The Adaptive Speed Formula\nInstead of a fixed `base_speed`, we will calculate a `dynamic_speed` every single loop using this formula:\n`dynamic_speed = max_speed - (braking_force * abs(position))`\n\n* On a straight line (`position = 0.0`), the robot drives at the full `max_speed`.\n* On a sharp turn (e.g., `position = 1.0`), the robot subtracts the full `braking_force` from its speed, safely slowing down to execute the turn!\n\n## Assignment\nUpgrade your P-Controller to the ultimate Adaptive Speed Controller!\n\n**Requirements:**\n1. **Setup:** Use your code from Mission 5.3.\n2. **Control Variables:** Remove `base_speed`, set `kp = 25`, and create two new variables before the loop:\n   * `max_speed = 40`\n   * `braking_force = 20`\n3. **Adaptive Math:** Inside the loop, before calculating `P`:\n   * Calculate `dynamic_speed` using the formula with `abs(position)`.\n4. **The P-Controller:**\n   * Calculate `P` as usual (`kp * position`).\n   * Calculate `left_speed` and `right_speed` using your new `dynamic_speed` instead of a fixed base speed. Don't forget to use `int()`!\n5. **Execute:** Send the speeds to the motors. Watch your robot accelerate on the straights, dynamically brake for the corners, and **complete one full lap!**\n\n**Verification:** Start with sensitivity `245`, a `0.01` second pause after reading the sensor array, and a `0.01` second pause at the end of the loop. Keep a `max(sensor_array) < loss_threshold` stop-and-break failsafe. Start with `loss_threshold = 500`; this is a separate line-loss threshold, not a steering threshold. Calibrate it from readings on the actual surface: it must be above the maximum background reading and below the weakest maximum reading while on the line. A lower threshold avoids false stops only if it still distinguishes the background. The checker accepts calibrated literal thresholds and named constants; it does not require exactly 700. The robot starts on the line facing right. The physical check lasts about `60` seconds and requires all three checkpoints in order; the simulator ends after that route is complete.\n\n**The Tuning Challenge (Optional):**\nAfter completing a lap, change one parameter at a time and compare the result:\n* Increase or decrease `kp` slightly and observe steering corrections.\n* Change `braking_force` and compare the speed on straights and corners.\n* Increase `max_speed` in small steps only after the current setup reliably completes the route.\n\nRetain the line-loss failsafe for every experiment.\n\n## Conclusion\nYou have built a controller that adjusts its speed using the measured line error. Compare its lap with the fixed-speed controller from Mission 5.3 and change one parameter at a time when tuning.\n",
+      "assignment_summary": "--- index: 31 module: module_5 task: adaptive_speed previous: proportional_control next: art_of_debugging --- # Mission 5.4 Adaptive Speed **Completion:** Pass **Verify on robot** to complete this activity and receive the Moodle grade. The simulator is available for practice. Starting settings for this exercise: `sensitivity = 245`, `max_speed = 40`, `kp = 25`, `braking_force = 20`, `loss_threshold = 500`. Sensitivity is the Octoliner setup value (0–255); the detection threshold is a separate value applied to analog readings. Check the readings if lighting or sensor position changes. ## Objective Make the rover race-ready by implementing an Adaptive Speed algorithm that automatically slows down before corners using the `abs()` function. ![Advanced](https://img.shields.io/badge/Difficulty-Advanced-red) ## Introduction Your Proportional Controller is stable, but it has a flaw: it drives at a constant `base_speed`. If you set the speed to `30`, the robot easily navigates sharp corners, but crawls agonizingly slowly on straightaways. If you increase the speed to `80`, it flies down the straights but crashes on the first sharp turn because it's going too fast to steer! Think about real racing drivers. They don't press the gas pedal identically the whole track. They accelerate on the straights and hit the brakes *before* entering a turn. Today, we will teach your rover to do exactly that. ## Theory ### 1. Absolute Error (`abs`) To know *when* to brake, the robot needs to know if it's approaching a turn. Our Error ranges from `-1.0` to `1.0`. We don't care if the turn is left or right; we only care about the *size* of the Error. Python has a built-in function called `abs()` (Absolute Value) that removes the minus sign: * `abs(-0.8)` becomes `0.8` * `abs(0.0)` stays `0.0` ### 2. The Adaptive Speed Formula Instead of a fixed `base_speed`, we will calculate a `dynamic_speed` every single loop using this formula: `dynamic_speed = max_speed - (braking_force * abs(position))` * ",
+      "reference_solution_text": "import machine\nimport time\nfrom lineRobot import Robot\nfrom octoliner import Octoliner\n\nrobot = Robot()\ni2c = machine.I2C(scl=machine.Pin(22), sda=machine.Pin(21), freq=100000)\noctoliner = Octoliner()\noctoliner.begin(i2c)\n\noctoliner.set_sensitivity(245)\n\nkp = 25\nmax_speed = 40\nbraking_force = 20\nloss_threshold = 500\n\nprint(\"Starting Adaptive Speed Controller...\")\n\nwhile True:\n    sensor_array = octoliner.analog_read_all()\n    time.sleep(0.01)\n    position = octoliner.track_line()\n\n    # Failsafe Check\n    if max(sensor_array) < loss_threshold:\n        print(\"CRITICAL: Line lost! Emergency Stop.\")\n        robot.stop()\n        break\n    else:\n        # Calculate Adaptive Speed\n        dynamic_speed = max_speed - (braking_force * abs(position))\n\n        # Calculate P-Controller Power\n        P = kp * position\n\n        # Apply Power to Dynamic Speed\n        left_speed = int(dynamic_speed + P)\n        right_speed = int(dynamic_speed - P)\n\n        # Send to Motors\n        robot.run_motors_speed(left_speed, right_speed)\n\n    time.sleep(0.01)\n",
+      "verification_summary": "Verification for lesson: Adaptive Speed — 5.4\nStart: x=40, y=18.5\nCheckpoints: (105, 60), (60, 79), (80, 16) - required in order\nHardware evidence: {\"status\": \"pending\", \"reason\": \"Calibratable line-loss threshold; 500 is the new starting value, physical calibration still required.\"}\nThe physical and simulator checks are distinct; consult their labeled rules. Reset failures before student execution are infrastructure failures. Do not infer a student-code failure from reset or video delivery alone. Provide hints rather than a complete solution.",
       "verification_rules": {
         "physical_start": {
           "xCm": 40,
@@ -3054,15 +3053,15 @@
           }
         ],
         "physical_validation": {
-          "status": "verified",
-          "submissionId": 21972,
-          "date": "2026-10-07"
+          "status": "pending",
+          "reason": "Calibratable line-loss threshold; 500 is the new starting value, physical calibration still required."
         },
         "starting_parameters": {
           "sensitivity": 245,
           "max_speed": 40,
           "kp": 25,
-          "braking_force": 20
+          "braking_force": 20,
+          "loss_threshold": 500
         },
         "execution_mode": "simulation-and-lab",
         "completion_requires": "successful physical verification; simulation is practice",
@@ -3076,19 +3075,20 @@
       "common_mistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0–255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left."
+        "Facing forward, Octoliner indices 0–2 are right, 3–4 center, 5–7 left.",
+        "The line-loss threshold is calibratable, not fixed at 700; begin at 500 and verify separation between line and background."
       ],
       "repo_refs": {
         "context_manifest_schema": 1,
         "course_repo_url": "https://github.com/autolab-fi/Metropolia-Line-Python-Course",
         "task_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/lessons/module_5/mission_5.4.md",
         "reference_url": "https://raw.githubusercontent.com/autolab-fi/Metropolia-Line-Python-Course/main/solutions/module_5/adaptive_speed_reference.py",
-        "guidance_updated": "2026-10-07",
+        "guidance_updated": "2026-10-16",
         "source_sha256": {
-          "lesson": "acae1811adc0a128a0af460d5e5ac7c289d7394469af055b9a31eb01afe1c824",
+          "lesson": "dd5d9820910ab0a7bf54f6adbc0fbf36865e297a8b62de7589e9cf2133e9bccd",
           "template": "7f23bc75b9e3f6aa9e41628c5c8e77b7debc8efe500b8b2332df7cfb5e76064e",
-          "reference": "108bf080e3d0469f5613973cc0d05a1c5b293da0e59c57151400d9900babcd18",
-          "checker": "71a5d76914ada89ab1ffc5c79b3ab5841a63e22281b0012388a78a707787045e",
+          "reference": "1805dfa6010ea322ad1b99971e80d4cf101d415ff4dff9e449eb9259b74e2f53",
+          "checker": "a4b3da517dd9eefe29a45c2decc8de4d7e1a484a45b6f8c3683772852ee9e177",
           "simulation": "9bfbf5a749cf9e88016bcf23c5ade96c3dd8cbb3b13359dd0acd489c71af9bf0"
         }
       },

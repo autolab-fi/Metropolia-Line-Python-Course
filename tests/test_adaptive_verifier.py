@@ -8,6 +8,8 @@ from pathlib import Path
 import re
 from types import SimpleNamespace
 import unittest
+import sys
+from unittest.mock import patch
 
 source = Path(__file__).resolve().parents[1] / 'verifications/module_5.py'
 functions = [n for n in ast.parse(source.read_text()).body if isinstance(n, ast.FunctionDef)
@@ -65,6 +67,24 @@ class AdaptiveVerdictTests(unittest.TestCase):
     def test_motion_without_required_code_fails(self):
         _, result = self.replay([(40, 18.5), (100, 60)], 'print("done")')
         self.assertFalse(result['success'])
+
+class AdaptiveThresholdRuntimeTests(unittest.TestCase):
+    def test_weak_line_keeps_moving_but_background_stops(self):
+        readings = iter([[600] * 8, [500] * 8, [100] * 8])
+        actions = []
+        robot = SimpleNamespace(run_motors_speed=lambda *speeds: actions.append(speeds),
+                                stop=lambda: actions.append('stop'))
+        sensor = SimpleNamespace(begin=lambda _: None, set_sensitivity=lambda _: None,
+                                 analog_read_all=lambda: next(readings), track_line=lambda: 0.2)
+        modules = {'machine': SimpleNamespace(Pin=lambda n: n, I2C=lambda **kwargs: None),
+                   'time': SimpleNamespace(sleep=lambda _: None),
+                   'lineRobot': SimpleNamespace(Robot=lambda: robot),
+                   'octoliner': SimpleNamespace(Octoliner=lambda: sensor)}
+        with patch.dict(sys.modules, modules), contextlib.redirect_stdout(io.StringIO()):
+            exec(reference, {})
+        self.assertEqual(len(actions), 3)
+        self.assertEqual(actions[-1], 'stop')
+        self.assertTrue(all(isinstance(action, tuple) for action in actions[:2]))
 
 if __name__ == '__main__':
     unittest.main()

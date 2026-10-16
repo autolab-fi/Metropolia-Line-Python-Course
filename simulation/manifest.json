@@ -664,10 +664,9 @@
         {
           "type": "stdout-lines",
           "allowed": [
-            "Vein: Center",
-            "Vein: Left",
-            "Vein: Right",
-            "No minerals"
+            "No line",
+            "Line in one zone",
+            "Line in multiple zones"
           ],
           "minimumMatches": 5,
           "required": [
@@ -675,9 +674,9 @@
           ]
         },
         {
-          "type": "octoliner-classification",
+          "type": "octoliner-zone-count",
           "minimumScans": 5,
-          "threshold": 700
+          "threshold": 800
         },
         {
           "type": "program-finished"
@@ -722,18 +721,11 @@
           "sensor": "octoliner"
         },
         {
-          "type": "gpio-pulse-sequence",
-          "pin": 15,
-          "minimumPulses": 1,
-          "minimumOnDurationSec": 0.1
-        },
-        {
           "type": "stdout-lines",
           "allowed": [
-            "Vein: Center",
-            "Vein: Left",
-            "Vein: Right",
-            "No minerals"
+            "No line",
+            "Line in one zone",
+            "Line in multiple zones"
           ],
           "minimumMatches": 5,
           "required": [
@@ -741,9 +733,16 @@
           ]
         },
         {
-          "type": "octoliner-classification",
+          "type": "octoliner-zone-count",
           "minimumScans": 5,
-          "threshold": 700
+          "threshold": 800
+        },
+        {
+          "type": "octoliner-led-scans",
+          "threshold": 800,
+          "pin": 15,
+          "minimumScans": 5,
+          "minimumOnDurationSec": 0.1
         },
         {
           "type": "program-finished"

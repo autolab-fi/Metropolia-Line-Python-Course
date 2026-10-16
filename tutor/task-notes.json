@@ -226,16 +226,17 @@
     },
     "arrays_and_elif": {
       "reference": "solutions/module_3/arrays_and_elif.py",
-      "guidanceUpdated": "2026-10-07",
+      "guidanceUpdated": "2026-10-16",
       "physicalValidation": {
-        "status": "verified",
-        "submissionId": 21960,
-        "date": "2026-10-07"
+        "status": "pending",
+        "reason": "Zone-count redesign; previous validation applies to the old task."
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0\u2013255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left."
+        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left.",
+        "Classify the number of active zones, not a preferred zone; the detection threshold is 800.",
+        "Print all three Boolean states for every scan; blink once per detected scan in 3.5."
       ],
       "parameters": {
         "sensitivity": 243,
@@ -244,16 +245,17 @@
     },
     "led_feedback": {
       "reference": "solutions/module_3/led_feedback.py",
-      "guidanceUpdated": "2026-10-07",
+      "guidanceUpdated": "2026-10-16",
       "physicalValidation": {
-        "status": "verified",
-        "submissionId": 21961,
-        "date": "2026-10-07"
+        "status": "pending",
+        "reason": "Zone-count redesign; previous validation applies to the old task."
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0\u2013255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left."
+        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left.",
+        "Classify the number of active zones, not a preferred zone; the detection threshold is 800.",
+        "Print all three Boolean states for every scan; blink once per detected scan in 3.5."
       ],
       "parameters": {
         "sensitivity": 243,
@@ -439,22 +441,23 @@
     },
     "adaptive_speed": {
       "reference": "solutions/module_5/adaptive_speed_reference.py",
-      "guidanceUpdated": "2026-10-07",
+      "guidanceUpdated": "2026-10-16",
       "physicalValidation": {
-        "status": "verified",
-        "submissionId": 21972,
-        "date": "2026-10-07"
+        "status": "pending",
+        "reason": "Calibratable line-loss threshold; 500 is the new starting value, physical calibration still required."
       },
       "commonMistakes": [
         "A reset failure before student execution is an infrastructure/positioning failure, not evidence that the student algorithm is wrong.",
         "Do not confuse sensitivity (0\u2013255 setup setting) with the analog detection threshold. Use the dated task-specific settings, not one sensitivity for every lesson.",
-        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left."
+        "Facing forward, Octoliner indices 0\u20132 are right, 3\u20134 center, 5\u20137 left.",
+        "The line-loss threshold is calibratable, not fixed at 700; begin at 500 and verify separation between line and background."
       ],
       "parameters": {
         "sensitivity": 245,
         "max_speed": 40,
         "kp": 25,
-        "braking_force": 20
+        "braking_force": 20,
+        "loss_threshold": 500
       }
     },
     "welcome": {
